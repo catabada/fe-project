@@ -48,9 +48,10 @@ import { MdbCookiesManagementService } from 'mdb-angular-cookies-management';
 import { MdbStorageManagementService } from 'mdb-angular-storage-management';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer/footer.component';
+import { LoginComponent } from './view/component/login/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
