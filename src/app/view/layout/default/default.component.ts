@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-default',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    document.title = 'Home';
   }
 
 }
