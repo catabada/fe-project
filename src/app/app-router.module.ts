@@ -6,6 +6,7 @@ import {FullWidthComponent} from "./view/layout/full-width/full-width.component"
 import {NotFoundComponent} from "./view/component/error/not-found/not-found.component";
 import { ForbiddenComponent } from './view/component/error/forbidden/forbidden.component';
 import {HomeComponent} from "./view/component/home/home.component";
+import { LoginComponent } from './view/component/login/login.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
     component: DefaultComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent }
+      { path: 'home', component: HomeComponent },
+      { path: 'login', component: LoginComponent }
     ]
   },
   {

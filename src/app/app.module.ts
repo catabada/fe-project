@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +52,7 @@ import {DefaultModule} from "./view/layout/default/default.module";
 import { FullWidthModule } from './view/layout/full-width/full-width.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent],
+  declarations: [AppComponent, BreadcrumbComponent, ProductsComponent, ProductCardComponent, ProductListComponent, PaginationComponent, FilterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -105,4 +105,5 @@ import { FullWidthModule } from './view/layout/full-width/full-width.module';
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
