@@ -1,58 +1,60 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
-import { MdbAutocompleteModule } from 'mdb-angular-ui-kit/autocomplete';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-import { MdbChartModule } from 'mdb-angular-ui-kit/charts';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
-import { MdbDatepickerModule } from 'mdb-angular-ui-kit/datepicker';
-import { MdbDropdownModule } from 'mdb-angular-ui-kit/dropdown';
-import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { MdbInfiniteScrollModule } from 'mdb-angular-ui-kit/infinite-scroll';
-import { MdbLazyLoadingModule } from 'mdb-angular-ui-kit/lazy-loading';
-import { MdbLightboxModule } from 'mdb-angular-ui-kit/lightbox';
-import { MdbLoadingModule } from 'mdb-angular-ui-kit/loading';
-import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import { MdbNotificationModule } from 'mdb-angular-ui-kit/notification';
-import { MdbPopconfirmModule } from 'mdb-angular-ui-kit/popconfirm';
-import { MdbPopoverModule } from 'mdb-angular-ui-kit/popover';
-import { MdbRadioModule } from 'mdb-angular-ui-kit/radio';
-import { MdbRangeModule } from 'mdb-angular-ui-kit/range';
-import { MdbRatingModule } from 'mdb-angular-ui-kit/rating';
-import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { MdbScrollbarModule } from 'mdb-angular-ui-kit/scrollbar';
-import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
-import { MdbSelectModule } from 'mdb-angular-ui-kit/select';
-import { MdbSidenavModule } from 'mdb-angular-ui-kit/sidenav';
-import { MdbSmoothScrollModule } from 'mdb-angular-ui-kit/smooth-scroll';
-import { MdbStepperModule } from 'mdb-angular-ui-kit/stepper';
-import { MdbStickyModule } from 'mdb-angular-ui-kit/sticky';
-import { MdbTableModule } from 'mdb-angular-ui-kit/table';
-import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
-import { MdbTimepickerModule } from 'mdb-angular-ui-kit/timepicker';
-import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
-import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { MdbCalendarModule } from 'mdb-angular-calendar';
-import { MdbWysiwygModule } from 'mdb-angular-wysiwyg';
-import { MdbDragAndDropModule } from 'mdb-angular-drag-and-drop';
-import { MdbVectorMapModule } from 'mdb-angular-vector-maps';
-import { MdbFileUploadModule } from 'mdb-angular-file-upload';
-import { MdbTreeviewModule } from 'mdb-angular-treeview';
-import { MdbTransferModule } from 'mdb-angular-transfer';
-import { MdbMentionModule } from 'mdb-angular-mention';
-import { MdbCookiesManagementService } from 'mdb-angular-cookies-management';
-import { MdbStorageManagementService } from 'mdb-angular-storage-management';
-import {RouterModule} from "@angular/router";
-import {AppRouterModule} from "./app-router.module";
-import {DefaultModule} from "./view/layout/default/default.module";
-import { FullWidthModule } from './view/layout/full-width/full-width.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdbAccordionModule} from 'mdb-angular-ui-kit/accordion';
+import {MdbAutocompleteModule} from 'mdb-angular-ui-kit/autocomplete';
+import {MdbCarouselModule} from 'mdb-angular-ui-kit/carousel';
+import {MdbChartModule} from 'mdb-angular-ui-kit/charts';
+import {MdbCheckboxModule} from 'mdb-angular-ui-kit/checkbox';
+import {MdbCollapseModule} from 'mdb-angular-ui-kit/collapse';
+import {MdbDatepickerModule} from 'mdb-angular-ui-kit/datepicker';
+import {MdbDropdownModule} from 'mdb-angular-ui-kit/dropdown';
+import {MdbFormsModule} from 'mdb-angular-ui-kit/forms';
+import {MdbInfiniteScrollModule} from 'mdb-angular-ui-kit/infinite-scroll';
+import {MdbLazyLoadingModule} from 'mdb-angular-ui-kit/lazy-loading';
+import {MdbLightboxModule} from 'mdb-angular-ui-kit/lightbox';
+import {MdbLoadingModule} from 'mdb-angular-ui-kit/loading';
+import {MdbModalModule} from 'mdb-angular-ui-kit/modal';
+import {MdbNotificationModule} from 'mdb-angular-ui-kit/notification';
+import {MdbPopconfirmModule} from 'mdb-angular-ui-kit/popconfirm';
+import {MdbPopoverModule} from 'mdb-angular-ui-kit/popover';
+import {MdbRadioModule} from 'mdb-angular-ui-kit/radio';
+import {MdbRangeModule} from 'mdb-angular-ui-kit/range';
+import {MdbRatingModule} from 'mdb-angular-ui-kit/rating';
+import {MdbRippleModule} from 'mdb-angular-ui-kit/ripple';
+import {MdbScrollbarModule} from 'mdb-angular-ui-kit/scrollbar';
+import {MdbScrollspyModule} from 'mdb-angular-ui-kit/scrollspy';
+import {MdbSelectModule} from 'mdb-angular-ui-kit/select';
+import {MdbSidenavModule} from 'mdb-angular-ui-kit/sidenav';
+import {MdbSmoothScrollModule} from 'mdb-angular-ui-kit/smooth-scroll';
+import {MdbStepperModule} from 'mdb-angular-ui-kit/stepper';
+import {MdbStickyModule} from 'mdb-angular-ui-kit/sticky';
+import {MdbTableModule} from 'mdb-angular-ui-kit/table';
+import {MdbTabsModule} from 'mdb-angular-ui-kit/tabs';
+import {MdbTimepickerModule} from 'mdb-angular-ui-kit/timepicker';
+import {MdbTooltipModule} from 'mdb-angular-ui-kit/tooltip';
+import {MdbValidationModule} from 'mdb-angular-ui-kit/validation';
+import {MdbCalendarModule} from 'mdb-angular-calendar';
+import {MdbWysiwygModule} from 'mdb-angular-wysiwyg';
+import {MdbDragAndDropModule} from 'mdb-angular-drag-and-drop';
+import {MdbVectorMapModule} from 'mdb-angular-vector-maps';
+import {MdbFileUploadModule} from 'mdb-angular-file-upload';
+import {MdbTreeviewModule} from 'mdb-angular-treeview';
+import {MdbTransferModule} from 'mdb-angular-transfer';
+import {MdbMentionModule} from 'mdb-angular-mention';
+import {MdbCookiesManagementService} from 'mdb-angular-cookies-management';
+import {MdbStorageManagementService} from 'mdb-angular-storage-management';
+import {BreadcrumbComponent} from './view/component/breadcrumb/breadcrumb.component';
+import {ProductsComponent} from './view/products/products.component';
+import {ProductCardComponent} from './view/component/product-card/product-card.component';
+import {ProductListComponent} from './view/component/product-list/product-list.component';
+import {PaginationComponent} from './view/component/pagination/pagination.component';
+import { FilterComponent } from './view/component/filter/filter.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, BreadcrumbComponent, ProductsComponent, ProductCardComponent, ProductListComponent, PaginationComponent, FilterComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -97,12 +99,9 @@ import { FullWidthModule } from './view/layout/full-width/full-width.module';
     MdbTreeviewModule,
     MdbTransferModule,
     MdbMentionModule,
-    RouterModule,
-    AppRouterModule,
-    DefaultModule,
-    FullWidthModule,
   ],
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
