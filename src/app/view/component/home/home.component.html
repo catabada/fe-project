@@ -1,0 +1,55 @@
+<div class="container-fluid my-3 py-3" id="hero">
+  <div class="flexslider">
+    <carousel></carousel>
+  </div>
+</div>
+<div class="container my-5 py-5">
+  <section class="">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-6">
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded-5" data-ripple-color="light">
+          <img src="/assets/image/men.jpg" class="w-100" alt=""/>
+          <a href="#">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3)">
+              <div class="d-flex justify-content-start align-items-end h-100">
+                <h5 class="text-white m-4">Shop Men's Collection</h5>
+              </div>
+            </div>
+            <div class="hover-overlay">
+              <div class="mask" style="background-color: hsla(0, 0%, 98.4%, 0.12)"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 mb-6">
+        <div class="bg-image hover-zoom ripple shadow-1-strong rounded-5" data-ripple-color="light">
+          <img src="/assets/image/women.jpg" class="w-100" alt=""/>
+          <a href="#">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.3)">
+              <div class="d-flex justify-content-start align-items-end h-100">
+                <h5 class="text-white m-4">Shop Women's Collection</h5>
+              </div>
+            </div>
+            <div class="hover-overlay">
+              <div class="mask" style="background-color: hsla(0, 0%, 98.4%, 0.12)"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="colorlib-partner">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+        <h2>Trusted Partners</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col partner-col text-center" *ngFor="let brand of brands">
+        <img src="{{brand.imageUrl}}" class="img-fluid" alt="{{brand.name}}">
+      </div>
+    </div>
+  </div>
+</div>
