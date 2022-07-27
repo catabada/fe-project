@@ -1,5 +1,6 @@
+@import '~src/styles.scss';
+
 $text-color: #4f4f4f;
-$main-color: #00c7b4;
 $white: #fff;
 $sub-main-color: #1377d3;
 .container {
@@ -23,7 +24,7 @@ $sub-main-color: #1377d3;
         width: 40px;
         border-radius: 0 8px 8px 0;
         outline: none;
-        background-color: $main-color;
+        background-color: $primary-color;
         border: none;
       }
 
@@ -35,7 +36,7 @@ $sub-main-color: #1377d3;
         width: 80px;
         outline: none;
         color: $white;
-        background-color: $main-color;
+        background-color: $primary-color;
         border: none;
       }
     }
@@ -75,7 +76,7 @@ $sub-main-color: #1377d3;
         font-weight: 450;
 
         &:hover {
-          color: $main-color;
+          color: $primary-color;
 
         }
 
@@ -89,7 +90,7 @@ $sub-main-color: #1377d3;
 }
 
 .wrap-banner {
-  background-color: $main-color;
+  background-color: $primary-color;
 
   .banner {
     padding-top: 20px;

@@ -12,13 +12,15 @@ import {environment} from "../../../../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {MdbTabsModule} from "mdb-angular-ui-kit/tabs";
+import {LoginComponent} from "../../component/login/login.component";
 
 @NgModule({
   declarations: [
     // bỏ các component dùng trong module này vào đây
     DefaultComponent,
     HomeComponent,
-    CarouselComponent
+    CarouselComponent,
+    LoginComponent,
   ],
   imports: [
     SharedModule,

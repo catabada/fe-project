@@ -52,7 +52,7 @@ import {DefaultModule} from "./view/layout/default/default.module";
 import { FullWidthModule } from './view/layout/full-width/full-width.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, LoginComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
