@@ -54,7 +54,7 @@ import {PaginationComponent} from './view/component/pagination/pagination.compon
 import { FilterComponent } from './view/component/filter/filter.component';
 
 @NgModule({
-  declarations: [AppComponent, BreadcrumbComponent, ProductsComponent, ProductCardComponent, ProductListComponent, PaginationComponent, FilterComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -13,6 +13,13 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {MdbTabsModule} from "mdb-angular-ui-kit/tabs";
 import {LoginComponent} from "../../component/login/login.component";
+import {ProductCardComponent} from "../../component/product-card/product-card.component";
+import {ProductListComponent} from "../../component/product-list/product-list.component";
+import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.component";
+import {FilterComponent} from "../../component/filter/filter.component";
+import {Pagination} from "../../../model/pagination";
+import {PaginationComponent} from "../../component/pagination/pagination.component";
+import {ProductsComponent} from "../../component/products/products.component";
 
 @NgModule({
   declarations: [
@@ -21,6 +28,12 @@ import {LoginComponent} from "../../component/login/login.component";
     HomeComponent,
     CarouselComponent,
     LoginComponent,
+    ProductCardComponent,
+    ProductListComponent,
+    BreadcrumbComponent,
+    FilterComponent,
+    PaginationComponent,
+    ProductsComponent
   ],
   imports: [
     SharedModule,
