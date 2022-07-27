@@ -1,0 +1,14 @@
+$text-color:#4f4f4f;
+.colorlib-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  .lib-items {
+    margin-bottom:10px;
+
+    .link {
+      color: $text-color;
+    }
+  }
+}
