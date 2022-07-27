@@ -7,6 +7,7 @@ import {NotFoundComponent} from "./view/component/error/not-found/not-found.comp
 import { ForbiddenComponent } from './view/component/error/forbidden/forbidden.component';
 import {HomeComponent} from "./view/component/home/home.component";
 import { LoginComponent } from './view/component/login/login.component';
+import {ProductsComponent} from "./view/component/products/products.component";
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'product', component: ProductsComponent }
     ]
   },
   {
