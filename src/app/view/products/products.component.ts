@@ -10,10 +10,13 @@ import {Feature} from "../../model/feature";
 })
 export class ProductsComponent implements OnInit {
   pagination = new Pagination(100, 5);
-  brands: Brand[];
-  features: Feature[];
+  brands: Brand[] | undefined;
+  features: Feature[] | undefined;
 
   constructor() {
+  }
+
+  ngOnInit(): void {
     this.brands = [
       new Brand(1, 'Adidas', 'adidas.png'),
       new Brand(2, 'Nike', 'nike.png'),
@@ -26,9 +29,6 @@ export class ProductsComponent implements OnInit {
       new Feature(2, "dress.jpg", "Dress"),
       new Feature(3, "sports.jpg", "Sports"),
     ]
-  }
-
-  ngOnInit(): void {
   }
 
 }
