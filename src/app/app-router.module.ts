@@ -8,6 +8,7 @@ import { ForbiddenComponent } from './view/component/error/forbidden/forbidden.c
 import {HomeComponent} from "./view/component/home/home.component";
 import { LoginComponent } from './view/component/login/login.component';
 import {ProductsComponent} from "./view/component/products/products.component";
+import {AboutUsComponent} from "./view/component/about-us/about-us.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'product', component: ProductsComponent }
+      { path: 'product', component: ProductsComponent },
+      { path: 'about', component: AboutUsComponent }
     ]
   },
   {

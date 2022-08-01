@@ -20,6 +20,7 @@ import {FilterComponent} from "../../component/filter/filter.component";
 import {Pagination} from "../../../model/pagination";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProductsComponent} from "../../component/products/products.component";
+import {AboutUsComponent} from "../../component/about-us/about-us.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {ProductsComponent} from "../../component/products/products.component";
     BreadcrumbComponent,
     FilterComponent,
     PaginationComponent,
-    ProductsComponent
+    ProductsComponent,
+    AboutUsComponent
   ],
   imports: [
     SharedModule,

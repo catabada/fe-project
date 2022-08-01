@@ -1,0 +1,139 @@
+$background-color-about-us: #e8fbfc;
+$color-input-about-us: #f5f5f5;
+$border-grey-color: #e8e8e8;
+$text-color: #232323;
+$border-focus-color:#00a8ff;
+.review-bg {
+  background-color: $background-color-about-us;
+  padding-top: 50px;
+
+  .container {
+    .bg-content {
+      padding-bottom: 100px;
+
+      .heading-about {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 3rem;
+        color: $text-color;
+        font-weight: 400;
+        padding-bottom: 1.2rem;
+      }
+
+      .content-about {
+        font-size: 1.5rem;
+        line-height: 1.6;
+        text-align: center;
+        padding-bottom: 1.2rem;
+      }
+    }
+  }
+}
+
+.break-img {
+  margin-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url('../../../../assets/image/about-us.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 100%;
+
+}
+
+.skill {
+  padding-bottom: 100px;
+
+  .card-img {
+    text-align: center;
+
+    .fa-solid {
+      padding-left: 20px;
+      font-size: 60px;
+      text-align: center;
+    }
+
+  }
+
+  .card-content {
+    text-align: center;
+
+    .card-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .card-sub {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.contact-form {
+  .container {
+
+    .heading-form {
+      text-align: center;
+      color: $text-color;
+      padding-bottom: 50px;
+    }
+  }
+
+  .container {
+    #form-contact-us {
+      width: 70%;
+      margin: 0 auto;
+      padding-bottom: 100px;
+
+      .wrap-form {
+        .form-group-about {
+          .form-name {
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-contact {
+  border: 1px solid $border-grey-color;
+  padding: 10px 10px;
+  margin: 5px;
+  background-color: $color-input-about-us;
+  line-height: 2rem;
+
+  &:focus {
+    outline:none ;
+    background-color: white;
+    border-color: $border-focus-color;
+  }
+}
+
+#form-message {
+  resize: vertical;
+  line-height: 1.43;
+  min-height: 3.5em;
+  overflow: hidden;
+  height: 150px;
+}
+
+.button-contact {
+  text-align: center;
+  padding-bottom: 1.2rem;
+
+  .btn-contact {
+    border: 2px solid black;
+    font-weight: 550;
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+
+  &:hover .btn-contact {
+    background-color: $text-color;
+    color: white;
+  }
+
+}
