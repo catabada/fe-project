@@ -1,0 +1,23 @@
+.bread {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.bread span {
+  font-size: 12px;
+  margin-bottom: 0;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+.bread span:first-child {
+  font-weight: 500;
+  margin-left: 0;
+}
+.bread span:first-child a {
+  color: #88c8bc;
+}
+
+/*# sourceMappingURL=breadcrumb.component.css.map */

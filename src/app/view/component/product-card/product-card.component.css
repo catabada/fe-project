@@ -1,0 +1,26 @@
+.product-card {
+  display: block;
+}
+.product-card .product-image {
+  padding-top: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.product-card .product-info {
+  padding: 1.5rem;
+}
+.product-card .product-info .name {
+  color: #000;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.product-card .product-info .price {
+  display: block;
+  font-family: "Rokkitt", Georgia, serif;
+  font-size: 18px;
+  color: #000;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=product-card.component.css.map */
