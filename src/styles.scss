@@ -18,6 +18,8 @@
 $primary-color: #00c7b4;
 
 .nav-link.active {
+  color: #fff !important;
+  border-color: #e9ecef #e9ecef #fff !important;
   background-color: $primary-color !important;
 }
 
