@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Brand} from "../../../model/brand";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {ImageService} from "../../../service/image.service";
 
 @Component({
   selector: 'home',
@@ -10,16 +10,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 export class HomeComponent implements OnInit {
   title = 'Trang chủ';
   brands: Brand[] = [];
-  constructor(public storage: AngularFireStorage) {
-    this.storage.ref('/image/brand').listAll().subscribe(res => {
-      res.items.forEach(item => {
-        let id = 1;
-        this.storage.ref(item.fullPath).getDownloadURL().subscribe(url => {
-          this.brands.push(new Brand(id, item.name.split('.')[0], url));
-          id++;
-        });
-      });
-    });
+  constructor(private imageService: ImageService) {
+    this.brands = imageService.getBrandImage('/brand');
   }
 
   ngOnInit(): void {

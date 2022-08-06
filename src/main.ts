@@ -10,3 +10,11 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+let loaderPage = function() {
+  $(".loader").fadeOut("slow")
+};
+
+$(function () {
+  loaderPage();
+});
