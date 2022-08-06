@@ -1,0 +1,27 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.pagination .page-item .page-link {
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.pagination .page-item .page-link:hover {
+  background-color: #000;
+  color: #fff;
+}
+.pagination .page-item .page-link.active {
+  background-color: #000;
+  color: #fff;
+}
+
+/*# sourceMappingURL=pagination.component.css.map */
