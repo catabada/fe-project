@@ -8,7 +8,9 @@ import { ForbiddenComponent } from './view/component/error/forbidden/forbidden.c
 import {HomeComponent} from "./view/component/home/home.component";
 import { LoginComponent } from './view/component/login/login.component';
 import {ProductsComponent} from "./view/component/products/products.component";
-import {AboutUsComponent} from "./view/component/about-us/about-us.component";
+import {ProductDetailComponent} from "./view/component/product-detail/product-detail.component";
+import {CartComponent} from "./view/component/cart/cart.component";
+import {OrderCompleteComponent} from "./view/component/order-complete/order-complete.component";
 
 const routes: Routes = [
   {
@@ -19,7 +21,10 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'product', component: ProductsComponent },
-      { path: 'about', component: AboutUsComponent }
+      { path: 'about', component: AboutUsComponent },
+      { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'order-complete', component: OrderCompleteComponent },
     ]
   },
   {

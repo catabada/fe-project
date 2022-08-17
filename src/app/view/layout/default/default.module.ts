@@ -20,6 +20,10 @@ import {FilterComponent} from "../../component/filter/filter.component";
 import {Pagination} from "../../../model/pagination";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProductsComponent} from "../../component/products/products.component";
+import {ProductDetailComponent} from "../../component/product-detail/product-detail.component";
+import {CartComponent} from "../../component/cart/cart.component";
+import {ProcessComponent} from "../../component/process/process.component";
+import {OrderCompleteComponent} from "../../component/order-complete/order-complete.component";
 import {AboutUsComponent} from "../../component/about-us/about-us.component";
 
 @NgModule({
@@ -35,7 +39,10 @@ import {AboutUsComponent} from "../../component/about-us/about-us.component";
     FilterComponent,
     PaginationComponent,
     ProductsComponent,
-    AboutUsComponent
+    ProductDetailComponent,
+    CartComponent,
+    ProcessComponent,
+    OrderCompleteComponent,
   ],
   imports: [
     SharedModule,
