@@ -1,0 +1,136 @@
+.breadcrumb {
+  padding:14px;
+  margin:0;
+}
+
+.breadcrumb-image {
+  .image {
+    background-size: cover;
+    background-position: center center;
+    padding-top: 27%;
+    background-repeat: no-repeat;
+    position: relative;
+
+    h2 {
+      position: absolute;
+      font-size: 36px;
+      text-transform: uppercase;
+      top:10%;
+      left:5%;
+      font-family: "Rokkitt", Georgia, serif;
+      color:#000;
+    }
+  }
+}
+
+.menu {
+  .list {
+    background: #616161;
+    padding: 17px;
+    margin-bottom: 30px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .item {
+      padding: 0 16px;
+      .link {
+        text-transform: uppercase;
+        color:#fff;
+        letter-spacing: 1px;
+        font-size: 14px;
+        font-weight: 200;
+      }
+    }
+  }
+}
+
+.all-feature {
+  .feature-list {
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      .feature {
+        .background {
+          padding-top: 100%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          position: relative;
+
+          .name {
+            width: 100%;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 40px;
+            position: absolute;
+            top: 10px;
+          }
+
+          .btn-wrap {
+            width: 100%;
+            position: absolute;
+            top: 80px;
+
+            .shop-now {
+              background: #616161;
+              color: #fff;
+              border: 1px solid #616161;
+              border-radius: 30px;
+              padding: 18px 36px;
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+}
+
+.all-product {
+  padding: 100px 0 50px;
+
+  .title {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
+
+.all-brand {
+  padding: 100px 0;
+
+  .title {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+
+  .brand-list {
+    display: flex;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      .brand-item {
+        flex-basis: 20%;
+
+        .image {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+}

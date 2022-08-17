@@ -1,0 +1,21 @@
+<ul class="pagination mt-4">
+  <li class="page-item">
+    <a class="page-link"
+       [ngClass]="numPage == 1 ? 'disabled' : ''"
+       (click)="previousPage()"
+    >Previous</a>
+  </li>
+  <li class="page-item" *ngFor="let product of counter(pagination.totalPages()) let i = index">
+    <a class="page-link"
+       [ngClass]="numPage == i + 1 ? 'active' : ''"
+       (click)="changePage(i + 1)"
+    >{{i + 1}}
+    </a>
+  </li>
+  <li class="page-item">
+    <a class="page-link"
+       [ngClass]="numPage == pagination.totalPages() ? 'disabled' : ''"
+       (click)="nextPage()"
+    >Next</a>
+  </li>
+</ul>

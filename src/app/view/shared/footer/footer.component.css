@@ -1,0 +1,13 @@
+.colorlib-footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.colorlib-footer-links .lib-items {
+  margin-bottom: 10px;
+}
+.colorlib-footer-links .lib-items .link {
+  color: #4f4f4f;
+}
+
+/*# sourceMappingURL=footer.component.css.map */

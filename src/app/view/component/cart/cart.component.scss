@@ -1,0 +1,120 @@
+.cart {
+  padding: 20px 0;
+
+  table {
+    width: 100%;
+    display: block;
+    padding-bottom: 70px;
+
+    thead {
+      display: block;
+      height: 45px;
+      width: 100%;
+      padding: 10px 0;
+      background-color: #f0f0f0;
+      border-radius: 30px;
+
+      tr {
+        display: block;
+
+        th {
+          display: inline-block;
+          font-weight: normal;
+          text-transform: uppercase;
+          width: 12%;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        th.detail {
+          width: 50%;
+          padding: 0 24px;
+          text-align: left;
+        }
+      }
+    }
+
+    tbody {
+      display: block;
+      width: 100%;
+      position: relative;
+
+      tr {
+        display: flex;
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 10px;
+        th {
+          font-weight: normal;
+          width: 12%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        th.detail {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          width: 50%;
+
+          img.image {
+            width: 100px;
+            height: 100px;
+          }
+
+          .name {
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight: normal;
+            padding: 0 25px;
+          }
+        }
+
+        th.quantity input {
+          width: 50px;
+          height: 30px;
+          font-size: 14px;
+          text-align: center;
+          border-radius: 10px;
+        }
+
+        th.remove {
+          color: red;
+          font-size: 20px;
+
+          i {
+            cursor: pointer;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  .total-cart {
+    .total-cart--wrapper {
+      padding: 20px 40px;
+      background: whitesmoke;
+
+      .row {
+        p:first-child {
+          font-size: 16px;
+          font-weight: normal;
+          margin-bottom: 10px;
+        }
+        p:last-child {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    hr{
+      height: 2px;
+      background-color: #000;
+    }
+  }
+}

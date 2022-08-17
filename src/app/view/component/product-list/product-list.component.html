@@ -1,0 +1,15 @@
+<div class="product-list">
+  <ul class="row">
+    <li class="col col-xl-4 mb-4 text-center p-3"
+        *ngFor="let product of getProducts(currentPage)">
+      <product-card
+        [product]="product"
+      ></product-card>
+    </li>
+  </ul>
+</div>
+<pagination
+  [pagination]= "pagination"
+  (currentPage)= "getCurrentPage($event)"
+></pagination>
+

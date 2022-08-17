@@ -1,0 +1,105 @@
+@import '~src/styles.scss';
+
+$text-color: #4f4f4f;
+$white: #fff;
+$sub-main-color: #1377d3;
+.container {
+  .top-menu {
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      color: $text-color;
+    }
+
+    .wrap-search {
+      .search-input {
+        border-radius: 10px 0 0 10px;
+        outline: none;
+        border: 1px solid #ccc;
+        padding: 10px 16px;
+        width: 100%;
+      }
+
+      .search-button {
+        width: 40px;
+        border-radius: 0 8px 8px 0;
+        outline: none;
+        background-color: $primary-color;
+        border: none;
+      }
+
+
+      .user-button {
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 5px 5px 5px 5px;
+        margin-left: 10px;
+        width: 80px;
+        outline: none;
+        color: $white;
+        background-color: $primary-color;
+        border: none;
+      }
+    }
+  }
+
+  .heading-control {
+    margin-bottom: 30px;
+  .wrap-title{
+    .cart-title{
+    float: right;
+    font-size: 20px;
+      font-weight: 450;
+    }
+  }
+    .nav-items {
+      .dropdown-menu {
+        display: none;
+
+        .dropdown-item:hover {
+          background-color: $sub-main-color;
+          color: $white;
+        }
+      }
+
+      &:hover {
+        .dropdown-menu {
+          display: block;
+          margin-top: 0;
+        }
+      }
+
+
+      .nav-link {
+        color: $text-color;
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 450;
+
+        &:hover {
+          color: $primary-color;
+
+        }
+
+
+      }
+
+    }
+  }
+
+
+}
+
+.wrap-banner {
+  background-color: $primary-color;
+
+  .banner {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .text-banner {
+      color: $white;
+    }
+  }
+}
+
+
