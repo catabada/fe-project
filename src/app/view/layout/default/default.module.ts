@@ -21,6 +21,8 @@ import {Pagination} from "../../../model/pagination";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProductsComponent} from "../../component/products/products.component";
 import {ProductDetailComponent} from "../../component/product-detail/product-detail.component";
+import {CartComponent} from "../../component/cart/cart.component";
+import {ProcessComponent} from "../../component/process/process.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import {ProductDetailComponent} from "../../component/product-detail/product-det
     FilterComponent,
     PaginationComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent,
+    ProcessComponent,
   ],
   imports: [
     SharedModule,
