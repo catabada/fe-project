@@ -107,5 +107,4 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
