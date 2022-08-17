@@ -13,3 +13,14 @@
 @import '~mdb-angular-treeview/scss/treeview.scss';
 @import '~mdb-angular-transfer/scss/transfer.scss';
 @import '~mdb-angular-mention/scss/mention.scss';
+
+/* STYLESHEET VARIABLES */
+$primary-color: #00c7b4;
+
+.nav-link.active {
+  background-color: $primary-color !important;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+}

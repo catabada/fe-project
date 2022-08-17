@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,6 +46,11 @@ import { MdbTransferModule } from 'mdb-angular-transfer';
 import { MdbMentionModule } from 'mdb-angular-mention';
 import { MdbCookiesManagementService } from 'mdb-angular-cookies-management';
 import { MdbStorageManagementService } from 'mdb-angular-storage-management';
+import {RouterModule} from "@angular/router";
+import {AppRouterModule} from "./app-router.module";
+import {DefaultModule} from "./view/layout/default/default.module";
+import { FullWidthModule } from './view/layout/full-width/full-width.module';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [AppComponent],
@@ -93,8 +98,14 @@ import { MdbStorageManagementService } from 'mdb-angular-storage-management';
     MdbTreeviewModule,
     MdbTransferModule,
     MdbMentionModule,
+    RouterModule,
+    DragDropModule,
+    AppRouterModule,
+    DefaultModule,
+    FullWidthModule,
   ],
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
