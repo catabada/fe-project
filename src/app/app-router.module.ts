@@ -11,6 +11,7 @@ import {ProductsComponent} from "./view/component/products/products.component";
 import {ProductDetailComponent} from "./view/component/product-detail/product-detail.component";
 import {CartComponent} from "./view/component/cart/cart.component";
 import {OrderCompleteComponent} from "./view/component/order-complete/order-complete.component";
+import {AboutUsComponent} from "./view/component/about-us/about-us.component";
 
 const routes: Routes = [
   {
