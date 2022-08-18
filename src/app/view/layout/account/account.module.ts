@@ -9,6 +9,7 @@ import {AddressComponent} from "../../component/address/address.component";
 import {ProfileComponent} from "../../component/profile/profile.component";
 import {MdbDatepickerModule} from "mdb-angular-ui-kit/datepicker";
 import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
+import {OrderHistoryComponent} from "../../component/order-history/order-history.component";
 
 
 
@@ -19,6 +20,7 @@ import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
     SidebarComponent,
     AddressComponent,
     ProfileComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     CommonModule,
