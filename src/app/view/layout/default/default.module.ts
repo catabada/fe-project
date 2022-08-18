@@ -24,6 +24,8 @@ import {ProductDetailComponent} from "../../component/product-detail/product-det
 import {CartComponent} from "../../component/cart/cart.component";
 import {ProcessComponent} from "../../component/process/process.component";
 import {OrderCompleteComponent} from "../../component/order-complete/order-complete.component";
+import {CheckoutComponent} from "../../component/checkout/checkout.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -42,16 +44,18 @@ import {OrderCompleteComponent} from "../../component/order-complete/order-compl
     CartComponent,
     ProcessComponent,
     OrderCompleteComponent,
+    CheckoutComponent,
   ],
-  imports: [
-    SharedModule,
-    CommonModule,
-    RouterModule,
-    MdbNotificationModule,
-    MdbCarouselModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    MdbTabsModule,
-  ]
+    imports: [
+        SharedModule,
+        CommonModule,
+        RouterModule,
+        MdbNotificationModule,
+        MdbCarouselModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        MdbTabsModule,
+        FormsModule,
+    ]
 })
 export class DefaultModule {}

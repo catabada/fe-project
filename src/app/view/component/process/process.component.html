@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-md-10 offset-md-1">
         <ul class="row process-list">
-          <li class="col col-md-4 process-item active">
+          <li class="col col-md-4 process-item"
+            [ngClass]="process === 1 ? 'active' : ''"
+          >
             <h2 class="title">
               01
             </h2>
@@ -11,7 +13,9 @@
               Shopping cart
             </p>
           </li>
-          <li class="col col-md-4 process-item">
+          <li class="col col-md-4 process-item"
+              [ngClass]="process === 2 ? 'active' : ''"
+          >
             <h2 class="title">
               02
             </h2>
@@ -19,7 +23,9 @@
               Check out
             </p>
           </li>
-          <li class="col col-md-4 process-item">
+          <li class="col col-md-4 process-item"
+              [ngClass]="process === 3 ? 'active' : ''"
+          >
             <h2 class="title">
               03
             </h2>
