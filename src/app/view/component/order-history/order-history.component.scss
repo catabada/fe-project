@@ -1,0 +1,98 @@
+$white: #ffffff;
+$acive: #4caf50;
+$border: #dadada;
+$status: #e3e3e3;
+$sub-text-color: #bbb;
+$primary-color: #00c7b4;
+$black: #000000;
+.order-list-tab {
+  width: 1000px;
+  background: $white;
+
+  .row {
+  }
+
+  .order-tab-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: black;
+  }
+}
+
+.order-component {
+  background: $white;
+  margin-top: 10px;
+
+  .status {
+    display: flex;
+    justify-content: end;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid $border;
+
+    .status-detail {
+      background-color: $status;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+  }
+
+  .order-item {
+    padding: 30px 30px;
+    border-bottom: 1px solid $border;
+
+    .row {
+      .item-pic {
+        .image-product {
+          width: 140px;
+          height: 140px;
+          border-radius: 10%;
+        }
+      }
+
+      .item-info {
+        .info-product {
+        }
+
+        .sub-info-product {
+          color: $sub-text-color;
+        }
+      }
+
+      .item-price {
+      }
+
+      .item-quantity {
+      }
+
+    }
+  }
+
+  .order-wrap-total-price {
+    margin-top: 30px;
+    padding-right: 10px;
+    text-align: right;
+
+    .total-price {
+      font-weight: 450;
+
+      .total-price-value {
+        font-weight: bold;
+        color: $primary-color;
+      }
+
+    }
+
+    .wrap-button {
+      margin-top: 10px;
+      padding-bottom: 20px;
+
+    }
+  }
+}
+
+.order-tab-item-active {
+  border-bottom: 4px solid $acive;
+}
+

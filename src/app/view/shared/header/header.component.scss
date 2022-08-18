@@ -1,23 +1,25 @@
-@import '~src/styles.scss';
-
-$text-color: #4f4f4f;
-$white: #fff;
-$sub-main-color: #1377d3;
+$primary-color: #00c7b4;
+$text-color: #232323;
+$color-input-about-us: #f5f5f5;
+$header-text-color: #4f4f4f;
+$header-sub-main-color: #1377d3;
+$primary-color-bold: #29a196;
 .container {
   .top-menu {
-    .title {
-      font-size: 3rem;
+    .header-title {
+      font-size: 2rem;
       font-weight: bold;
-      color: $text-color;
+      color: $header-text-color;
     }
 
     .wrap-search {
+      display: flex;
+      justify-content: end;
       .search-input {
-        border-radius: 10px 0 0 10px;
+        border-radius: 30px 0 0 30px;
         outline: none;
-        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px 16px;
-        width: 100%;
       }
 
       .search-button {
@@ -26,6 +28,8 @@ $sub-main-color: #1377d3;
         outline: none;
         background-color: $primary-color;
         border: none;
+        display: inline-block;
+        color: white;
       }
 
 
@@ -33,9 +37,9 @@ $sub-main-color: #1377d3;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
         border-radius: 5px 5px 5px 5px;
         margin-left: 10px;
-        width: 80px;
+        width: 60px;
         outline: none;
-        color: $white;
+        color: white;
         background-color: $primary-color;
         border: none;
       }
@@ -43,21 +47,36 @@ $sub-main-color: #1377d3;
   }
 
   .heading-control {
-    margin-bottom: 30px;
-  .wrap-title{
-    .cart-title{
-    float: right;
-    font-size: 20px;
-      font-weight: 450;
+margin-top: 15px;
+    .wrap-title {
+      display: flex;
+      justify-content:end;
+      .cart-title {
+        color: $text-color;
+        font-size: 1.2rem;
+        font-weight: 450;
+        cursor: pointer;
+        padding: 8px 0;
+        padding-right: 3px;
+      }
+      .number-cart-title{
+        font-size: 1.2rem;
+        padding: 8px 5px;
+      }
+      .number{
+        font-size: 1.2rem;
+        padding: 8px 0px;
+      }
     }
-  }
+
     .nav-items {
       .dropdown-menu {
         display: none;
 
         .dropdown-item:hover {
-          background-color: $sub-main-color;
-          color: $white;
+          color: $primary-color-bold;
+          background:none;
+          font-weight: 500;
         }
       }
 
@@ -93,11 +112,13 @@ $sub-main-color: #1377d3;
   background-color: $primary-color;
 
   .banner {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
 
     .text-banner {
-      color: $white;
+      color: white;
     }
   }
 }
