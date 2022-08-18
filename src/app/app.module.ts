@@ -105,6 +105,8 @@ import {AccountModule} from "./view/layout/account/account.module";
     FullWidthModule,
     AccountModule,
     MdbSidenavModule,
+    MdbDatepickerModule,
+    MdbRadioModule,
   ],
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
