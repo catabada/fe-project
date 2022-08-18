@@ -22,13 +22,16 @@
   <app-header></app-header>
   <!-- End Header -->
   <!--  Sidebar-->
+  <div class="wrapper-content d-flex flex-row ">
   <app-sidebar></app-sidebar>
+    <router-outlet></router-outlet>
+  </div>
   <!-- End  Sidebar-->
   <!-- Main Content -->
-  <router-outlet></router-outlet>
   <!-- End Main Content -->
 
   <!-- Footer -->
+
   <app-footer></app-footer>
   <!-- End Footer -->
 

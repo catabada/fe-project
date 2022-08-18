@@ -4,6 +4,8 @@ import {SharedModule} from "../../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {AccountComponent} from "./account.component";
 import {SidebarComponent} from "../../component/sidebar/sidebar.component";
+import {MdbSidenavModule} from "mdb-angular-ui-kit/sidenav";
+import {ProfileComponent} from "../../component/profile/profile.component";
 
 
 
@@ -12,11 +14,13 @@ import {SidebarComponent} from "../../component/sidebar/sidebar.component";
 // bỏ các component dùng trong module này vào đây
     AccountComponent,
     SidebarComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
+    MdbSidenavModule,
   ]
 })
 export class AccountModule { }

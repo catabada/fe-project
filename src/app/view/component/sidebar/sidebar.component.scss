@@ -1,0 +1,61 @@
+$main-text-color: #444343;
+$sub-text-color: #757575;
+$on-click-color: #00c7b4;
+
+.sidebar-background {
+  width: 250px;
+  margin-left: 50px;
+
+  .top-sidebar {
+    margin-bottom: 20px;
+    .img {
+      .avatar{
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+      }
+    }
+
+    .wrap-name {
+
+
+      .name {
+        font-size: 20px;
+        padding-left: 10px;
+        padding-top: 30px;
+      }
+      .verify-account{
+        height: 20px;
+      }
+    }
+  }
+
+  .body-sidebar {
+    .sidebar-side {
+      list-style: none;
+      padding: 0 30px;
+
+      .sidebar-items {
+        .sidebar-link {
+          color: $main-text-color;
+          font-weight: 450;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+#user-group {
+  list-style: none;
+
+  .sidebar-children-link {
+    color: $sub-text-color;
+    font-size: 1.0rem;
+    line-height: 22px;
+    text-decoration: none;
+    padding-left: 5px;
+
+  }
+}
+
