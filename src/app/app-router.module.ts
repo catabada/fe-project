@@ -15,6 +15,7 @@ import {AboutUsComponent} from "./view/component/about-us/about-us.component";
 import {AccountComponent} from "./view/layout/account/account.component";
 import {AddressComponent} from "./view/component/address/address.component";
 import {ProfileComponent} from "./view/component/profile/profile.component";
+import {OrderHistoryComponent} from "./view/component/order-history/order-history.component";
 
 const routes: Routes = [
   {
@@ -55,6 +56,7 @@ const routes: Routes = [
     children: [
       {path: 'address', component: AddressComponent},
       {path:'profile', component: ProfileComponent},
+      {path:'order-history', component: OrderHistoryComponent},
     ]
   },
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'}
