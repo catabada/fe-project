@@ -14,6 +14,7 @@ import {OrderCompleteComponent} from "./view/component/order-complete/order-comp
 import {AboutUsComponent} from "./view/component/about-us/about-us.component";
 import {AccountComponent} from "./view/layout/account/account.component";
 import {AddressComponent} from "./view/component/address/address.component";
+import {ProfileComponent} from "./view/component/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
     path: 'account',
     component: AccountComponent,
     children: [
-      {path: 'address', component: AddressComponent}
+      {path: 'address', component: AddressComponent},
+      {path:'profile', component: ProfileComponent},
     ]
   },
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'}

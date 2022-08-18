@@ -6,6 +6,9 @@ import {AccountComponent} from "./account.component";
 import {SidebarComponent} from "../../component/sidebar/sidebar.component";
 import {MdbSidenavModule} from "mdb-angular-ui-kit/sidenav";
 import {AddressComponent} from "../../component/address/address.component";
+import {ProfileComponent} from "../../component/profile/profile.component";
+import {MdbDatepickerModule} from "mdb-angular-ui-kit/datepicker";
+import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
 
 
 
@@ -15,12 +18,15 @@ import {AddressComponent} from "../../component/address/address.component";
     AccountComponent,
     SidebarComponent,
     AddressComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
     MdbSidenavModule,
+    MdbDatepickerModule,
+    MdbRadioModule,
   ]
 })
 export class AccountModule { }
