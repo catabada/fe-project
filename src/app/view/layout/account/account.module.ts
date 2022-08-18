@@ -5,7 +5,7 @@ import {RouterModule} from "@angular/router";
 import {AccountComponent} from "./account.component";
 import {SidebarComponent} from "../../component/sidebar/sidebar.component";
 import {MdbSidenavModule} from "mdb-angular-ui-kit/sidenav";
-import {ProfileComponent} from "../../component/profile/profile.component";
+import {AddressComponent} from "../../component/address/address.component";
 
 
 
@@ -14,7 +14,7 @@ import {ProfileComponent} from "../../component/profile/profile.component";
 // bỏ các component dùng trong module này vào đây
     AccountComponent,
     SidebarComponent,
-    ProfileComponent,
+    AddressComponent,
   ],
   imports: [
     CommonModule,
