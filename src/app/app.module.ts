@@ -51,6 +51,7 @@ import {AppRouterModule} from "./app-router.module";
 import {DefaultModule} from "./view/layout/default/default.module";
 import { FullWidthModule } from './view/layout/full-width/full-width.module';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {AccountModule} from "./view/layout/account/account.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -103,6 +104,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     AppRouterModule,
     DefaultModule,
     FullWidthModule,
+    AccountModule,
   ],
   providers: [MdbCookiesManagementService, MdbStorageManagementService],
   bootstrap: [AppComponent],
