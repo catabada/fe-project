@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Pagination} from "../../../model/pagination";
 import {Brand} from "../../../model/brand";
 import {Feature} from "../../../model/feature";
+import { ProductService } from 'src/app/service/product.service';
+import { Product } from 'src/app/model/product.model';
 
 @Component({
   selector: 'products',
@@ -12,8 +14,9 @@ export class ProductsComponent implements OnInit {
   pagination = new Pagination(100, 5);
   brands: Brand[] | undefined;
   features: Feature[] | undefined;
+  products: Product[]
 
-  constructor() {
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +32,11 @@ export class ProductsComponent implements OnInit {
       new Feature(2, "dress.jpg", "Dress"),
       new Feature(3, "sports.jpg", "Sports"),
     ]
+
+    this.productService.getActiveProducts().subscribe(products => {
+      this.products = products;
+      console.log(this.products);
+    })
   }
 
 }
