@@ -51,7 +51,7 @@ import {AppRouterModule} from "./app-router.module";
 import {DefaultModule} from "./view/layout/default/default.module";
 import { FullWidthModule } from './view/layout/full-width/full-width.module';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import {AccountModule} from "./view/layout/account/account.module";
+import {AccountModule} from "./view/component/account/account.module";
 @NgModule({
   declarations: [AppComponent],
   imports: [
