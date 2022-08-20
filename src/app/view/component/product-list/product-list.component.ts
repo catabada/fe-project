@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from "../../../model/product";
-import {Pagination} from "../../../model/pagination";
+import {Product} from "../../../model/product.model";
+import {Pagination} from "../../../dto/pagination.dto";
+import {ProductService} from "../../../service/product.service";
 
 
 @Component({
@@ -9,23 +10,18 @@ import {Pagination} from "../../../model/pagination";
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  currentPage: number = 1;
-  products: Product[] = [
-    new Product(1, "giay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(2, "giay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(3, "giay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(4, "giay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(5, "giay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(6, "giaay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(7, "giaay.png", "Women's Boots Shoes Maca", 139.00),
-    new Product(8, "giaay.png", "Women's Boots Shoes Maca", 139.00),
-  ];
-  pagination: Pagination = new Pagination(this.products.length, 4);
+  currentPage: number = 1
+  products: Product[]
+  pagination: Pagination
 
-  constructor() {
+  constructor(private productService: ProductService) {
   }
 
   ngOnInit(): void {
+    this.productService.getProducts().subscribe(products => {
+      this.products = products
+      this.pagination = new Pagination(this.products.length, 4)
+    })
   }
 
   getProducts(pageNum: number): Product[] {
