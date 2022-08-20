@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import {SharedModule} from "../../shared/shared.module";
 import {RouterModule} from "@angular/router";
 import {AccountComponent} from "./account.component";
-import {SidebarComponent} from "../../component/sidebar/sidebar.component";
+import {SidebarComponent} from "../sidebar/sidebar.component";
 import {MdbSidenavModule} from "mdb-angular-ui-kit/sidenav";
-import {AddressComponent} from "../../component/address/address.component";
-import {ProfileComponent} from "../../component/profile/profile.component";
+import {AddressComponent} from "../address/address.component";
+import {ProfileComponent} from "../profile/profile.component";
 import {MdbDatepickerModule} from "mdb-angular-ui-kit/datepicker";
 import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
-import {OrderHistoryComponent} from "../../component/order-history/order-history.component";
+import {OrderHistoryComponent} from "../order-history/order-history.component";
 
 
 
