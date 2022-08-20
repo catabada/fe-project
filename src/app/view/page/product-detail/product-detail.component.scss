@@ -13,6 +13,17 @@ $brand-body-color: #e8e8e8;
 $brand-selection-color: #f9f6f0;
 $brand-overlay-color: #4c4a8a;
 $brand-bg-color: $brand-white;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 .product-detail {
   padding: 100px 0;
 
@@ -29,6 +40,7 @@ $brand-bg-color: $brand-white;
       .slide {
         width: 25%;
         transition: 1s;
+
         img {
           width: 100%;
           user-select: none;
@@ -91,8 +103,7 @@ $brand-bg-color: $brand-white;
     padding-left: 30px;
 
     .name {
-      font-size: 20px;
-      text-transform: uppercase;
+      font-size: 30px;
       font-weight: normal;
     }
 
@@ -103,18 +114,18 @@ $brand-bg-color: $brand-white;
         width: 100%;
         display: inline-block;
         font-weight: 400;
-        font-size: 20px;
+        font-size: 30px;
         color: #000;
       }
 
       span.rate {
-        font-size: 14px;
+        font-size: 18px;
         color: #b3b3b3;
 
         i {
-          font-size: 14px;
+          font-size: 16px;
           padding: 0 2px;
-          color: #616161;
+          color: #fad400;
         }
       }
     }
@@ -124,7 +135,16 @@ $brand-bg-color: $brand-white;
       line-height: 1.8;
       color: #595959;
     }
+    .unit-stock {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #ff0d0d;
+      span {
+        color: #000;
+        font-size: 18px;
 
+      }
+    }
     .size-wrap {
       .title {
         font-size: 16px;
@@ -146,21 +166,33 @@ $brand-bg-color: $brand-white;
           width: 12%;
           border-radius: 4px;
           text-align: center;
-          background-color: #cccccc;
           margin-bottom: 5px;
           margin-right: 5px;
           height: 45px;
           line-height: 45px;
 
-          a {
+          input {
+            background-color: #cccccc !important;
             color: #fff;
             vertical-align: middle;
+            box-shadow: none !important;
+            font-size: 18px;
+          }
+          input:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+          }
+          input.active {
+            background-color: #000 !important;
+            color: #fff !important;
           }
         }
       }
     }
 
     .amount {
+      width: 40%;
+
       input {
         border: 1px solid rgb(220, 220, 220);
         text-align: center;
@@ -188,13 +220,17 @@ $brand-bg-color: $brand-white;
         }
       }
     }
+
     p.addtocart {
       text-align: left;
       display: block;
-      padding:10px 5px;
+      padding: 10px 5px;
+
       a {
-        padding:15px 20px;
+        width: 100%;
+        padding: 15px 20px;
         font-size: 16px;
+
         i {
           margin: 0 5px;
         }

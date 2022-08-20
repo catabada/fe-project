@@ -1,4 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import {param} from "jquery";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ProductService} from "../../../service/product.service";
+import {Product, products} from "../../../model/product.model";
+import {ProductDetail, productDetails} from "../../../model/product-detail.model";
+import {Checkout} from "../../../model/checkout.model";
+import {CheckoutItem} from "../../../model/checkout-item.model";
 
 @Component({
   selector: 'product-detail',
@@ -6,13 +13,25 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  currentPos: number = 1;
+  title: string = "Chi tiết sản phẩm"
+  productId: number
+  product!: Product;
+  productDetail: any;
 
-  constructor() {
+  currentPos: number = 1
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) {
   }
 
   ngOnInit(): void {
+    window.document.title = this.title;
     this.dragSlider();
+
+    this.productId = Number.parseInt(this.route.snapshot.params.id);
+    this.productService.getProduct(this.productId).subscribe(product => {
+      this.product = product;
+      this.productDetail = product.productDetails[0];
+    })
   }
 
   changeSlider(pos: number): void {
@@ -53,8 +72,10 @@ export class ProductDetailComponent implements OnInit {
   plusAmount(): void {
     let input = jQuery("#quantity");
     let quantity = <number> input.val();
-    quantity++;
-    input.val(quantity);
+    if(quantity < this.productDetail.unitInStock) {
+      quantity++;
+      input.val(quantity);
+    }
   }
 
   minusAmount(): void {
@@ -64,5 +85,40 @@ export class ProductDetailComponent implements OnInit {
       quantity--;
       input.val(quantity);
     }
+  }
+
+  onActive($event: any, i: number, productDetailId: number): void {
+    jQuery($event.path[0]).addClass('active');
+    jQuery.map(jQuery('.btn-sizes'), function (item: any, index) {
+      if(i !== index) {
+        jQuery(item).removeClass('active');
+      }
+    })
+    this.productDetail = this.product.productDetails.find(productDetail => productDetail.id === productDetailId);
+  }
+
+
+  buyNow() {
+    let checkout: Checkout = {
+      id: 3,
+      items: [],
+      total: 0,
+      createdAt: new Date()
+    }
+    this.product.productDetails = [this.productDetail];
+    let checkoutItem: CheckoutItem = {
+      id: 4,
+      quantity: Number.parseInt(<string>jQuery('#quantity').val()),
+      checkoutId: checkout.id,
+      product: this.product,
+    }
+    checkout.items.push(checkoutItem);
+    sessionStorage.setItem('checkoutId', checkout.id.toString());
+    this.router.navigate(['/checkout'], { state: { checkoutId: checkout.id } });
+
+  }
+
+  addToCart() {
+
   }
 }

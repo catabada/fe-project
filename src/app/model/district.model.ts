@@ -1,14 +1,14 @@
-import {Ward} from "./Ward";
+import {WardModel} from "./ward.model";
 
-export class District {
+export class DistrictModel {
   code: Number;
   name: String;
   division_type: String;
   code_name: String;
   province_code: String;
-  wards: Ward[];
+  wards: WardModel[];
 
-  constructor(code: Number, name: String, division_type: String, code_name: String, province_code: String, wards: Ward[]) {
+  constructor(code: Number, name: String, division_type: String, code_name: String, province_code: String, wards: WardModel[]) {
     this.code = code;
     this.name = name;
     this.division_type = division_type;

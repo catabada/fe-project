@@ -17,16 +17,15 @@ import {ProductCardComponent} from "../../component/product-card/product-card.co
 import {ProductListComponent} from "../../component/product-list/product-list.component";
 import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.component";
 import {FilterComponent} from "../../component/filter/filter.component";
-import {Pagination} from "../../../dto/pagination.dto";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
-import {ProductsComponent} from "../../component/products/products.component";
+import {ProductsComponent} from "../../page/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
 import {CartComponent} from "../../page/cart/cart.component";
 import {ProcessComponent} from "../../component/process/process.component";
 import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
 import {AboutUsComponent} from "../../page/about-us/about-us.component";
-import {ReactiveFormsModule} from "@angular/forms";
-import {AboutUsComponent} from "../../component/about-us/about-us.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CheckoutComponent} from "../../component/checkout/checkout.component";
 
 @NgModule({
   declarations: [
@@ -41,8 +40,7 @@ import {AboutUsComponent} from "../../component/about-us/about-us.component";
     FilterComponent,
     PaginationComponent,
     ProductsComponent,
-    AboutUsComponent
-    ProductsComponent,
+    AboutUsComponent,
     ProductDetailComponent,
     CartComponent,
     ProcessComponent,

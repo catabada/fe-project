@@ -22,7 +22,7 @@ export let productDetails: ProductDetail[] = [
     productId: 1,
     sizes: 39,
     description: 'Product 1 Description',
-    unitPrice: 100,
+    unitPrice: 100000,
     unitInStock: 10
   },
   {
@@ -30,7 +30,7 @@ export let productDetails: ProductDetail[] = [
     productId: 1,
     sizes: 40,
     description: 'Product 2 Description',
-    unitPrice: 200,
+    unitPrice: 200000,
     unitInStock: 20
   },
   {
@@ -38,7 +38,7 @@ export let productDetails: ProductDetail[] = [
     productId: 1,
     sizes: 41,
     description: 'Product 3 Description',
-    unitPrice: 300,
+    unitPrice: 3000000,
     unitInStock: 30
   },
   {

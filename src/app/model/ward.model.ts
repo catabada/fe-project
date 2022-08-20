@@ -1,4 +1,4 @@
-export class Ward {
+export class WardModel {
   code: Number;
   name: String;
   division_type: String;
