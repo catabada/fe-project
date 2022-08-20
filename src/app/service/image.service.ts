@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {Brand} from "../dto/brand.dto";
+import {Brand} from "../model/brand.model";
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Pagination} from "../../../dto/pagination.dto";
-import {Brand} from "../../../dto/brand.dto";
+import {Brand} from "../../../model/brand.model";
 import {Feature} from "../../../dto/feature.dto";
 
 @Component({

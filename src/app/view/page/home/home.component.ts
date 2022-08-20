@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Brand} from "../../../dto/brand.dto";
+import {Brand} from "../../../model/brand.model";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
