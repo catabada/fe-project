@@ -4,8 +4,8 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MdbNotificationModule} from "mdb-angular-ui-kit/notification";
 import { FullWidthComponent } from "./full-width.component";
-import { NotFoundComponent } from "../../component/error/not-found/not-found.component";
-import { ForbiddenComponent } from "../../component/error/forbidden/forbidden.component";
+import { NotFoundComponent } from "../../page/error/not-found/not-found.component";
+import { ForbiddenComponent } from "../../page/error/forbidden/forbidden.component";
 
 @NgModule({
   declarations: [
