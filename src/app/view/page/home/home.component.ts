@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Brand} from "../../../model/brand";
+import {Brand} from "../../../dto/brand.dto";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
@@ -11,6 +11,11 @@ export class HomeComponent implements OnInit {
   title = 'Trang chủ';
   brands: Brand[] = [];
   constructor(public storage: AngularFireStorage) {
+  }
+
+  ngOnInit(): void {
+    document.title = this.title;
+
     this.storage.ref('/image/brand').listAll().subscribe(res => {
       res.items.forEach(item => {
         let id = 1;
@@ -20,10 +25,6 @@ export class HomeComponent implements OnInit {
         });
       });
     });
-  }
-
-  ngOnInit(): void {
-    document.title = this.title;
   }
 
 }

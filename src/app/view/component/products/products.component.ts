@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Pagination} from "../../../model/pagination";
-import {Brand} from "../../../model/brand";
-import {Feature} from "../../../model/feature";
+import {Pagination} from "../../../dto/pagination.dto";
+import {Brand} from "../../../dto/brand.dto";
+import {Feature} from "../../../dto/feature.dto";
 
 @Component({
   selector: 'products',

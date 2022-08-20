@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Slide} from "../../../dto/slide";
+import {Slide} from "../../../dto/slide.dto";
 
 @Component({
   selector: 'carousel',

@@ -2,15 +2,15 @@
   <div class="wrap-login">
     <mdb-tabs [pills]="true" [fill]="true">
       <mdb-tab title="Đăng nhập">
-        <form>
+        <form #loginForm="ngForm" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit(loginForm.value)">
           <!-- Email input -->
           <div class="wrap-input">
             <div class="form-outline m-4">
-              <input type="email" id="email" class="form-input mt-4 " placeholder="Email"/>
+              <input formControlName="username" type="text" id="username" class="form-input mt-4 " placeholder="Tên tài khoản"/>
             </div>
             <!-- Password input -->
             <div class="form-outline m-4">
-              <input type="password" id="password" class="form-input" placeholder="Mật khẩu"/>
+              <input formControlName="password" type="password" id="password" class="form-input" placeholder="Mật khẩu"/>
             </div>
             <div class="row mb-4">
               <div class="col d-flex justify-content-center">
