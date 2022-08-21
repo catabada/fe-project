@@ -38,7 +38,7 @@ export class AppUser {
   password: string
   email: string
   phone: string
-  appRoles: AppRole
+  appRole: AppRole
   userInfo: UserInfo
   enabled: boolean
 }
@@ -50,7 +50,7 @@ export let appUsers: AppUser[] = [
     password: '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
     email: '19130002@st.hcmuaf.edu.vn',
     phone: '0123456789',
-    appRoles: APP_ROLE_USER,
+    appRole: APP_ROLE_USER,
     userInfo: userInfos.find(userInfo => userInfo.id === 1)!,
     enabled: true
   },
@@ -60,7 +60,7 @@ export let appUsers: AppUser[] = [
     password: '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
     email: '19130085@st.hcmuaf.edu.vn',
     phone: '0412414123',
-    appRoles: APP_ROLE_USER,
+    appRole: APP_ROLE_USER,
     userInfo: userInfos.find(userInfo => userInfo.id === 2)!,
     enabled: true
   },
@@ -70,7 +70,7 @@ export let appUsers: AppUser[] = [
     password: '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
     email: '19130003@st.hcmuaf.edu.vn',
     phone: '0787782050',
-    appRoles: APP_ROLE_USER,
+    appRole: APP_ROLE_USER,
     userInfo: userInfos.find(userInfo => userInfo.id === 3)!,
     enabled: true
   }

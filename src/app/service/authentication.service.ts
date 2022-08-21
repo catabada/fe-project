@@ -5,6 +5,7 @@ import {AppServiceResult} from "../domain/app-result";
 import {AppUtilService} from "./app-util.service";
 import * as shajs from 'sha.js';
 import {UserInfoResponse} from "../dto/user-info-response.dto";
+import {AppError} from "../constant/app-error";
 
 @Injectable({
   providedIn: 'root'
@@ -15,29 +16,21 @@ export class AuthenticationService {
 
   constructor(private appUtilService: AppUtilService) { }
 
-  login(user: AppUser): Observable<AppServiceResult<AppUser>> {
-    return new Observable<AppServiceResult<AppUser>>(observer => {
+  login(user: AppUser): Observable<AppServiceResult<any>> {
+    return new Observable<AppServiceResult<any>>(observer => {
       let appUser = appUsers.find(appUser => appUser.username === user.username);
-      if (!appUser) {
-        observer.error('Tài khoản không tồn tại')
+      if (appUser == null) {
+        observer.next(new AppServiceResult<any>(false, AppError.VALIDATION().errorCode, 'Tài khoản không tồn tại', null));
         return
       }
 
       if (appUser.password !== this.hashPassword(user.password)) {
-        observer.error('Tài khoản hoặc mật khẩu không chính xác')
+        observer.next(new AppServiceResult<any>(false, AppError.VALIDATION().errorCode, 'Tài khoản hoặc mật khẩu không chính xác', null))
         return
       }
 
-      observer.next(new AppServiceResult<AppUser>(true, 0, "Success", appUser))
+      observer.next(new AppServiceResult<any>(true, 0, "Đăng nhập thành công", appUser))
     })
-  }
-
-  addUserInfoToLocalStorage(user: UserInfoResponse) {
-    this.appUtilService.addToLocalStorage('user', user);
-  }
-
-  getUserInfoFromLocalStorage(): UserInfoResponse {
-    return this.appUtilService.getFromLocalStorage('user');
   }
 
   isLoggedIn(): boolean {
@@ -55,8 +48,24 @@ export class AuthenticationService {
     this.appUtilService.removeFromLocalStorage('user');
   }
 
+  addUserInfoToLocalStorage(user: UserInfoResponse) {
+    this.appUtilService.addToLocalStorage('user', user);
+  }
+
+  getUserInfoFromLocalStorage(): UserInfoResponse {
+    return this.appUtilService.getFromLocalStorage('user');
+  }
+
   private hashPassword(password: string): string {
     return shajs('sha256').update(password).digest('hex')
+  }
+
+  getLoggedInUsername(): string {
+    return this.loggedInUsername;
+  }
+
+  getLoggedInAvatar(): string {
+    return this.loggedInAvatar;
   }
 
 }

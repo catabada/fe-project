@@ -1,10 +1,10 @@
-// create module
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MdbNotificationModule} from "mdb-angular-ui-kit/notification";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
-import { DefaultComponent } from './default.component';
+import {DefaultComponent} from './default.component';
+import {HomeComponent} from "../../page/home/home.component";
 import {CarouselComponent} from "../../component/carousel/carousel.component";
 import {MdbCarouselModule} from "mdb-angular-ui-kit/carousel";
 import {environment} from "../../../../environments/environment";
@@ -23,6 +23,9 @@ import {LoginComponent} from "../../page/login/login.component";
 import {ProductsComponent} from "../../page/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
 import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {AlertComponent} from "../../component/alert/alert.component";
+import {AccountModule} from "../../page/account/account.module";
 import {CartComponent} from "../../page/cart/cart.component";
 import {CheckoutComponent} from "../../component/checkout/checkout.component";
 
@@ -43,21 +46,21 @@ import {CheckoutComponent} from "../../component/checkout/checkout.component";
     CartComponent,
     ProcessComponent,
     OrderCompleteComponent,
+    AlertComponent,
     CheckoutComponent
   ],
-    imports: [
-        SharedModule,
-        CommonModule,
-        RouterModule,
-        MdbNotificationModule,
-        MdbCarouselModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireStorageModule,
-        MdbTabsModule,
-        ReactiveFormsModule,
-        FormsModule,
-    ]
-
-
+  imports: [
+    SharedModule,
+    CommonModule,
+    RouterModule,
+    MdbNotificationModule,
+    MdbCarouselModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    MdbTabsModule,
+    ReactiveFormsModule,
+    AccountModule
+  ]
 })
-export class DefaultModule {}
+export class DefaultModule {
+}

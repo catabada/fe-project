@@ -1,0 +1,31 @@
+<div class="sidebar-background">
+  <div class="top-sidebar d-flex flex-row">
+    <div class="img">
+      <img src="{{imageUrl}}" class="avatar" alt="">
+    </div>
+    <div class="wrap-name d-flex flex-column">
+      <div class="name">{{fullName}}</div>
+      <div>
+        <img class="verify-account" src="https://laz-img-cdn.alicdn.com/tfs/TB1Yvbxh8HH8KJjy0FbXXcqlpXa-208-40.png" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="body-sidebar d-flex flex-column">
+    <ul class="sidebar-side">
+      <li class="sidebar-items">
+        <a class="sidebar-link" aria-current="page" [routerLink]="['/account']"><i class="fa-solid fa-user me-3"></i>Quản lý tài khoản</a>
+        <ul id="user-group" class="sidebar-children">
+          <li><a class="sidebar-children-link" [routerLink]="['/account/profile']">Thông tin cá nhân</a></li>
+          <li><a class="sidebar-children-link" [routerLink]="['/account/address']">Địa chỉ</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="sidebar-side">
+      <li class="sidebar-items">
+        <a class="sidebar-link" aria-current="page" [routerLink]="['/account/order-history']">
+          <span><i class="fa-solid fa-money-bill me-3"></i>Đơn hàng của tôi</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
