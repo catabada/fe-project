@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {AppUserService} from "../../../service/app-user.service";
 import {UserInfoResponse} from "../../../dto/user-info-response.dto";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   notificationRef: MdbNotificationRef<AlertComponent> | null = null;
 
   user: UserInfoResponse
+  dateOfBirthFormat: string
 
   private subscriptions: Subscription[] = [];
 
@@ -32,6 +34,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     // get user info from local storage
     this.user = this.authenticationService.getUserInfoFromLocalStorage()
+    this.dateOfBirthFormat = new DatePipe('en-US').transform(this.user.dateOfBirth, 'yyyy-MM-dd')!
 
     this.saveProfileFormGroup = this.formBuilder.group({
       id: new FormControl(this.user.id),
@@ -49,7 +52,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.pattern('^[0-9]{10}$')
       ]),
-      dateOfBirth: new FormControl(this.user.dateOfBirth, []),
+      dateOfBirth: new FormControl(this.dateOfBirthFormat, []),
     })
   }
 

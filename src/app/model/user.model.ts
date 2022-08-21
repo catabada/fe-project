@@ -1,4 +1,5 @@
 import {AppRole, APP_ROLE_USER} from "./app-role.model";
+import {formatDate} from "@angular/common";
 
 export class UserInfo {
   id: number
@@ -13,21 +14,21 @@ export let userInfos: UserInfo[] = [
     id: 1,
     lastName: 'Huỳnh Hữu',
     firstName: 'Ân',
-    dateOfBirth: new Date('01/01/1990'),
+    dateOfBirth: new Date('2001-10-03'),
     image: 'avatar.png'
   },
   {
     id: 2,
     lastName: 'Hoàng Nguyễn Quang',
     firstName: 'Huy',
-    dateOfBirth: new Date('01/01/1990'),
+    dateOfBirth: new Date('2001-10-03'),
     image: 'avatar.png'
   },
   {
     id: 3,
     lastName: 'Huỳnh Văn Hữu',
     firstName: 'Ân',
-    dateOfBirth: new Date('03/10/2001'),
+    dateOfBirth: new Date('2001-10-03'),
     image: 'avatar.jpg'
   }
 ];
