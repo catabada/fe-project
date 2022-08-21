@@ -5,25 +5,26 @@ import {MdbNotificationModule} from "mdb-angular-ui-kit/notification";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
 import { DefaultComponent } from './default.component';
-import {HomeComponent} from "../../component/home/home.component";
 import {CarouselComponent} from "../../component/carousel/carousel.component";
 import {MdbCarouselModule} from "mdb-angular-ui-kit/carousel";
 import {environment} from "../../../../environments/environment";
 import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {MdbTabsModule} from "mdb-angular-ui-kit/tabs";
-import {LoginComponent} from "../../component/login/login.component";
 import {ProductCardComponent} from "../../component/product-card/product-card.component";
 import {ProductListComponent} from "../../component/product-list/product-list.component";
 import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.component";
 import {FilterComponent} from "../../component/filter/filter.component";
-import {Pagination} from "../../../model/pagination";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
-import {ProductsComponent} from "../../component/products/products.component";
-import {ProductDetailComponent} from "../../component/product-detail/product-detail.component";
-import {CartComponent} from "../../component/cart/cart.component";
 import {ProcessComponent} from "../../component/process/process.component";
-import {OrderCompleteComponent} from "../../component/order-complete/order-complete.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HomeComponent} from "../../page/home/home.component";
+import {LoginComponent} from "../../page/login/login.component";
+import {ProductsComponent} from "../../page/products/products.component";
+import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
+import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
+import {CartComponent} from "../../page/cart/cart.component";
+import {CheckoutComponent} from "../../component/checkout/checkout.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {OrderCompleteComponent} from "../../component/order-complete/order-compl
     CartComponent,
     ProcessComponent,
     OrderCompleteComponent,
+    CheckoutComponent
   ],
     imports: [
         SharedModule,

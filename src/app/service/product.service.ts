@@ -27,4 +27,10 @@ export class ProductService {
     })
   }
 
+  getLowestPrice(id: number): Observable<number>{
+    return new Observable<number>(observer => {
+      observer.next(products.find(product => product.id === id)?.productDetails.reduce((lowest, detail) => lowest < detail.unitPrice ? lowest : detail.unitPrice, 0))
+    })
+
+  }
 }

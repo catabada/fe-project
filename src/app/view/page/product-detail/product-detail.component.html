@@ -54,8 +54,8 @@
                 <li *ngFor="let productDetail of product.productDetails; let i=index;">
                   <input type="button" class="btn btn-sizes"
                   [ngClass]="i == 0 ? 'btn-sizes active' : 'btn-sizes'"
-                         (click)="onActive($event, i, productDetail.id)"
-                         value="{{productDetail.sizes}}" /></li>
+                         (click)="onActive($event, i, productDetail)"
+                         value="{{productDetail.size}}" /></li>
               </ul>
             </div>
           </div>

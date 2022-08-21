@@ -1,23 +1,13 @@
 import {Product, products} from "./product.model";
+import {ProductDetail} from "./product-detail.model";
 
 export class CheckoutItem {
-  id: number
-  checkoutId: number
-  product: Product | undefined
+  product: Product
   quantity: number
+
+  constructor(product: Product, quantity: number) {
+    this.product = product
+    this.quantity = quantity
+  }
 }
 
-export let checkoutItems: CheckoutItem[] = [
-  {
-    id: 1,
-    checkoutId: 1,
-    product: products.find(product => product.id === 1),
-    quantity: 1
-  },
-  {
-    id: 2,
-    checkoutId: 1,
-    product: products.find(product => product.id === 2),
-    quantity: 1
-  },
-]

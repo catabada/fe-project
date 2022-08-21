@@ -4,6 +4,25 @@
   .order-list--wrapper {
     padding:20px 15px;
     background-color: whitesmoke;
+
+    .info-product {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+    }
+    .quantity {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      span {
+        font-size: 16px;
+      }
+    }
   }
 
 }
