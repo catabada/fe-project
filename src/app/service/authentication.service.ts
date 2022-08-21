@@ -6,15 +6,16 @@ import {AppUtilService} from "./app-util.service";
 import * as shajs from 'sha.js';
 import {UserInfoResponse} from "../dto/user-info-response.dto";
 import {AppError} from "../constant/app-error";
+import {ImageService} from "./image.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private loggedInUsername: string;
-  private loggedInAvatar: string;
+  loggedInUsername: string;
+  loggedInAvatar: string;
 
-  constructor(private appUtilService: AppUtilService) { }
+  constructor(private appUtilService: AppUtilService, private imageService: ImageService) { }
 
   login(user: AppUser): Observable<AppServiceResult<any>> {
     return new Observable<AppServiceResult<any>>(observer => {
@@ -37,7 +38,9 @@ export class AuthenticationService {
     let userInfo = this.getUserInfoFromLocalStorage();
     if (userInfo) {
       this.loggedInUsername = userInfo.username;
-      this.loggedInAvatar = userInfo.image;
+      this.imageService.getUserImage(userInfo.image).subscribe((url: any) => {
+        this.loggedInAvatar = url;
+      })
       return true;
     }
     this.logout();
@@ -58,14 +61,6 @@ export class AuthenticationService {
 
   private hashPassword(password: string): string {
     return shajs('sha256').update(password).digest('hex')
-  }
-
-  getLoggedInUsername(): string {
-    return this.loggedInUsername;
-  }
-
-  getLoggedInAvatar(): string {
-    return this.loggedInAvatar;
   }
 
 }

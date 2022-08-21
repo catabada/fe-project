@@ -17,8 +17,6 @@ import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.compone
 import {FilterComponent} from "../../component/filter/filter.component";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProcessComponent} from "../../component/process/process.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HomeComponent} from "../../page/home/home.component";
 import {LoginComponent} from "../../page/login/login.component";
 import {ProductsComponent} from "../../page/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";

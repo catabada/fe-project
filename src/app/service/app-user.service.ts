@@ -7,6 +7,7 @@ import {UserInfoResponse} from "../dto/user-info-response.dto";
 import {UserRegister} from "../dto/user-register.dto";
 import {AppConstant} from "../constant/app-constant";
 import {APP_ROLE_USER} from "../model/app-role.model";
+import {UserInfoRequest} from "../dto/user-info-request.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -57,15 +58,22 @@ export class AppUserService {
     })
   }
 
-  public saveProfile(user: AppUser): Observable<AppServiceResult<AppUser>> {
-    return new Observable<AppServiceResult<AppUser>>(observer => {
+  public saveProfile(user: UserInfoRequest): Observable<AppServiceResult<UserInfoResponse>> {
+    return new Observable<AppServiceResult<UserInfoResponse>>(observer => {
       let appUser = appUsers.find(appUser => appUser.id === user.id)
-      if (!appUser) {
+      if (appUser == null) {
         observer.error('Tài khoản không tồn tại')
         return
       }
-      appUser.userInfo = user.userInfo
-      observer.next(new AppServiceResult<AppUser>(true, 0, "Success", appUser))
+
+      appUser.phone = user.phone
+
+      let userInfo = userInfos.find(userInfo => userInfo.id === appUser!.userInfo.id)!
+      userInfo.firstName = user.firstName
+      userInfo.lastName = user.lastName
+      userInfo.dateOfBirth = user.dateOfBirth
+
+      observer.next(new AppServiceResult<UserInfoResponse>(true, 0, "Success", UserInfoResponse.createFromEntity(appUser)))
     })
   }
 

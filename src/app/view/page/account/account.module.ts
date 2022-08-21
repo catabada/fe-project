@@ -10,6 +10,7 @@ import {ProfileComponent} from "../../component/profile/profile.component";
 import {MdbDatepickerModule} from "mdb-angular-ui-kit/datepicker";
 import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
 import {OrderHistoryComponent} from "../../component/order-history/order-history.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {OrderHistoryComponent} from "../../component/order-history/order-history
     MdbSidenavModule,
     MdbDatepickerModule,
     MdbRadioModule,
+    ReactiveFormsModule,
   ]
 })
 export class AccountModule { }
