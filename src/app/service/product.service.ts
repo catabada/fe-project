@@ -1,15 +1,13 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {Product, products} from "../model/product.model";
-import {ProductDetail, productDetails} from "../model/product-detail.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() {
-  }
+  constructor() { }
 
   public getProducts(): Observable<Product[]> {
     return new Observable<Product[]>(observer => {
@@ -26,18 +24,6 @@ export class ProductService {
   public getProduct(id: number): Observable<Product> {
     return new Observable<Product>(observer => {
       observer.next(products.find(product => product.id === id))
-    })
-  }
-
-  public getLowestPrice(id: number): Observable<number> {
-    return new Observable<number>(observer => {
-      observer.next(
-        products.find(product => product.id === id)?.productDetails.reduce(
-          (prev: ProductDetail, curr: ProductDetail) => {
-            return prev.unitPrice < curr.unitPrice ? prev : curr
-          }
-        ).unitPrice
-      )
     })
   }
 
