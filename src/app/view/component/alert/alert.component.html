@@ -1,1 +1,2 @@
-<div class="alert alert-primary" role="alert">Alert</div>
+<div *ngIf="success" class="alert alert-success" role="alert">{{message}}</div>
+<div *ngIf="!success" class="alert alert-danger" role="alert">{{message}}</div>

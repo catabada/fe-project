@@ -12,17 +12,17 @@ export class UserInfoResponse {
   dateOfBirth: Date
   image: string
 
-  public static createFromEntity(entity: AppUser): UserInfoResponse {
+  public static createFromEntity(src: AppUser): UserInfoResponse {
     let dest = new UserInfoResponse()
-    dest.id = entity.id
-    dest.username = entity.username
-    dest.email = entity.email
-    dest.phone = entity.phone
-    dest.appRoles = entity.appRole
-    dest.lastName = entity.userInfo.lastName
-    dest.firstName = entity.userInfo.firstName
-    dest.dateOfBirth = entity.userInfo.dateOfBirth
-    dest.image = entity.userInfo.image
+    dest.id = src.id
+    dest.username = src.username
+    dest.email = src.email
+    dest.phone = src.phone
+    dest.appRoles = src.appRole
+    dest.lastName = src.userInfo.lastName
+    dest.firstName = src.userInfo.firstName
+    dest.dateOfBirth = src.userInfo.dateOfBirth
+    dest.image = src.userInfo.image
     return dest
   }
 }

@@ -10,10 +10,10 @@ export class ImageService {
   constructor(private storage: AngularFireStorage) {
   }
 
-  getBrandImage(path: string): Brand[] {
+  getBrandImage(): Brand[] {
     let brands: Brand[] = [];
     let id = 1;
-    this.storage.ref('/image' + path).listAll().subscribe(res => {
+    this.storage.ref('/image/brand').listAll().subscribe(res => {
       res.items.forEach(item => {
         this.storage.ref(item.fullPath).getDownloadURL().subscribe(url => {
           brands.push(new Brand(id, item.name.split('.')[0], url));
@@ -22,5 +22,9 @@ export class ImageService {
       });
     });
     return brands;
+  }
+
+  getUserImage(image: string): any {
+    return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
 }

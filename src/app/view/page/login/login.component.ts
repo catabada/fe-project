@@ -55,16 +55,20 @@ export class LoginComponent implements OnInit, OnDestroy {
                 if (response.success) {
                   this.authenticationService.addUserInfoToLocalStorage(response.data)
                   this.router.navigate(['/home']).then(() => {});
-                } else this.openToast(false, response.message);
+                } else this.openAlert(false, response.message);
               });
-            } else this.openToast(response.success, response.message);
+            } else this.openAlert(response.success, response.message);
           })
       )
     }
   }
 
-  openToast(success: boolean, message: string) {
-    this.notificationRef = this.notificationService.open(AlertComponent, {data: {text: message}});
+  openAlert(success: boolean, message: string) {
+    this.notificationRef = this.notificationService.open(AlertComponent, {
+      data: { success: success, message: message },
+      autohide: true,
+      delay: 2000,
+    })
   }
 
   get username(): AbstractControl {
