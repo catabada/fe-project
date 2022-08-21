@@ -64,7 +64,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   openAlert(success: boolean, message: string) {
-    this.notificationRef = this.notificationService.open(AlertComponent, {data: {text: message}});
+    this.notificationRef = this.notificationService.open(AlertComponent, {
+      data: { success: success, message: message },
+      autohide: true,
+      delay: 2000,
+    })
   }
 
   get username(): AbstractControl {
