@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private authenticationService: AuthenticationService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.quantityInCart = this.cartService.getCartFromLocalStorage().length ?? 0;
+    let cart = this.cartService.getCartFromLocalStorage()
+    this.quantityInCart = cart ? cart.length : 0;
   }
 
   logout() {

@@ -7,7 +7,8 @@
       <div class="wrap-search d-flex">
         <input type="text" class="search-input" placeholder="Tìm kiếm">
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button [routerLink]="['/login']" class="user-button"><i class="fa-solid fa-user"></i></button>
+        <button [routerLink]="['/account']" class="user-button"><i class="fa-solid fa-user"></i></button>
+        <button (click)="logout()">Đăng xuất</button>
       </div>
     </div>
   </div>

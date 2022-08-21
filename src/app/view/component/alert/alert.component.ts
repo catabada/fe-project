@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MdbNotificationRef} from "mdb-angular-ui-kit/notification";
 
 @Component({
@@ -9,10 +9,6 @@ import {MdbNotificationRef} from "mdb-angular-ui-kit/notification";
 export class AlertComponent {
   success: boolean;
   message: string | null = null;
-
-export class AlertComponent implements OnInit {
-  success: boolean;
-  message: string;
 
   constructor(public notificationRef: MdbNotificationRef<AlertComponent>) {}
 }
