@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ProductService} from "../../../service/product.service";
 
 @Component({
   selector: 'product-card',
@@ -7,9 +8,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: any;
-  constructor() { }
+  lowestPrice: number
+
+  constructor(private productService: ProductService) {
+  }
 
   ngOnInit(): void {
+    this.productService.getLowestPrice(this.product.id).subscribe(price => {
+      this.lowestPrice = price
+    })
   }
 
 }

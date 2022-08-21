@@ -1,0 +1,142 @@
+<breadcrumb></breadcrumb>
+<div class="check-out">
+  <div class="container">
+    <process
+      [process]=2
+    ></process>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4 order-list">
+          <div class="order-list--wrapper">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted">Giỏ hàng của bạn</span>
+              <span class="badge badge-secondary badge-pill">{{checkout.length}}</span>
+            </h4>
+            <ul class="list-group mb-3">
+              <li *ngFor="let checkoutItem of checkout"
+                  class="list-group-item  lh-condensed">
+                <div class="info-product">
+                  <h6 class="my-0">{{checkoutItem?.product?.name}} ({{checkoutItem?.product?.color}})</h6>
+                  <span class="text-muted d-block">{{checkoutItem?.product!.productDetails[0]?.unitPrice  | currency: "VND"}}</span>
+                </div>
+                <div class="quantity">
+                  <h6 class="my-0">Số lượng</h6>
+                  <span class="text-muted">{{checkoutItem.quantity}}</span>
+                </div>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Tổng cộng (VND)</span>
+                <strong>{{totalPrice()}}</strong>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-md-8 order-md-1 form-check-out">
+          <div class="form-check-out--wrapper">
+            <h4 class="mb-3">Đơn đặt hàng</h4>
+            <form #checkoutForm="ngForm" [formGroup]="checkoutFormGroup" class="needs-validation" novalidate="">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">Tên của bạn</label>
+                  <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder=""
+                         value="" required="">
+                  <div class="invalid-feedback">
+                    Valid first name is required.
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Họ của bạn</label>
+                  <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder=""
+                         value="" required="">
+                  <div class="invalid-feedback">
+                    Valid last name is required.
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="phone">Số điện thoại của bạn</label>
+                <input formControlName="phoneNumber" type="text" class="form-control" id="phone"
+                       placeholder="0908xxxix">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="email"
+                       placeholder="you@example.com">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="city">Thành phố/Tỉnh</label>
+                  <select
+                    formControlName="province"
+                    [(ngModel)]="provinceSelected"
+                    (ngModelChange)="onProvinceSelect($event)"
+                    name="province"
+                    class="custom-select d-block w-100" id="city" required
+                  >
+                    <option *ngFor="let province of provinces" [value]="province.code">{{province.name}}</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid country.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="district">Quận/Huyện</label>
+                  <select
+                    formControlName="district"
+                    [(ngModel)]="districtSelected"
+                    (ngModelChange)="onDistrictSelect($event)"
+                    name="district"
+                    class="custom-select d-block w-100" id="district" required>
+                    <option *ngFor="let district of districts" [value]="district.code">{{district.name}}</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="ward">Phường/Xã</label>
+                  <select
+                    formControlName="ward"
+                    [(ngModel)]="wardSelected"
+                    class="custom-select d-block w-100" id="ward" required>
+                    <option *ngFor="let ward of wards" [value]="ward.code">{{ward.name}}</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please provide a valid state.
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="street">Tên đường</label>
+                  <input
+                    formControlName="street"
+                    type="text" class="form-control" id="street" placeholder="" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="apartment-number">Số nhà</label>
+                  <input
+                    formControlName="apartmentNumber"
+                    type="text" class="form-control" id="apartment-number" placeholder="" required>
+                </div>
+              </div>
+              <hr class="mb-4">
+
+
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Tiếp tục thanh toán</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

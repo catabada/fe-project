@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-order-complete',
+  selector: 'order-complete',
   templateUrl: './order-complete.component.html',
   styleUrls: ['./order-complete.component.scss']
 })

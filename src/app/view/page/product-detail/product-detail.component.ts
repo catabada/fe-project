@@ -1,5 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
+import {Product} from "../../../model/product.model";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ProductService} from "../../../service/product.service";
+import {ProductDetail} from "../../../model/product-detail.model";
+import {CheckoutItem} from "../../../model/checkout-item.model";
 
 @Component({
   selector: 'product-detail',
@@ -9,11 +14,22 @@ import * as $ from 'jquery';
 export class ProductDetailComponent implements OnInit {
   currentPos: number = 1;
 
-  constructor() {
+  product: Product
+  productId: number;
+  productDetail: ProductDetail
+
+  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) {
   }
 
   ngOnInit(): void {
     this.dragSlider();
+    this.productId = Number.parseInt(this.route.snapshot.params['id']);
+    this.productService.getProduct(this.productId).subscribe(
+      (product: Product) => {
+        this.product = product;
+        this.productDetail = this.product.productDetails[0];
+      }
+    );
   }
 
   changeSlider(pos: number): void {
@@ -65,5 +81,28 @@ export class ProductDetailComponent implements OnInit {
       quantity--;
       input.val(quantity);
     }
+  }
+
+  addToCart(): void {
+
+  }
+  buyNow(): void {
+    this.product.productDetails = [this.productDetail];
+    let quantity = <number> jQuery("#quantity").val();
+    let checkout: CheckoutItem[]
+    checkout = [new CheckoutItem(this.product, quantity)];
+
+    sessionStorage.setItem('checkout', JSON.stringify(checkout));
+    this.router.navigate(['/checkout']);
+  }
+
+  onActive($event: any, i: number, productDetail: ProductDetail): void {
+    jQuery($event.target).addClass('active');
+    this.productDetail = productDetail;
+    jQuery.map(jQuery('.btn-sizes'), function (btn: any, index) {
+      if(i != index) {
+        jQuery(btn).removeClass('active');
+      }
+    });
   }
 }

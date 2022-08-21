@@ -11,11 +11,11 @@ export class CartService {
 
   constructor(private appUtilService: AppUtilService) { }
 
-  addToCart(productId: number, qunatity: number): Observable<AppBaseResult> {
+  addToCart(productId: number, quantity: number): Observable<AppBaseResult> {
     return new Observable<AppBaseResult>(observer => {
       let cart: CartItem[] = this.getCartFromLocalStorage()
       if (!cart) {
-        cart = [new CartItem(productId, qunatity)];
+        cart = [new CartItem(productId, quantity)];
         this.appUtilService.addToLocalStorage('cart', cart)
         observer.next(new AppBaseResult(true, 0, 'Thêm vào giỏ hàng thành công'))
         return
@@ -23,13 +23,13 @@ export class CartService {
 
       let cartItem = cart.find(x => x.productId == productId)
       if (!cartItem) {
-        cart.push(new CartItem(productId, qunatity))
+        cart.push(new CartItem(productId, quantity))
         this.appUtilService.addToLocalStorage('cart', cart)
         observer.next(new AppBaseResult(true, 0, 'Thêm vào giỏ hàng thành công'))
         return
       }
 
-      cartItem.quantity += qunatity
+      cartItem.quantity += quantity
       this.appUtilService.addToLocalStorage('cart', cart)
       observer.next(new AppBaseResult(true, 0, 'Thêm vào giỏ hàng thành công'))
     });
