@@ -8,13 +8,14 @@ export class Product {
   id: number
   name: string
   color: string
+  gender: string
   type: ProductType
   brand: Brand
   images: ProductImage[]
   productDetails: ProductDetail[]
   active: boolean
 
-  constructor(id: number, name: string, color: string, type: ProductType, brand: Brand, images: ProductImage[], productDetails: ProductDetail[], active: boolean) {
+  constructor(id: number, name: string, color: string, gender: string, type: ProductType, brand: Brand, images: ProductImage[], productDetails: ProductDetail[], active: boolean) {
     this.id = id
     this.name = name
     this.color = color
@@ -31,6 +32,7 @@ export let products: Product[] = [
     id: 1,
     name: 'Product 1',
     color: 'Red',
+    gender: 'Nam',
     type: productTypes[0],
     brand: brands[0],
     images: productImages.filter(image => image.productId === 1),
@@ -41,6 +43,7 @@ export let products: Product[] = [
     id: 2,
     name: 'Product 2',
     color: 'Blue',
+    gender: 'Nữ',
     type: productTypes[1],
     brand: brands[1],
     images: productImages.filter(image => image.productId === 2),

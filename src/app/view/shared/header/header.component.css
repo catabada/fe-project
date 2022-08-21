@@ -34,6 +34,9 @@
   float: right;
   font-size: 20px;
   font-weight: 450;
+  display: flex !important;
+  justify-content: center;
+  align-content: center;
 }
 .container .heading-control .nav-items .dropdown-menu {
   display: none;

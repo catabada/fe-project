@@ -6,6 +6,8 @@ import {MdbNotificationRef} from "mdb-angular-ui-kit/notification";
   templateUrl: './alert.component.html',
 })
 export class AlertComponent implements OnInit {
+  success: boolean;
+  message: string;
 
   constructor(public notificationRef: MdbNotificationRef<AlertComponent>) {}
 

@@ -58,6 +58,8 @@ margin-top: 15px;
         cursor: pointer;
         padding: 8px 0;
         padding-right: 3px;
+        display: flex;
+        align-items: center;
       }
       .number-cart-title{
         font-size: 1.2rem;
@@ -65,7 +67,8 @@ margin-top: 15px;
       }
       .number{
         font-size: 1.2rem;
-        padding: 8px 0px;
+        padding: 8px 0;
+        color: red;
       }
     }
 

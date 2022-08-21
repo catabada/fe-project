@@ -5,6 +5,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../../service/product.service";
 import {ProductDetail} from "../../../model/product-detail.model";
 import {CheckoutItem} from "../../../model/checkout-item.model";
+import {CartService} from "../../../service/cart.service";
+import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
+import {AlertComponent} from "../../component/alert/alert.component";
+import {ProductDetailDto} from "../../../dto/product-detail.dto";
 
 @Component({
   selector: 'product-detail',
@@ -18,7 +22,13 @@ export class ProductDetailComponent implements OnInit {
   productId: number;
   productDetail: ProductDetail
 
-  constructor(private route: ActivatedRoute, private router: Router, private productService: ProductService) {
+  notificationRef: MdbNotificationRef<AlertComponent> | null;
+
+  constructor(private route: ActivatedRoute, private router: Router,
+              private productService: ProductService,
+              private cartService: CartService,
+              private notificationService: MdbNotificationService
+  ) {
   }
 
   ngOnInit(): void {
@@ -69,28 +79,39 @@ export class ProductDetailComponent implements OnInit {
 
   plusAmount(): void {
     let input = $("#quantity");
-    let quantity = <number> input.val();
+    let quantity = <number>input.val();
     quantity++;
     input.val(quantity);
   }
 
   minusAmount(): void {
     let input = $("#quantity");
-    let quantity = <number> input.val();
-    if(quantity > 1) {
+    let quantity = <number>input.val();
+    if (quantity > 1) {
       quantity--;
       input.val(quantity);
     }
   }
 
   addToCart(): void {
-
+    let quantity = <number>jQuery("#quantity").val()
+    let productDetailDto: ProductDetailDto = ProductDetailDto.createFromEntity(this.productDetail, this.productService);
+    this.cartService.addToCart(productDetailDto, quantity).subscribe(
+      response => {
+        this.openToast(response.success, response.message);
+      }
+    );
   }
+
+  openToast(success: boolean, message: string) {
+    this.notificationRef = this.notificationService.open(AlertComponent, {data: {message: message, success: success}});
+  }
+
   buyNow(): void {
-    this.product.productDetails = [this.productDetail];
-    let quantity = <number> jQuery("#quantity").val();
+    let productDetailDto: ProductDetailDto = ProductDetailDto.createFromEntity(this.productDetail, this.productService);
+    let quantity = <number>jQuery("#quantity").val();
     let checkout: CheckoutItem[]
-    checkout = [new CheckoutItem(this.product, quantity)];
+    checkout = [new CheckoutItem(productDetailDto, quantity)];
 
     sessionStorage.setItem('checkout', JSON.stringify(checkout));
     this.router.navigate(['/checkout']);
@@ -100,9 +121,15 @@ export class ProductDetailComponent implements OnInit {
     jQuery($event.target).addClass('active');
     this.productDetail = productDetail;
     jQuery.map(jQuery('.btn-sizes'), function (btn: any, index) {
-      if(i != index) {
+      if (i != index) {
         jQuery(btn).removeClass('active');
       }
     });
   }
+
+  // openAlert() {
+  //   this.notificationRef = this.notificationService.open(AlertComponent, {
+  //     stacking: true
+  //   });
+  // }
 }
