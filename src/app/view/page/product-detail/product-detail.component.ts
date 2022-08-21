@@ -94,7 +94,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(): void {
-    let quantity = <number>jQuery("#quantity").val()
+    let quantity = Number.parseInt(<string>jQuery("#quantity").val())
     let productDetailDto: ProductDetailDto = ProductDetailDto.createFromEntity(this.productDetail, this.productService);
     this.cartService.addToCart(productDetailDto, quantity).subscribe(
       response => {
@@ -104,7 +104,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
   openToast(success: boolean, message: string) {
-    this.notificationRef = this.notificationService.open(AlertComponent, {data: {message: message, success: success}});
+    this.notificationRef = this.notificationService.open(AlertComponent, {
+      data: {success: success, message: message},
+      autohide: true,
+      delay: 3000,
+    });
   }
 
   buyNow(): void {
