@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {Injectable} from '@angular/core';
+import {finalize, Observable} from "rxjs";
 import {AppBaseResult, AppServiceResult} from "../domain/app-result";
 import {AppUser, appUsers, UserInfo, userInfos} from "../model/user.model";
 import {ChangePassword} from "../dto/change-password.dto";
@@ -8,13 +8,15 @@ import {UserRegister} from "../dto/user-register.dto";
 import {AppConstant} from "../constant/app-constant";
 import {APP_ROLE_USER} from "../model/app-role.model";
 import {UserInfoRequest} from "../dto/user-info-request.dto";
+import {ImageService} from "./image.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppUserService {
 
-  constructor() { }
+  constructor(private imageService: ImageService) {
+  }
 
   public getUserInfo(id: number): Observable<AppServiceResult<any>> {
     return new Observable<AppServiceResult<any>>(observer => {
@@ -77,9 +79,15 @@ export class AppUserService {
     })
   }
 
-  public uploadImage(formData: FormData): Observable<any> {
-    return new Observable<AppBaseResult>(observer => {
-      observer.next(new AppBaseResult(true, 0, "Success"))
+  public uploadImage(id: number, fileName: string, file: File): Observable<AppServiceResult<UserInfoResponse>> {
+    return new Observable<AppServiceResult<UserInfoResponse>>(observer => {
+      this.imageService.saveUserImage(fileName, file).snapshotChanges()
+        .pipe(finalize(() => {
+          let user = appUsers.find(appUser => appUser.id === id)!
+          observer.next(new AppServiceResult<UserInfoResponse>(true, 0, "Cập nhật thành công", UserInfoResponse.createFromEntity(user)))
+        }))
+        .subscribe(() => {
+        })
     })
   }
 

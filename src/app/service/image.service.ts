@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {Brand} from "../model/brand.model";
 
 @Injectable({
@@ -26,5 +26,9 @@ export class ImageService {
 
   getUserImage(image: string): any {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
+  }
+
+  saveUserImage(fileName: string, image: File): AngularFireUploadTask {
+    return this.storage.upload('/image/user/' + fileName, image)
   }
 }

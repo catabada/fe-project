@@ -50,9 +50,19 @@
               <div class="wrap-img">
                 <img src="{{authenticationService.loggedInAvatar}}" class="avatar" alt="">
                 <div class="wrap-button">
-                  <button type="button" class="btn btn-primary btn-change-avatar" data-toggle="modal" data-target="#myModal">
-                    Chọn ảnh
-                  </button>
+                  <form [formGroup]="uploadImageFormGroup" enctype="multipart/form-data">
+                    <input type="hidden" formControlName="id">
+                    <input #image formControlName="image" type="file" style="display: none"
+                           (change)="uploadImage(uploadImageFormGroup.controls['id'].value, $event)">
+<!--                    <button #btnUpload type="button" class="btn btn-primary btn-change-avatar" (click)="image.click()">Chọn ảnh</button>-->
+                    <button *ngIf="!imageLoading" type="button" class="btn btn-primary btn-change-avatar" (click)="image.click()">
+                      Chọn ảnh
+                    </button>
+                    <button *ngIf="imageLoading" type="button" class="btn btn-primary btn-change-avatar"
+                            (click)="image.click()" [attr.disabled]="true">
+                      Đang tải lên...
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -60,7 +70,7 @@
         </div>
         <div class="wrap-button">
           <button type="submit" class="btn btn-primary btn-save">
-            <span *ngIf="loading"><i *ngIf="loading" class="fa fa-spinner"></i> Loading...</span>
+            <span *ngIf="loading"><i class="fa fa-spinner"></i> Loading...</span>
             <span *ngIf="!loading">Lưu</span>
           </button>
         </div>

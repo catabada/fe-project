@@ -8,6 +8,7 @@ import {AuthenticationService} from "../../../service/authentication.service";
 import {AppUserService} from "../../../service/app-user.service";
 import {UserInfoResponse} from "../../../dto/user-info-response.dto";
 import {DatePipe} from "@angular/common";
+import {ImageService} from "../../../service/image.service";
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,10 @@ import {DatePipe} from "@angular/common";
 export class ProfileComponent implements OnInit, OnDestroy {
   title = 'Thông tin cá nhân';
   saveProfileFormGroup: FormGroup
-  loading: boolean;
+  uploadImageFormGroup: FormGroup;
+  loading: boolean = false;
+  imageLoading: boolean = false;
+  // @ViewChild('btnUpload') btnUpload: any;
   notificationRef: MdbNotificationRef<AlertComponent> | null = null;
 
   user: UserInfoResponse
@@ -26,7 +30,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(private formBuilder: FormBuilder, private router: Router, public authenticationService: AuthenticationService,
-              private appUserService: AppUserService, private notificationService: MdbNotificationService) {
+              private appUserService: AppUserService, private notificationService: MdbNotificationService, private imageService: ImageService) {
   }
 
   ngOnInit(): void {
@@ -54,6 +58,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
       ]),
       dateOfBirth: new FormControl(this.dateOfBirthFormat, []),
     })
+
+    this.uploadImageFormGroup = this.formBuilder.group({
+      id: new FormControl(this.user.id),
+      image: new FormControl(null, [
+        Validators.required
+      ])
+    })
   }
 
   ngOnDestroy(): void {
@@ -78,16 +89,34 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   }
 
+  uploadImage(id: number, event: any) {
+    if (this.uploadImageFormGroup.valid) {
+      this.imageLoading = true;
+      // this.btnUpload.nativeElement.textContent = 'Đang tải lên...'
+      let user = this.authenticationService.getUserInfoFromLocalStorage()
+      this.subscriptions.push(this.appUserService.uploadImage(id, user.image, event.target.files[0])
+        .subscribe((response: any) => {
+          if (response.success) {
+            this.authenticationService.addUserInfoToLocalStorage(response.data)
+            this.openAlert(response.success, response.message)
+            this.imageService.getUserImage(response.data.image)
+              .pipe(finalize(() => { this.imageLoading = false }))
+              .subscribe((url: any) => {
+                this.authenticationService.loggedInAvatar = url
+                // this.btnUpload.nativeElement.textContent = 'Chọn ảnh'
+              })
+          } else this.openAlert(response.success, response.message)
+        })
+      );
+    }
+  }
+
   openAlert(success: boolean, message: string) {
     this.notificationRef = this.notificationService.open(AlertComponent, {
-      data: { success: success, message: message },
+      data: {success: success, message: message},
       autohide: true,
       delay: 2000,
     })
-  }
-
-  hideAlert() {
-    this.notificationRef!.close()
   }
 
   get id(): AbstractControl {
@@ -112,6 +141,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   get dateOfBirth(): AbstractControl {
     return this.saveProfileFormGroup.get('dateOfBirth') as AbstractControl;
+  }
+
+  get image(): AbstractControl {
+    return this.uploadImageFormGroup.get('image') as AbstractControl;
   }
 
 }
