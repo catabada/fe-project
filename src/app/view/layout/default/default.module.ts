@@ -21,11 +21,11 @@ import {LoginComponent} from "../../page/login/login.component";
 import {ProductsComponent} from "../../page/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
 import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
-import {ReactiveFormsModule} from "@angular/forms";
 import {AlertComponent} from "../../component/alert/alert.component";
 import {AccountModule} from "../../page/account/account.module";
 import {CartComponent} from "../../page/cart/cart.component";
 import {CheckoutComponent} from "../../component/checkout/checkout.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [

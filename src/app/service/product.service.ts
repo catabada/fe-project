@@ -14,6 +14,11 @@ export class ProductService {
       observer.next(products)
     })
   }
+  public getProductsByGender(gender: string): Observable<Product[]> {
+    return new Observable<Product[]>(observer => {
+      observer.next(products.filter(product => product.gender.toLocaleLowerCase() === gender))
+    })
+  }
 
   public getActiveProducts(): Observable<Product[]> {
     return new Observable<Product[]>(observer => {

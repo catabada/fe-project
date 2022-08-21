@@ -5,7 +5,8 @@
       [process] = 1
     ></process>
 
-    <table class="cart-list">
+    <table
+      class="cart-list">
       <thead>
       <tr>
         <th class="detail">Chi tiết sản phẩm</th>
@@ -16,29 +17,21 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
+      <tr *ngFor="let cartItem of cart">
         <th class="detail">
           <img src="/assets/image/cart-item-1.jpg" alt="" class="image">
-          <p class="name">Tên sản phẩm</p>
+          <p class="name">{{cartItem!.productDetailDto!.name}} </p>
         </th>
-        <th class="price">300.000đ</th>
+        <th class="price">{{cartItem!.productDetailDto!.unitPrice}}đ</th>
         <th class="quantity">
-          <input type="number" name="quantity" value="1"  min="1">
+          <input
+            (change) = "onChangeQuantity($event, cartItem.productDetailDto.id)"
+            type="number" name="quantity" value="{{cartItem!.quantity}}"  min="1">
         </th>
-        <th class="total">1.000.000đ</th>
-        <th class="remove"><i class="fas fa-times"></i></th>
-      </tr>
-      <tr>
-        <th class="detail">
-          <img src="/assets/image/cart-item-1.jpg" alt="" class="image">
-          <p class="name">Tên sản phẩm</p>
-        </th>
-        <th class="price">300.000đ</th>
-        <th class="quantity">
-          <input type="number" name="quantity" value="1"  min="1">
-        </th>
-        <th class="total">1.000.000đ</th>
-        <th class="remove"><i class="fas fa-times"></i></th>
+        <th class="total">{{cartItem!.productDetailDto!.unitPrice * cartItem!.quantity}}đ</th>
+        <th class="remove"
+            (click) = "removeCartItem($event, cartItem.productDetailDto.id)"
+        ><i class="fas fa-times"></i></th>
       </tr>
       </tbody>
     </table>

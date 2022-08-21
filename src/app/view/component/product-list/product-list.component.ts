@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from "../../../model/product.model";
 import {Pagination} from "../../../dto/pagination.dto";
 import {ProductService} from "../../../service/product.service";
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -11,14 +12,16 @@ import {ProductService} from "../../../service/product.service";
 })
 export class ProductListComponent implements OnInit {
   currentPage: number = 1
+  gender: string;
   products: Product[]
   pagination: Pagination
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(products => {
+    this.gender = this.route.snapshot.params['gender']
+    this.productService.getProductsByGender(this.gender).subscribe(products => {
       this.products = products
       this.pagination = new Pagination(this.products.length, 4)
     })

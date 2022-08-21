@@ -7,7 +7,7 @@
       <div class="wrap-search d-flex">
         <input type="text" class="search-input" placeholder="Tìm kiếm">
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button [routerLink]="['/account']" class="user-button"><i class="fa-solid fa-user"></i></button>
+        <button [routerLink]="['/login']" class="user-button"><i class="fa-solid fa-user"></i></button>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
           <a class="nav-link" aria-current="page" href="#">Trang chủ</a>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" [routerLink]="['/home']">Sản phẩm Nam</a>
+          <a class="nav-link" [routerLink]="['/product/nam']">Sản phẩm Nam</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/account']">Chi tiết sản phẩm</a></li>
             <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
@@ -26,17 +26,18 @@
           </ul>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" href="#">Sản phẩm Nữ</a>
+          <a class="nav-link" [routerLink]="['/product/nữ']">Sản phẩm Nữ</a>
         </li>
         <li class="nav-items ms-5">
           <a class="nav-link" href="/about" role>Giới thiệu</a>
         </li>
       </ul>
     </div>
-    <div class="wrap-title col col-xl-4 float-end">
-      <a class="cart-title"><i class="fa-solid fa-cart-shopping"></i></a>
-      <div class="number-cart-title">Giỏ hàng</div>
-      <div class="number">[0]</div>
+    <div class="wrap-title col col-xl-4 ">
+      <a [routerLink]="['/cart']" class="cart-title"><i class="fa-solid fa-cart-shopping"></i>
+        <div class="number-cart-title">Giỏ hàng</div>
+        <div class="number" id="quantityInCart">[{{quantityInCart}}]</div>
+      </a>
     </div>
   </div>
 </div>

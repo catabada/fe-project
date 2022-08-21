@@ -18,8 +18,8 @@
               <li *ngFor="let checkoutItem of checkout"
                   class="list-group-item  lh-condensed">
                 <div class="info-product">
-                  <h6 class="my-0">{{checkoutItem?.product?.name}} ({{checkoutItem?.product?.color}})</h6>
-                  <span class="text-muted d-block">{{checkoutItem?.product!.productDetails[0]?.unitPrice  | currency: "VND"}}</span>
+                  <h6 class="my-0">{{checkoutItem?.productDetailDto?.name}}</h6>
+                  <span class="text-muted d-block">{{checkoutItem?.productDetailDto!.unitPrice  | currency: "VND"}}</span>
                 </div>
                 <div class="quantity">
                   <h6 class="my-0">Số lượng</h6>
