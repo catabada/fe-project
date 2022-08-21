@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'product-detail',
@@ -16,17 +17,17 @@ export class ProductDetailComponent implements OnInit {
   }
 
   changeSlider(pos: number): void {
-    jQuery.map(jQuery('.manual-btn'), function (labelBtn: any) {
-      jQuery(labelBtn).removeClass('active');
+    $.map($('.manual-btn'), function (labelBtn: any) {
+      $(labelBtn).removeClass('active');
     });
-    let label = jQuery("label[for='radio" + pos + "']");
+    let label = $("label[for='radio" + pos + "']");
     label.addClass('active');
   }
 
   dragSlider(): void {
-    let slides = jQuery(".slides");
+    let slides = $(".slides");
     let currentPos = this.currentPos;
-    let first = jQuery(".first");
+    let first = $(".first");
     let point = {'xDown': 0, 'xUp': 0};
     slides.on("mousedown", function (e: any) {
       point['xDown'] = e.clientX;
@@ -41,24 +42,24 @@ export class ProductDetailComponent implements OnInit {
       }
 
       //-- Start active label of slider--
-      jQuery.map(jQuery('.manual-btn'), function (labelBtn: any) {
-        jQuery(labelBtn).removeClass('active');
+      $.map($('.manual-btn'), function (labelBtn: any) {
+        $(labelBtn).removeClass('active');
       });
-      let label = jQuery("label[for='radio" + currentPos + "']");
+      let label = $("label[for='radio" + currentPos + "']");
       label.addClass('active');
       //  --End active label of slider--
     });
   }
 
   plusAmount(): void {
-    let input = jQuery("#quantity");
+    let input = $("#quantity");
     let quantity = <number> input.val();
     quantity++;
     input.val(quantity);
   }
 
   minusAmount(): void {
-    let input = jQuery("#quantity");
+    let input = $("#quantity");
     let quantity = <number> input.val();
     if(quantity > 1) {
       quantity--;

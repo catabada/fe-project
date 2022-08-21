@@ -6,42 +6,39 @@
     <div class="col col-xl-4" style="">
       <div class="wrap-search d-flex">
         <input type="text" class="search-input" placeholder="Tìm kiếm">
-        <button class="search-button"><i class="fa-solid fa-magnifying-glass" ></i></button>
-        <button class="user-button"><i class="fa-solid fa-user"></i></button>
+        <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button [routerLink]="['/account']" class="user-button"><i class="fa-solid fa-user"></i></button>
       </div>
     </div>
   </div>
-<div class="heading-control row">
-  <div class="col col-xl-8 " style="">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
-      <li class="nav-items active">
-        <a class="nav-link" aria-current="page" href="#">Trang chủ</a>
-      </li>
-      <li class="nav-items ms-5">
-        <a class="nav-link" href="#">Sản phẩm Nam</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Chi tiết sản phẩm</a></li>
-          <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
-          <li><a class="dropdown-item" href="#">Danh sách yêu thích</a></li>
-        </ul>
-      </li>
-      <li class="nav-items ms-5">
-        <a class="nav-link" href="#">Sản phẩm Nữ</a>
-      </li>
-      <li class="nav-items ms-5">
-        <a class="nav-link" href="/about" role>Giới thiệu</a>
-      </li>
-    </ul>
+  <div class="heading-control row">
+    <div class="col col-xl-8 " style="">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
+        <li class="nav-items active">
+          <a class="nav-link" aria-current="page" href="#">Trang chủ</a>
+        </li>
+        <li class="nav-items ms-5">
+          <a class="nav-link" [routerLink]="['/home']">Sản phẩm Nam</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/account']">Chi tiết sản phẩm</a></li>
+            <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
+            <li><a class="dropdown-item" href="#">Danh sách yêu thích</a></li>
+          </ul>
+        </li>
+        <li class="nav-items ms-5">
+          <a class="nav-link" href="#">Sản phẩm Nữ</a>
+        </li>
+        <li class="nav-items ms-5">
+          <a class="nav-link" href="/about" role>Giới thiệu</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrap-title col col-xl-4 float-end">
+      <a class="cart-title"><i class="fa-solid fa-cart-shopping"></i></a>
+      <div class="number-cart-title">Giỏ hàng</div>
+      <div class="number">[0]</div>
+    </div>
   </div>
-  <div class="wrap-title col col-xl-4 float-end">
-    <a class="cart-title"><i class="fa-solid fa-cart-shopping"></i></a>
-    <div class="number-cart-title">Giỏ hàng</div>
-    <div class="number">[0]</div>
-
-
-  </div>
-</div>
-
 </div>
 <div class="wrap-banner">
   <div class="col col-xl-8 offset-xl-2 text-center">

@@ -6,41 +6,45 @@
           <!-- Email input -->
           <div class="wrap-input">
             <div class="form-outline m-4">
-              <input formControlName="username" type="text" id="username" class="form-input mt-4 " placeholder="Tên tài khoản"/>
+              <input formControlName="username" type="text" id="username" class="form-input mt-4 " placeholder="Tên tài khoản" autofocus/>
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="help-block mt-1">
+                <div *ngIf="username.errors?.required" class="text-danger">
+                  Vui lòng nhập tên tài khoản
+                </div>
+              </div>
             </div>
             <!-- Password input -->
             <div class="form-outline m-4">
               <input formControlName="password" type="password" id="password" class="form-input" placeholder="Mật khẩu"/>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="help-block mt-1">
+                <div *ngIf="password.errors?.required" class="text-danger">
+                  Vui lòng nhập mật khẩu
+                </div>
+              </div>
             </div>
             <div class="row mb-4">
               <div class="col d-flex justify-content-center">
                 <!-- Checkbox -->
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="check-remember"/>
-                  <label class="form-check-label" for="check-remember"> Ghi nhớ mật khẩu </label>
+                  <label class="form-check-label" for="check-remember">Ghi nhớ mật khẩu</label>
                 </div>
               </div>
-
-              <div class="col">
-                <!-- Simple link -->
-                <a href="#">Quên mật khẩu?</a>
-              </div>
+              <div class="col"><a href="#">Quên mật khẩu?</a></div>
             </div>
-
             <!-- Submit button -->
             <div class="wrap-button">
-              <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+              <button type="submit" class="btn btn-primary btn-block">
+                <span *ngIf="loading"><i *ngIf="loading" class="fa fa-spinner"></i> Loading...</span>
+                <span class="m-r-n-lg" *ngIf="!loading">Đăng nhập</span>
+              </button>
             </div>
           </div>
-
-
         </form>
       </mdb-tab>
       <mdb-tab title="Đăng ký">
         <form>
           <div class="wrap-input">
-
-
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline me-2 ms-4">
@@ -53,26 +57,20 @@
                 </div>
               </div>
             </div>
-
             <!-- Email input -->
             <div class="form-outline ms-4 me-4">
               <input type="email" id="email-register" class="form-input" placeholder="Email"/>
             </div>
-
             <!-- Password input -->
             <div class="form-outline ms-4 me-4 mb-4">
               <input type="password" id="pass-register" class="form-input mt-4" placeholder="Mật khẩu"/>
             </div>
-
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
               <input class="form-check-input me-2" type="checkbox" value="" id="subcribe" checked/>
-              <label class="form-check-label" for="subcribe">
-                Đăng ký để nhận thông báo
-              </label>
+              <label class="form-check-label" for="subcribe">Đăng ký để nhận thông báo</label>
             </div>
             <div class="wrap-button">
-              <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block mb-4">Đăng ký</button>
             </div>
           </div>

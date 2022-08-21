@@ -1,10 +1,9 @@
-// create module
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MdbNotificationModule} from "mdb-angular-ui-kit/notification";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
-import { DefaultComponent } from './default.component';
+import {DefaultComponent} from './default.component';
 import {HomeComponent} from "../../page/home/home.component";
 import {CarouselComponent} from "../../component/carousel/carousel.component";
 import {MdbCarouselModule} from "mdb-angular-ui-kit/carousel";
@@ -17,15 +16,15 @@ import {ProductCardComponent} from "../../component/product-card/product-card.co
 import {ProductListComponent} from "../../component/product-list/product-list.component";
 import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.component";
 import {FilterComponent} from "../../component/filter/filter.component";
-import {Pagination} from "../../../dto/pagination.dto";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProductsComponent} from "../../component/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
 import {CartComponent} from "../../page/cart/cart.component";
 import {ProcessComponent} from "../../component/process/process.component";
 import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
-import {AboutUsComponent} from "../../page/about-us/about-us.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {AlertComponent} from "../../component/alert/alert.component";
+import {AccountModule} from "../../page/account/account.module";
 
 @NgModule({
   declarations: [
@@ -44,17 +43,20 @@ import {ReactiveFormsModule} from "@angular/forms";
     CartComponent,
     ProcessComponent,
     OrderCompleteComponent,
+    AlertComponent,
   ],
-    imports: [
-        SharedModule,
-        CommonModule,
-        RouterModule,
-        MdbNotificationModule,
-        MdbCarouselModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireStorageModule,
-        MdbTabsModule,
-        ReactiveFormsModule,
-    ]
+  imports: [
+    SharedModule,
+    CommonModule,
+    RouterModule,
+    MdbNotificationModule,
+    MdbCarouselModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    MdbTabsModule,
+    ReactiveFormsModule,
+    AccountModule
+  ]
 })
-export class DefaultModule {}
+export class DefaultModule {
+}

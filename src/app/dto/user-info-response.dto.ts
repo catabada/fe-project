@@ -18,7 +18,7 @@ export class UserInfoResponse {
     dest.username = entity.username
     dest.email = entity.email
     dest.phone = entity.phone
-    dest.appRoles = entity.appRoles
+    dest.appRoles = entity.appRole
     dest.lastName = entity.userInfo.lastName
     dest.firstName = entity.userInfo.firstName
     dest.dateOfBirth = entity.userInfo.dateOfBirth

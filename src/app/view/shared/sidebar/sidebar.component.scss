@@ -8,8 +8,9 @@ $on-click-color: #00c7b4;
 
   .top-sidebar {
     margin-bottom: 20px;
+
     .img {
-      .avatar{
+      .avatar {
         height: 100px;
         width: 100px;
         border-radius: 50px;
@@ -17,14 +18,13 @@ $on-click-color: #00c7b4;
     }
 
     .wrap-name {
-
-
       .name {
         font-size: 20px;
         padding-left: 10px;
         padding-top: 30px;
       }
-      .verify-account{
+
+      .verify-account {
         height: 20px;
       }
     }
@@ -55,7 +55,6 @@ $on-click-color: #00c7b4;
     line-height: 22px;
     text-decoration: none;
     padding-left: 5px;
-
   }
 }
 

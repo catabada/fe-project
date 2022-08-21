@@ -12,7 +12,7 @@ import {ProductDetailComponent} from "./view/page/product-detail/product-detail.
 import {CartComponent} from "./view/page/cart/cart.component";
 import {OrderCompleteComponent} from "./view/page/order-complete/order-complete.component";
 import {AboutUsComponent} from "./view/page/about-us/about-us.component";
-import {AccountComponent} from "./view/component/account/account.component";
+import {AccountComponent} from "./view/page/account/account.component";
 import {AddressComponent} from "./view/component/address/address.component";
 import {ProfileComponent} from "./view/component/profile/profile.component";
 import {OrderHistoryComponent} from "./view/component/order-history/order-history.component";
@@ -27,7 +27,7 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent},
       {path: 'product', component: ProductsComponent},
       {path: 'about', component: AboutUsComponent},
-      {path: 'product/:id', component: ProductDetailComponent},
+      {path: 'product/:type/:id', component: ProductDetailComponent},
       {path: 'cart', component: CartComponent},
       {path: 'order-complete', component: OrderCompleteComponent},
       {

@@ -4,6 +4,8 @@ import {finalize, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {AppUserService} from "../../../service/app-user.service";
+import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
+import {AlertComponent} from "../../component/alert/alert.component";
 
 @Component({
   selector: 'app-login',
@@ -13,10 +15,14 @@ import {AppUserService} from "../../../service/app-user.service";
 export class LoginComponent implements OnInit, OnDestroy {
   title = 'Đăng nhập';
   loginFormGroup: FormGroup;
+  loading: boolean;
+  notificationRef: MdbNotificationRef<AlertComponent> | null = null;
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService, private appUserService: AppUserService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService,
+              private appUserService: AppUserService, private notificationService: MdbNotificationService) {
+  }
 
   ngOnInit(): void {
     window.document.title = this.title;
@@ -39,24 +45,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginFormGroup.invalid) {
       this.loginFormGroup.markAllAsTouched();
     } else {
+      this.loading = true;
       this.subscriptions.push(
         this.authenticationService.login(user)
-          .pipe(finalize(() => {}))
-          .subscribe({
-            next: (response: any) => {
-              this.appUserService.getUserInfo(response.data.userId).subscribe({
-                  next: (response: any) => this.authenticationService.addUserInfoToLocalStorage(response.data),
-                  error: (error: any) => console.log(error)
+          .pipe(finalize(() => this.loading = false))
+          .subscribe((response: any) => {
+            if (response.success) {
+              this.appUserService.getUserInfo(response.data.id).subscribe((response: any) => {
+                if (response.success) {
+                  this.authenticationService.addUserInfoToLocalStorage(response.data)
+                  this.router.navigate(['/home']).then(() => {});
+                } else this.openToast(false, response.message);
               });
-
-              this.router.navigate(['/home']).then(r => console.log("Login success"));
-            },
-            error: (error: any) => {
-              console.log(error);
-            }
+            } else this.openToast(response.success, response.message);
           })
       )
     }
+  }
+
+  openToast(success: boolean, message: string) {
+    this.notificationRef = this.notificationService.open(AlertComponent, {data: {text: message}});
   }
 
   get username(): AbstractControl {
