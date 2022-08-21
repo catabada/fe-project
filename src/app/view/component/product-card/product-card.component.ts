@@ -7,6 +7,7 @@ import {ProductService} from "../../../service/product.service";
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
+  @Input() gender: string;
   @Input() product: any;
   lowestPrice: number
 

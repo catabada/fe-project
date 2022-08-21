@@ -3,6 +3,7 @@
     <li class="col col-xl-4 mb-4 text-center p-3"
         *ngFor="let product of getProducts(currentPage)">
       <product-card
+        [gender] = "gender"
         [product]="product"
       ></product-card>
     </li>

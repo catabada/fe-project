@@ -1,9 +1,12 @@
+import {Product} from "./product.model";
+import {ProductDetailDto} from "../dto/product-detail.dto";
+
 export class CartItem {
-  productId: number
+  productDetailDto: ProductDetailDto
   quantity: number
 
-  constructor(productId: number, quantity: number) {
-    this.productId = productId
+  constructor(productDetailDto: ProductDetailDto, quantity: number) {
+    this.productDetailDto = productDetailDto
     this.quantity = quantity
   }
 }

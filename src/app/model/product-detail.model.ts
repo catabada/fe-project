@@ -17,6 +17,7 @@ export class ProductDetail {
     this.unitPrice = unitPrice
     this.unitInStock = unitInStock
   }
+
 }
 
 export let productDetails: ProductDetail[] = [

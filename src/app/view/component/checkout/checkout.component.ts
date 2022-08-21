@@ -30,7 +30,6 @@ export class CheckoutComponent implements OnInit {
   wardSelected!: number;
 
   checkout: CheckoutItem[]
-  productDetail!: ProductDetail;
   product!: Product
 
   checkoutFormGroup: FormGroup
@@ -79,7 +78,7 @@ export class CheckoutComponent implements OnInit {
 
   public totalPrice(): number {
     return this.checkout.reduce((acc, cur) => {
-     return  acc + cur.product.productDetails[0].unitPrice * cur.quantity
+     return  acc + cur.productDetailDto.unitPrice * cur.quantity
     }, 0)
   }
 
