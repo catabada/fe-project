@@ -11,7 +11,7 @@ import {CartService} from "../../../service/cart.service";
 export class HeaderComponent implements OnInit {
   quantityInCart: number
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private cartService: CartService) { }
+  constructor(private router: Router, public authenticationService: AuthenticationService, private cartService: CartService) { }
 
   ngOnInit(): void {
     let cart = this.cartService.getCartFromLocalStorage()

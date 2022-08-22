@@ -7,8 +7,13 @@
       <div class="wrap-search d-flex">
         <input type="text" class="search-input" placeholder="Tìm kiếm">
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button [routerLink]="['/account']" class="user-button"><i class="fa-solid fa-user"></i></button>
-        <button (click)="logout()">Đăng xuất</button>
+        <button [routerLink]="['/account']" class="user-button" style="position: relative">
+          <i class="fa-solid fa-user"></i>
+            <ul *ngIf="authenticationService.isLoggedIn()" class="dropdown-menu ">
+              <li><a class="dropdown-item" [routerLink]="['/account']">Người dùng</a></li>
+              <li><button class="dropdown-item" (click)="logout()">Đăng xuất</button>
+            </ul>
+        </button>
       </div>
     </div>
   </div>
@@ -21,13 +26,23 @@
         <li class="nav-items ms-5">
           <a class="nav-link" [routerLink]="['/product/nam']">Sản phẩm Nam</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['/account']">Chi tiết sản phẩm</a></li>
-            <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
-            <li><a class="dropdown-item" href="#">Danh sách yêu thích</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/account']">Giày thể thao</a></li>
+            <li><a class="dropdown-item" href="#">Giày bóng đá </a></li>
+            <li><a class="dropdown-item" href="#">Giày cơ bản</a></li>
+            <li><a class="dropdown-item" href="#">Sandal</a></li>
+            <li><a class="dropdown-item" href="#">Giày da</a></li>
           </ul>
         </li>
         <li class="nav-items ms-5">
           <a class="nav-link" [routerLink]="['/product/nữ']">Sản phẩm Nữ</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/account']">Giày thể thao</a></li>
+            <li><a class="dropdown-item" href="#">Giày búp bê </a></li>
+            <li><a class="dropdown-item" href="#">Giày thời trang</a></li>
+            <li><a class="dropdown-item" href="#">Boots</a></li>
+            <li><a class="dropdown-item" href="#">Giày cơ bản</a></li>
+            <li><a class="dropdown-item" href="#">Sandal</a></li>
+          </ul>
         </li>
         <li class="nav-items ms-5">
           <a class="nav-link" href="/about" role>Giới thiệu</a>
