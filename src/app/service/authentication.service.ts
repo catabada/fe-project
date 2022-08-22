@@ -77,7 +77,7 @@ export class AuthenticationService {
     this.loggedInAvatar = url
   }
 
-  private hashPassword(password: string): string {
+  hashPassword(password: string): string {
     return shajs('sha256').update(password).digest('hex')
   }
 

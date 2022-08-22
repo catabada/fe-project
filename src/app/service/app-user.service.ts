@@ -9,13 +9,15 @@ import {AppConstant} from "../constant/app-constant";
 import {APP_ROLE_USER} from "../model/app-role.model";
 import {UserInfoRequest} from "../dto/user-info-request.dto";
 import {ImageService} from "./image.service";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppUserService {
 
-  constructor(private imageService: ImageService) {
+  constructor(private imageService: ImageService , private authenticationService: AuthenticationService) {
+
   }
 
   public getUserInfo(id: number): Observable<AppServiceResult<any>> {
@@ -32,7 +34,7 @@ export class AppUserService {
 
   public register(createUser: UserRegister): Observable<AppBaseResult> {
     return new Observable<AppBaseResult>(observer => {
-      let appUser = appUsers.find(appUser => appUser.username === createUser.username || appUser.email === createUser.email || appUser.phone === createUser.phone)
+      let appUser = appUsers.find(appUser => appUser.username === createUser.usernameRegister || appUser.email === createUser.emailRegister)
       if (appUser) {
         observer.next(new AppBaseResult(false, 0, "Tài khoản đã tồn tại"))
         return
@@ -42,21 +44,21 @@ export class AppUserService {
       userInfoNew.id = userInfos.length + 1
       userInfoNew.lastName = createUser.lastName
       userInfoNew.firstName = createUser.firstName
-      userInfoNew.image = AppConstant.APP_BASE_IMAGE_URL + createUser.username
-      userInfoNew.dateOfBirth = createUser.dateOfBirth
+      userInfoNew.image = AppConstant.APP_BASE_IMAGE_URL + createUser.usernameRegister
       userInfos.push(userInfoNew)
 
       let userNew = new AppUser();
       userNew.id = appUsers.length + 1
-      userNew.username = createUser.username
-      userNew.password = createUser.password
-      userNew.email = createUser.email
+      userNew.username = createUser.usernameRegister
+      userNew.password = this.authenticationService.hashPassword(createUser.passwordRegister)
+      userNew.email = createUser.emailRegister
       userNew.phone = createUser.phone
       userNew.appRole = APP_ROLE_USER
       userNew.userInfo = userInfoNew
 
       appUsers.push(userNew)
       observer.next(AppBaseResult.generateIsSuccess())
+      observer.next(new AppBaseResult(true, 0, "Đăng ký thành công"))
     })
   }
 
