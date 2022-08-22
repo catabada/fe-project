@@ -33,7 +33,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     DefaultComponent,
     HomeComponent,
     CarouselComponent,
-    LoginComponent,
+    // LoginComponent,
     ProductCardComponent,
     ProductListComponent,
     BreadcrumbComponent,

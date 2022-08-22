@@ -17,6 +17,7 @@ import {OrderHistoryComponent} from "./view/component/order-history/order-histor
 import {NotFoundComponent} from "./view/page/error/not-found/not-found.component";
 import {ForbiddenComponent} from "./view/page/error/forbidden/forbidden.component";
 import {CheckoutComponent} from "./view/component/checkout/checkout.component";
+import {AuthenticationGuard} from "./guard/authentication.guard";
 
 const routes: Routes = [
   {
@@ -25,16 +26,17 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'login', component: LoginComponent},
+      // {path: 'login', component: LoginComponent},
       {path: 'product/:gender', component: ProductsComponent},
       {path: 'about', component: AboutUsComponent},
       {path: 'product/:gender/:id', component: ProductDetailComponent},
       {path: 'cart', component: CartComponent},
       {path: 'order-complete', component: OrderCompleteComponent},
-      {path: 'checkout', component: CheckoutComponent},
+      {path: 'checkout', component: CheckoutComponent, canActivate: [AuthenticationGuard],},
       {
         path: 'account',
         component: AccountComponent,
+        canActivate: [AuthenticationGuard],
         children: [
           {path: '', redirectTo: 'profile', pathMatch: 'full'},
           {path: 'address', component: AddressComponent},
@@ -49,7 +51,8 @@ const routes: Routes = [
     component: FullWidthComponent,
     children: [
       {path: 'not-found', component: NotFoundComponent},
-      {path: 'forbidden', component: ForbiddenComponent}
+      {path: 'forbidden', component: ForbiddenComponent},
+      {path: 'login', component: LoginComponent},
     ]
   },
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'}

@@ -1,25 +1,26 @@
-import { Injectable } from '@angular/core';
-import {AppUser, appUsers} from "../model/user.model";
-import {Observable} from "rxjs";
-import {AppServiceResult} from "../domain/app-result";
-import {AppUtilService} from "./app-util.service";
-import * as shajs from 'sha.js';
-import {UserInfoResponse} from "../dto/user-info-response.dto";
-import {AppError} from "../constant/app-error";
-import {ImageService} from "./image.service";
+import { Injectable } from '@angular/core'
+import {AppUser, appUsers} from "../model/user.model"
+import {Observable} from "rxjs"
+import {AppServiceResult} from "../domain/app-result"
+import {AppUtilService} from "./app-util.service"
+import * as shajs from 'sha.js'
+import {UserInfoResponse} from "../dto/user-info-response.dto"
+import {AppError} from "../constant/app-error"
+import {ImageService} from "./image.service"
+import {AppRole} from "../model/app-role.model"
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  loggedInUsername: string;
-  loggedInAvatar: string;
+  private loggedInUsername: string
+  private loggedInAvatar: string
 
   constructor(private appUtilService: AppUtilService, private imageService: ImageService) { }
 
   login(user: AppUser): Observable<AppServiceResult<any>> {
     return new Observable<AppServiceResult<any>>(observer => {
-      let appUser = appUsers.find(appUser => appUser.username === user.username);
+      let appUser = appUsers.find(appUser => appUser.username === user.username)
       if (appUser == null) {
         observer.next(new AppServiceResult<any>(false, AppError.VALIDATION().errorCode, 'Tài khoản không tồn tại', null));
         return
@@ -35,28 +36,45 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    let userInfo = this.getUserInfoFromLocalStorage();
+    let userInfo = this.getUserInfoFromLocalStorage()
     if (userInfo) {
-      this.loggedInUsername = userInfo.username;
-      this.imageService.getUserImage(userInfo.image).subscribe((url: any) => {
-        this.loggedInAvatar = url;
-      })
-      return true;
+      this.loggedInUsername = userInfo.username
+      this.imageService.getUserImage(userInfo.image).subscribe((url: any) => { this.loggedInAvatar = url })
+      return true
     }
-    this.logout();
-    return false;
+    this.logout()
+    return false
   }
 
   logout(): void {
-    this.appUtilService.removeFromLocalStorage('user');
+    this.appUtilService.removeFromLocalStorage('user')
   }
 
   addUserInfoToLocalStorage(user: UserInfoResponse) {
-    this.appUtilService.addToLocalStorage('user', user);
+    this.appUtilService.addToLocalStorage('user', user)
   }
 
   getUserInfoFromLocalStorage(): UserInfoResponse {
-    return this.appUtilService.getFromLocalStorage('user');
+    return this.appUtilService.getFromLocalStorage('user')
+  }
+
+  roleMatch(role: AppRole): boolean {
+    let isMatch = false
+    const userInfo = this.getUserInfoFromLocalStorage()
+    if (userInfo.appRole.name === role.name) { isMatch = true }
+    return isMatch
+  }
+
+  public getLoggedInUsername(): string {
+    return this.loggedInUsername
+  }
+
+  public getLoggedInAvatar(): string {
+    return this.loggedInAvatar
+  }
+
+  public setLoggedInAvatar(url: string) {
+    this.loggedInAvatar = url
   }
 
   private hashPassword(password: string): string {

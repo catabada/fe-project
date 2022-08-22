@@ -102,7 +102,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             this.imageService.getUserImage(response.data.image)
               .pipe(finalize(() => { this.imageLoading = false }))
               .subscribe((url: any) => {
-                this.authenticationService.loggedInAvatar = url
+                this.authenticationService.setLoggedInAvatar(url)
                 // this.btnUpload.nativeElement.textContent = 'Chọn ảnh'
               })
           } else this.openAlert(response.success, response.message)

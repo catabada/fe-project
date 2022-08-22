@@ -48,7 +48,7 @@
             </div>
             <div class="right-profile col-md-3">
               <div class="wrap-img">
-                <img src="{{authenticationService.loggedInAvatar}}" class="avatar" alt="">
+                <img src="{{authenticationService.getLoggedInAvatar()}}" class="avatar" alt="">
                 <div class="wrap-button">
                   <form [formGroup]="uploadImageFormGroup" enctype="multipart/form-data">
                     <input type="hidden" formControlName="id">
