@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Pagination} from "../../../dto/pagination.dto";
 import {Brand} from "../../../model/brand.model";
 import {Feature} from "../../../dto/feature.dto";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'products',
@@ -12,11 +13,16 @@ export class ProductsComponent implements OnInit {
   pagination = new Pagination(100, 5);
   brands: Brand[] | undefined;
   features: Feature[] | undefined;
+  gender: string
 
-  constructor() {
+  currentTypes: number[] = [];
+  currentBrands: number[] = [];
+
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.gender = this.route.snapshot.params['gender']
     this.brands = [
       new Brand(1, 'Adidas', 'adidas.png'),
       new Brand(2, 'Nike', 'nike.png'),
@@ -31,4 +37,11 @@ export class ProductsComponent implements OnInit {
     ]
   }
 
+  changeType($event: number[]) {
+    this.currentTypes = $event;
+  }
+
+  changeBrand($event: number[]) {
+    this.currentBrands = $event;
+  }
 }

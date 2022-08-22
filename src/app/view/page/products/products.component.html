@@ -38,11 +38,18 @@
     <h2 class="title text-center">Tất cả sản phẩm</h2>
     <div class="row">
       <div class="col col-xl-3">
-        <filter></filter>
+        <filter
+          (currentTypes)= "changeType($event)"
+          (currentBrands)= "changeBrand($event)"
+        ></filter>
       </div>
       <div class="col col-xl-9">
         <div class="products">
-          <product-list></product-list>
+          <product-list
+            [gender] ="gender"
+            [currentTypes]="currentTypes"
+            [currentBrands]="currentBrands"
+          ></product-list>
         </div>
       </div>
     </div>

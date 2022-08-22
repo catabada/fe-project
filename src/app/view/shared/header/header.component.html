@@ -15,10 +15,12 @@
     <div class="col col-xl-8 " style="">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
         <li class="nav-items active">
-          <a class="nav-link" aria-current="page" href="#">Trang chủ</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/home']" >Trang chủ</a>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" [routerLink]="['/product/nam']">Sản phẩm Nam</a>
+          <a class="nav-link"
+             [routerLink]="['/product/male']"
+          >Sản phẩm Nam</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/account']">Chi tiết sản phẩm</a></li>
             <li><a class="dropdown-item" href="#">Giỏ hàng</a></li>
@@ -26,7 +28,7 @@
           </ul>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" [routerLink]="['/product/nữ']">Sản phẩm Nữ</a>
+          <a class="nav-link" [routerLink]="['/product/female']">Sản phẩm Nữ</a>
         </li>
         <li class="nav-items ms-5">
           <a class="nav-link" href="/about" role>Giới thiệu</a>

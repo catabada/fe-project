@@ -13,12 +13,17 @@ export class Brand {
 export let brands: Brand[] = [
   {
     id: 1,
-    name: 'Brand 1',
+    name: 'Bitis',
     imageUrl: 'assets/images/brands/brand-1.png'
   },
   {
     id: 2,
-    name: 'Brand 2',
+    name: 'Nike',
     imageUrl: 'assets/images/brands/brand-2.png'
+  },
+  {
+    id: 3,
+    name: 'Balenciaga',
+    imageUrl: 'assets/images/brands/brand-3.png'
   }
 ]

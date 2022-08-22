@@ -9,6 +9,7 @@ import {CartService} from "../../../service/cart.service";
 import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
 import {AlertComponent} from "../../component/alert/alert.component";
 import {ProductDetailDto} from "../../../dto/product-detail.dto";
+import {ImageService} from "../../../service/image.service";
 
 @Component({
   selector: 'product-detail',
@@ -27,7 +28,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
               private productService: ProductService,
               private cartService: CartService,
-              private notificationService: MdbNotificationService
+              private notificationService: MdbNotificationService,
+              private imageService: ImageService
   ) {
   }
 
@@ -40,6 +42,9 @@ export class ProductDetailComponent implements OnInit {
         this.productDetail = this.product.productDetails[0];
       }
     );
+  }
+  formatVND(price: number): string {
+    return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VND';
   }
 
   changeSlider(pos: number): void {
@@ -60,11 +65,11 @@ export class ProductDetailComponent implements OnInit {
     }).on("mouseup", function (e: any) {
       point['xUp'] = e.clientX;
       if (point['xDown'] > point['xUp']) {
-        currentPos < 4 ? currentPos++ : currentPos = 1
-        first.css("margin-left", -(currentPos - 1) * 50 + "%");
+        currentPos < 5 ? currentPos++ : currentPos = 1
+        first.css("margin-left", -(currentPos - 1) * 40 + "%");
       } else if (point['xDown'] < point['xUp']) {
-        currentPos > 1 ? currentPos-- : currentPos = 4
-        first.css("margin-left", -(currentPos - 1) * 50 + "%");
+        currentPos > 1 ? currentPos-- : currentPos = 5
+        first.css("margin-left", -(currentPos - 1) * 40 + "%");
       }
 
       //-- Start active label of slider--
@@ -80,8 +85,10 @@ export class ProductDetailComponent implements OnInit {
   plusAmount(): void {
     let input = $("#quantity");
     let quantity = <number>input.val();
-    quantity++;
-    input.val(quantity);
+    if(quantity < this.productDetail.unitInStock) {
+      quantity++;
+      input.val(quantity);
+    }
   }
 
   minusAmount(): void {
@@ -98,6 +105,8 @@ export class ProductDetailComponent implements OnInit {
     let productDetailDto: ProductDetailDto = ProductDetailDto.createFromEntity(this.productDetail, this.productService);
     this.cartService.addToCart(productDetailDto, quantity).subscribe(
       response => {
+        let length = this.cartService.getCartFromLocalStorage().length;
+        jQuery('#quantityInCart').text(`[${length}]`);
         this.openToast(response.success, response.message);
       }
     );
@@ -131,9 +140,4 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  // openAlert() {
-  //   this.notificationRef = this.notificationService.open(AlertComponent, {
-  //     stacking: true
-  //   });
-  // }
 }

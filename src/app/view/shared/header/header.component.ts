@@ -12,7 +12,11 @@ export class HeaderComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.quantityInCart = this.cartService.getCartFromLocalStorage().length ?? 0;
+    if(this.cartService.getCartFromLocalStorage() == null) {
+      this.quantityInCart = 0
+    } else {
+      this.quantityInCart = this.cartService.getCartFromLocalStorage().length;
+    }
   }
 
 }

@@ -7,7 +7,7 @@
   </li>
   <li class="page-item" *ngFor="let product of counter(pagination.totalPages()) let i = index">
     <a class="page-link"
-       [ngClass]="numPage == i + 1 ? 'active' : ''"
+       [ngClass]="numPage == (i + 1) ? 'active' : ''"
        (click)="changePage(i + 1)"
     >{{i + 1}}
     </a>
