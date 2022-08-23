@@ -50,6 +50,7 @@ export class ProductDetailComponent implements OnInit {
       }
     );
   }
+
   formatVND(price: number): string {
     return price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') + ' VND';
   }
@@ -92,7 +93,7 @@ export class ProductDetailComponent implements OnInit {
   plusAmount(): void {
     let input = $("#quantity");
     let quantity = <number>input.val();
-    if(quantity < this.productDetail.unitInStock) {
+    if (quantity < this.productDetail.unitInStock) {
       quantity++;
       input.val(quantity);
     }

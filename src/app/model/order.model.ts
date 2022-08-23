@@ -1,10 +1,11 @@
 import {Address} from "./address.model";
 import {ProductDetailDto} from "../dto/product-detail.dto";
 
-class OrderStatus {
+export class OrderStatus {
   id: number;
   name: string;
 }
+
 export class OrderItem {
   productDetail: ProductDetailDto;
   quantity: number;
@@ -20,12 +21,13 @@ export class Order {
   orderItems: OrderItem[]
   totalPrice: number
   createdAt: Date
+  shippingDate: Date | null
+  completedAt: Date | null
+  canceledAt: Date | null
   status: OrderStatus
-
 }
 
 export let orders: Order[] = [
-
 ]
 
 export let orderStatuses: OrderStatus[] = [
@@ -43,7 +45,7 @@ export let orderStatuses: OrderStatus[] = [
   },
   {
     id: 3,
-    name: 'Bị hủy bỏ'
+    name: 'Đã hủy'
   }
 ]
 

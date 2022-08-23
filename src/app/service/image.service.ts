@@ -29,7 +29,25 @@ export class ImageService {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
 
-  getProductImageUrl(id: number): any {
+  getAllProductImage(): Observable<string[]> {
+    let images: string[] = [];
+    this.storage.ref('/image/product').listAll().subscribe(res => {
+      res.items.forEach(item => {
+        this.storage.ref(item.fullPath).getDownloadURL().subscribe(url => {
+          images.push(url);
+        });
+      });
+    });
+    return new Observable<string[]>(observer => {
+      observer.next(images)
+    });
+  }
+
+  getProductImage(id: number): Observable<string> {
+    return this.storage.ref('/image/product/' + id + '.png').getDownloadURL()
+  }
+
+  getProductImageUrl(id: number): Observable<string> {
     return this.storage.ref('/image/product/' + id + '.png').getDownloadURL()
   }
 

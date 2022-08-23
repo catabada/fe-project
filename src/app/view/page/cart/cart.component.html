@@ -16,9 +16,9 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cartItem of cart">
+      <tr *ngFor="let cartItem of cart, let i = index">
         <th class="detail">
-          <img src="{{}}" alt="" class="image">
+          <img src="{{productImages[i]}}" alt="" class="image">
           <p class="name">{{cartItem!.productDetailDto!.name}} </p>
         </th>
         <th class="price">{{formatVND(cartItem!.productDetailDto!.unitPrice)}}</th>

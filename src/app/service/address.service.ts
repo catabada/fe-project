@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Province} from "../model/province..model";
 import {District} from "../model/district.model";
+import {AddressDto} from "../dto/address.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class AddressService {
   }
   getDistrict(districtCode: number): Observable<District> {
     return this.http.get<District>(`https://provinces.open-api.vn/api/d/${districtCode}?depth=2`);
+  }
+
+  getAddress(id: number): AddressDto {
+
   }
 }

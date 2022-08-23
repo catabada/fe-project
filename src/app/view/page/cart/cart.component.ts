@@ -5,6 +5,8 @@ import {CheckoutItem} from "../../../model/checkout-item.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
 import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
+import {ImageService} from "../../../service/image.service";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'cart',
@@ -15,14 +17,19 @@ export class CartComponent implements OnInit {
   cart: CartItem[];
 
   popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
+  productImages: string[] = []
 
   constructor(private cartService: CartService,
               private router: Router, private route: ActivatedRoute,
-              private popconfirmService: MdbPopconfirmService) {
+              private popconfirmService: MdbPopconfirmService,
+              private imageService: ImageService) {
   }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCartFromLocalStorage();
+    if (this.cart && this.cart.length > 0) {
+      this.getProductImage()
+    }
   }
 
 
@@ -73,6 +80,21 @@ export class CartComponent implements OnInit {
     this.popconfirmRef.onConfirm.subscribe(() => {
       this.removeCartItem(event, id);
     })
+  }
+
+  getProductImage() {
+    let productImages:string[] = []
+    for (let i = 0; i < this.cart.length; i++) {
+      this.imageService.getProductImageUrl(this.cart[i].productDetailDto.id)
+        .pipe(finalize(() => {
+          this.productImages[i] = productImages[i]
+        }))
+        .subscribe(
+        url => {
+          productImages.push(url)
+        }
+      )
+    }
   }
 
 }
