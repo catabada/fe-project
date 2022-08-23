@@ -15,6 +15,7 @@ import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconf
   styleUrls: ['./orderDetail-history.component.scss']
 })
 export class OrderDetailHistoryComponent implements OnInit {
+  title: string = "Chi tiết đơn hàng"
   order: OrderDto
   images: Map<number, string> = new Map<number, string>()
 
@@ -26,6 +27,7 @@ export class OrderDetailHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = 'AHA - ' + this.title;
     let orderTrackingNumber = this.route.snapshot.paramMap.get('orderTrackingNumber')
     this.orderService.getOrder(orderTrackingNumber as string).subscribe(response => {
       if (response.success) {

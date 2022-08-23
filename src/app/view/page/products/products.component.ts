@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+  title = "Sản phẩm";
   pagination = new Pagination(100, 5);
   brands: Brand[] | undefined;
   features: Feature[] | undefined;
@@ -27,6 +28,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gender = this.route.snapshot.params['gender']
+    document.title = 'AHA - ' + this.title + (this.gender === 'female' ?  " nữ" : " nam");
     this.brands = [
       new Brand(1, 'Adidas', 'adidas.png'),
       new Brand(2, 'Nike', 'nike.png'),

@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    document.title = this.title;
+    document.title = 'AHA - ' + this.title;
 
     this.storage.ref('/image/brand').listAll().subscribe(res => {
       res.items.forEach(item => {

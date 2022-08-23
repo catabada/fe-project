@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    window.document.title = this.title;
+    window.document.title = 'AHA - ' + this.title;
 
     // get user info from local storage
     this.user = this.authenticationService.getUserInfoFromLocalStorage()

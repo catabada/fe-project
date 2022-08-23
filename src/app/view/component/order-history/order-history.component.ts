@@ -16,6 +16,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent implements OnInit {
+  title = "Lịch sử mua hàng";
   orders: OrderDto[] = []
   images: Map<number, string> = new Map<number, string>()
 
@@ -29,6 +30,7 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = 'AHA - ' + this.title;
     this.orderService.getOrders()
       .subscribe((orders) => {
         orders.forEach(order => {

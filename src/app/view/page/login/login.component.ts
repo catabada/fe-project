@@ -14,8 +14,6 @@ import {AuthenticationService} from "../../../service/authentication.service";
 import {AppUserService} from "../../../service/app-user.service";
 import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
 import {AlertComponent} from "../../component/alert/alert.component";
-import {user} from "@angular/fire/auth";
-import {appUsers} from "../../../model/user.model";
 
 @Component({
   selector: 'app-login',
@@ -41,7 +39,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    window.document.title = this.title;
+    window.document.title = 'AHA - ' + this.title;
 
     this.loginFormGroup = this.formBuilder.group({
       username: new FormControl('', [

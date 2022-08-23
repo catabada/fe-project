@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {orders} from "../../../model/order.model";
-import {OrderService} from "../../../service/order.service";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'order-complete',
@@ -8,15 +6,13 @@ import {OrderService} from "../../../service/order.service";
   styleUrls: ['./order-complete.component.scss']
 })
 export class OrderCompleteComponent implements OnInit {
+  title = "Đặt hàng thành công";
 
-  constructor(private orderService: OrderService) { }
+  constructor() {
+  }
 
   ngOnInit(): void {
-    console.log(orders)
-   this.orderService.getOrder(orders[0].orderTrackingNumber).subscribe(res => {
-      console.log(res)
-   })
-
+    document.title = 'AHA - ' + this.title;
   }
 
 }

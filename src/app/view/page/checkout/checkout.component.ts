@@ -15,8 +15,6 @@ import {OrderCreate} from "../../../dto/order-create.dto";
 import {OrderItem} from "../../../model/order.model";
 import {Router} from "@angular/router";
 import {CartService} from "../../../service/cart.service";
-import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
-import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
 
 @Component({
   selector: 'checkout',
@@ -24,6 +22,7 @@ import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.compo
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+  title = 'Thanh toán';
 
   provinces!: Province[];
   provinceSelected!: number;
@@ -52,6 +51,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = 'AHA - ' + this.title;
     this.fetchProvinces()
     if (!sessionStorage.getItem('checkout')) {
       this.router.navigate(['/home']).then()

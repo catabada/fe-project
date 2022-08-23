@@ -17,7 +17,6 @@ import {BreadcrumbComponent} from "../../component/breadcrumb/breadcrumb.compone
 import {FilterComponent} from "../../component/filter/filter.component";
 import {PaginationComponent} from "../../component/pagination/pagination.component";
 import {ProcessComponent} from "../../component/process/process.component";
-import {LoginComponent} from "../../page/login/login.component";
 import {ProductsComponent} from "../../page/products/products.component";
 import {ProductDetailComponent} from "../../page/product-detail/product-detail.component";
 import {OrderCompleteComponent} from "../../page/order-complete/order-complete.component";
@@ -27,6 +26,7 @@ import {CartComponent} from "../../page/cart/cart.component";
 import {CheckoutComponent} from "../../page/checkout/checkout.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
+import {AboutUsComponent} from "../../page/about-us/about-us.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.compo
     DefaultComponent,
     HomeComponent,
     CarouselComponent,
-    // LoginComponent,
     ProductCardComponent,
     ProductListComponent,
     BreadcrumbComponent,
@@ -47,7 +46,8 @@ import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.compo
     OrderCompleteComponent,
     AlertComponent,
     CheckoutComponent,
-    PopConfirmComponent
+    PopConfirmComponent,
+    AboutUsComponent
   ],
   imports: [
     SharedModule,

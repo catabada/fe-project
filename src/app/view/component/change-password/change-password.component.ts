@@ -11,7 +11,7 @@ import {
 import {finalize, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
-import {AlertComponent} from "../../component/alert/alert.component";
+import {AlertComponent} from "../alert/alert.component";
 import {AppUserService} from "../../../service/app-user.service";
 import {AuthenticationService} from 'src/app/service/authentication.service';
 
@@ -26,47 +26,38 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
   loading: boolean;
   notificationRef: MdbNotificationRef<AlertComponent> | null = null;
   private subscriptions: Subscription[] = [];
-  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
-    let pass = group.get('newPassword')!.value;
-    let confirmPass = group.get('confirmPassword')!.value
-    return pass === confirmPass ? null : {notSame: true}
-  }
 
   constructor(private formBuilder: FormBuilder, private router: Router, private appUserService: AppUserService, private notificationService: MdbNotificationService,
               private authenticationService: AuthenticationService) {
   }
 
 
+  ngOnInit(): void {
+    window.document.title = 'AHA - ' + this.title;
+    this.changePasswordFormGroup = this.formBuilder.group({
+      oldPassword: new FormControl('', [
+        Validators.required
+      ]),
+      newPassword: new FormControl('', [
+        Validators.required
+      ]),
+      confirmPassword: new FormControl('', [
+        Validators.required
+      ]),
+    }, {validators: this.checkPasswords});
+  }
 
-ngOnInit()
-:
-void {
-  window.document.title = this.title;
-  this.changePasswordFormGroup = this.formBuilder.group({
-    oldPassword: new FormControl('', [
-      Validators.required
-    ]),
-    newPassword: new FormControl('', [
-      Validators.required
-    ]),
-    confirmPassword: new FormControl('', [
-      Validators.required
-    ]),
-  }, {validators: this.checkPasswords});
-}
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 
-ngOnDestroy()
-:
-void {
-  this.subscriptions.forEach(subscription => subscription.unsubscribe());
-}
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let pass = group.get('newPassword')!.value;
+    let confirmPass = group.get('confirmPassword')!.value
+    return pass === confirmPass ? null : {notSame: true}
+  }
 
-onSubmit(user
-:
-any
-)
-{
-  {
+  onSubmit(user: any) {
     if (this.changePasswordFormGroup.invalid) {
       this.changePasswordFormGroup.markAllAsTouched();
     } else {
@@ -82,57 +73,30 @@ any
         )
       );
     }
-
   }
 
+  openAlert(success: boolean, message: string) {
+    this.notificationRef = this.notificationService.open(AlertComponent, {
+      data: {success: success, message: message},
+      autohide: true,
+      delay: 2000,
+    })
+  }
 
-}
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+      this.router.navigate([uri]));
+  }
 
-openAlert(success
-:
-boolean, message
-:
-string
-)
-{
-  this.notificationRef = this.notificationService.open(AlertComponent, {
-    data: {success: success, message: message},
-    autohide: true,
-    delay: 2000,
-  })
-}
+  get oldPassword(): AbstractControl {
+    return this.changePasswordFormGroup.get('oldPassword') as AbstractControl;
+  }
 
-redirectTo(uri
-:
-string
-)
-{
-  this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
-    this.router.navigate([uri]));
-}
+  get newPassword(): AbstractControl {
+    return this.changePasswordFormGroup.get('newPassword') as AbstractControl;
+  }
 
-//ChangePasswordForm
-get
-oldPassword()
-:
-AbstractControl
-{
-  return this.changePasswordFormGroup.get('oldPassword') as AbstractControl;
-}
-
-get
-newPassword()
-:
-AbstractControl
-{
-  return this.changePasswordFormGroup.get('newPassword') as AbstractControl;
-}
-
-get
-confirmPassword()
-:
-AbstractControl
-{
-  return this.changePasswordFormGroup.get('confirmPassword') as AbstractControl;
-}
+  get confirmPassword(): AbstractControl {
+    return this.changePasswordFormGroup.get('confirmPassword') as AbstractControl;
+  }
 }

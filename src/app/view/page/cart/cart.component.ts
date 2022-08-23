@@ -14,6 +14,7 @@ import {finalize} from "rxjs";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  title = "Giỏ hàng";
   cart: CartItem[];
 
   popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.title = 'AHA - ' + this.title;
     this.cart = this.cartService.getCartFromLocalStorage();
     if (this.cart && this.cart.length > 0) {
       this.getProductImage()
