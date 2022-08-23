@@ -21,31 +21,17 @@
     <div class="col col-xl-8 " style="">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
         <li class="nav-items active">
-          <a class="nav-link" aria-current="page" href="#">Trang chủ</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/home']">Trang chủ</a>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" [routerLink]="['/product/nam']">Sản phẩm Nam</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['/account']">Giày thể thao</a></li>
-            <li><a class="dropdown-item" href="#">Giày bóng đá </a></li>
-            <li><a class="dropdown-item" href="#">Giày cơ bản</a></li>
-            <li><a class="dropdown-item" href="#">Sandal</a></li>
-            <li><a class="dropdown-item" href="#">Giày da</a></li>
-          </ul>
+          <a class="nav-link" [routerLink]="['/product/male']">Sản phẩm Nam</a>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" [routerLink]="['/product/nữ']">Sản phẩm Nữ</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['/account']">Giày thể thao</a></li>
-            <li><a class="dropdown-item" href="#">Giày búp bê </a></li>
-            <li><a class="dropdown-item" href="#">Giày thời trang</a></li>
-            <li><a class="dropdown-item" href="#">Boots</a></li>
-            <li><a class="dropdown-item" href="#">Giày cơ bản</a></li>
-            <li><a class="dropdown-item" href="#">Sandal</a></li>
-          </ul>
+          <a class="nav-link" [routerLink]="['/product/female']">Sản phẩm Nữ</a>
+
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" href="/about" role>Giới thiệu</a>
+          <a class="nav-link" [routerLink]="['/about']" role>Giới thiệu</a>
         </li>
       </ul>
     </div>
@@ -63,7 +49,7 @@
       <div class="owl-carousel2">
         <div class="item">
           <div class="col">
-            <div class="banner"><a class="text-banner" href="#">(25% off) Everything! Sử dụng Mã: Summer Sale</a>
+            <div class="banner"><a class="text-banner" href="#">(25% off) Everything! Chào mừng bạn đến với website</a>
             </div>
           </div>
         </div>

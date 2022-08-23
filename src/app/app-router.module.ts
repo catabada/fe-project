@@ -11,7 +11,7 @@ import {ProductDetailComponent} from "./view/page/product-detail/product-detail.
 import {CartComponent} from "./view/page/cart/cart.component";
 import {OrderCompleteComponent} from "./view/page/order-complete/order-complete.component";
 import {AccountComponent} from "./view/page/account/account.component";
-import {AddressComponent} from "./view/component/address/address.component";
+import {ChangePasswordComponent} from "./view/component/change-password/change-password.component";
 import {ProfileComponent} from "./view/component/profile/profile.component";
 import {OrderHistoryComponent} from "./view/component/order-history/order-history.component";
 import {NotFoundComponent} from "./view/page/error/not-found/not-found.component";
@@ -39,7 +39,7 @@ const routes: Routes = [
         canActivate: [AuthenticationGuard],
         children: [
           {path: '', redirectTo: 'profile', pathMatch: 'full'},
-          {path: 'address', component: AddressComponent},
+          {path: 'change-password', component: ChangePasswordComponent},
           {path: 'profile', component: ProfileComponent},
           {path: 'order-history', component: OrderHistoryComponent}
         ]
