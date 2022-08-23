@@ -6,7 +6,8 @@
           <!-- Email input -->
           <div class="wrap-input">
             <div class="form-outline m-4">
-              <input formControlName="username" type="text" id="username" class="form-input mt-4 " placeholder="Tên tài khoản" autofocus/>
+              <input formControlName="username" type="text" id="username" class="form-input mt-4 "
+                     placeholder="Tên tài khoản" autofocus/>
               <div *ngIf="username.invalid && (username.dirty || username.touched)" class="help-block mt-1">
                 <div *ngIf="username.errors?.required" class="text-danger">
                   Vui lòng nhập tên tài khoản
@@ -15,7 +16,8 @@
             </div>
             <!-- Password input -->
             <div class="form-outline m-4">
-              <input formControlName="password" type="password" id="password" class="form-input" placeholder="Mật khẩu"/>
+              <input formControlName="password" type="password" id="password" class="form-input"
+                     placeholder="Mật khẩu"/>
               <div *ngIf="password.invalid && (password.dirty || password.touched)" class="help-block mt-1">
                 <div *ngIf="password.errors?.required" class="text-danger">
                   Vui lòng nhập mật khẩu
@@ -43,35 +45,89 @@
         </form>
       </mdb-tab>
       <mdb-tab title="Đăng ký">
-        <form>
+        <form #registerForm="ngForm" [formGroup]="registerFormGroup" (ngSubmit)="onRegister(registerForm.value)">
           <div class="wrap-input">
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline me-2 ms-4">
-                  <input type="text" id="firstName" class="form-input mt-4" placeholder="Họ"/>
+                  <input formControlName="firstName" type="text" id="firstName" class="form-input mt-4"
+                         placeholder="Tên" autofocus/>
+                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="help-block mt-1">
+                    <div *ngIf="firstName.errors?.required" class="text-danger">
+                      Vui lòng nhập tên
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline me-4 ms-2 ">
-                  <input type="text" id="lastName" class="form-input mt-4" placeholder="Tên"/>
+                  <input formControlName="lastName" type="text" id="lastName" class="form-input mt-4" placeholder="Họ"/>
+                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="help-block mt-1">
+                    <div *ngIf="lastName.errors?.required" class="text-danger">
+                      Vui lòng nhập họ
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <!-- Email input -->
+            <!-- Usernameinput -->
             <div class="form-outline ms-4 me-4">
-              <input type="email" id="email-register" class="form-input" placeholder="Email"/>
+              <input formControlName="usernameRegister" type="text" id="usernameRegister" class="form-input"
+                     placeholder="Tên tài khoản"/>
+              <div *ngIf="usernameRegister.invalid && (usernameRegister.dirty || usernameRegister.touched)"
+                   class="help-block mt-1">
+                <div *ngIf="usernameRegister.errors?.required" class="text-danger">
+                  Vui lòng nhập tên tài khoản
+                </div>
+              </div>
             </div>
             <!-- Password input -->
+            <div class="form-outline ms-4 me-4 ">
+              <input formControlName="emailRegister" type="email" id="emailRegister" class="form-input mt-4"
+                     placeholder="Email"/>
+              <div *ngIf="emailRegister.invalid && (emailRegister.dirty || emailRegister.touched)"
+                   class="help-block mt-1">
+                <div *ngIf="emailRegister.errors?.required" class="text-danger">
+                  Vui lòng nhập email
+                </div>
+              </div>
+            </div>
+            <div class="form-outline ms-4 me-4 ">
+              <input formControlName="phone" type="text" class="form-input mt-4"
+                     placeholder="Số điện thoại"/>
+              <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                   class="help-block mt-1">
+                <div *ngIf="phone.errors?.required" class="text-danger">
+                  Vui lòng nhập số điện thoại
+                </div>
+              </div>
+            </div>
+            <div class="form-outline ms-4 me-4">
+              <input formControlName="passwordRegister" type="password" class="form-input mt-4"
+                     placeholder="Nhập mật khẩu"/>
+              <div *ngIf="passwordRegister.invalid && (passwordRegister.dirty || passwordRegister.touched)" class="help-block mt-1">
+                <div *ngIf="passwordRegister.errors?.required" class="text-danger">
+                  Vui lòng nhập mật khẩu
+                </div>
+              </div>
+            </div>
             <div class="form-outline ms-4 me-4 mb-4">
-              <input type="password" id="pass-register" class="form-input mt-4" placeholder="Mật khẩu"/>
+              <input formControlName="confirmPasswordRegister" type="password" class="form-input mt-4"
+                     placeholder=" Nhập lại Mật khẩu"/>
+              <div
+                *ngIf="confirmPasswordRegister.invalid && (confirmPasswordRegister.dirty || confirmPasswordRegister.touched)"
+                class="help-block mt-1">
+                <div *ngIf="confirmPasswordRegister.errors?.required" class="text-danger">
+                  Vui lòng nhập lại mật khẩu
+                </div>
+              </div>
             </div>
             <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-              <input class="form-check-input me-2" type="checkbox" value="" id="subcribe" checked/>
-              <label class="form-check-label" for="subcribe">Đăng ký để nhận thông báo</label>
-            </div>
             <div class="wrap-button">
-              <button type="submit" class="btn btn-primary btn-block mb-4">Đăng ký</button>
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                <span *ngIf="loading"><i *ngIf="loading" class="fa fa-spinner"></i> Loading...</span>
+                <span class="m-r-n-lg" *ngIf="!loading">Đăng ký</span>
+              </button>
             </div>
           </div>
         </form>

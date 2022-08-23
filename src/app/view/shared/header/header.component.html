@@ -7,7 +7,13 @@
       <div class="wrap-search d-flex">
         <input type="text" class="search-input" id="search" (keydown)="submitSearch($event)" placeholder="Tìm kiếm">
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-        <button [routerLink]="['/login']" class="user-button"><i class="fa-solid fa-user"></i></button>
+        <button [routerLink]="['/account']" class="user-button" style="position: relative">
+          <i class="fa-solid fa-user"></i>
+            <ul *ngIf="authenticationService.isLoggedIn()" class="dropdown-menu ">
+              <li><a class="dropdown-item" [routerLink]="['/account']">Người dùng</a></li>
+              <li><button class="dropdown-item" (click)="logout()">Đăng xuất</button>
+            </ul>
+        </button>
       </div>
     </div>
   </div>
@@ -29,9 +35,16 @@
         </li>
         <li class="nav-items ms-5">
           <a class="nav-link" [routerLink]="['/product/female']">Sản phẩm Nữ</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/home']">Trang chủ</a>
         </li>
         <li class="nav-items ms-5">
-          <a class="nav-link" href="/about" role>Giới thiệu</a>
+          <a class="nav-link" [routerLink]="['/product/male']">Sản phẩm Nam</a>
+        </li>
+        <li class="nav-items ms-5">
+          <a class="nav-link" [routerLink]="['/product/female']">Sản phẩm Nữ</a>
+        </li>
+        <li class="nav-items ms-5">
+          <a class="nav-link" [routerLink]="['/about']" role>Giới thiệu</a>
         </li>
       </ul>
     </div>
@@ -49,7 +62,7 @@
       <div class="owl-carousel2">
         <div class="item">
           <div class="col">
-            <div class="banner"><a class="text-banner" href="#">(25% off) Everything! Sử dụng Mã: Summer Sale</a>
+            <div class="banner"><a class="text-banner" href="#">(25% off) Everything! Chào mừng bạn đến với website</a>
             </div>
           </div>
         </div>

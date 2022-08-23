@@ -11,12 +11,14 @@ import {ProductDetailComponent} from "./view/page/product-detail/product-detail.
 import {CartComponent} from "./view/page/cart/cart.component";
 import {OrderCompleteComponent} from "./view/page/order-complete/order-complete.component";
 import {AccountComponent} from "./view/page/account/account.component";
-import {AddressComponent} from "./view/component/address/address.component";
+import {ChangePasswordComponent} from "./view/component/change-password/change-password.component";
 import {ProfileComponent} from "./view/component/profile/profile.component";
 import {OrderHistoryComponent} from "./view/component/order-history/order-history.component";
 import {NotFoundComponent} from "./view/page/error/not-found/not-found.component";
 import {ForbiddenComponent} from "./view/page/error/forbidden/forbidden.component";
 import {CheckoutComponent} from "./view/component/checkout/checkout.component";
+import {AuthenticationGuard} from "./guard/authentication.guard";
+import {OrderDetailHistoryComponent} from "./view/component/orderDetail-history/orderDetail-history.component";
 
 const routes: Routes = [
   {
@@ -25,22 +27,23 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
-      {path: 'login', component: LoginComponent},
       {path: 'product/:gender', component: ProductsComponent, data: {title: 'Sản phẩm', gender:'1'}},
       {path: 'product/search/:query', component: ProductsComponent, data: {title: 'Tìm kiếm', query:'1'}},
       {path: 'about', component: AboutUsComponent},
       {path: 'product/:gender/:id', component: ProductDetailComponent},
       {path: 'cart', component: CartComponent},
       {path: 'order-complete', component: OrderCompleteComponent},
-      {path: 'checkout', component: CheckoutComponent},
+      {path: 'checkout', component: CheckoutComponent, canActivate: [AuthenticationGuard],},
       {
         path: 'account',
         component: AccountComponent,
+        canActivate: [AuthenticationGuard],
         children: [
           {path: '', redirectTo: 'profile', pathMatch: 'full'},
-          {path: 'address', component: AddressComponent},
+          {path: 'change-password', component: ChangePasswordComponent},
           {path: 'profile', component: ProfileComponent},
-          {path: 'order-history', component: OrderHistoryComponent}
+          {path: 'order-history', component: OrderHistoryComponent},
+          {path: 'orderdetail-history', component: OrderDetailHistoryComponent},
         ]
       },
     ]
@@ -50,7 +53,8 @@ const routes: Routes = [
     component: FullWidthComponent,
     children: [
       {path: 'not-found', component: NotFoundComponent},
-      {path: 'forbidden', component: ForbiddenComponent}
+      {path: 'forbidden', component: ForbiddenComponent},
+      {path: 'login', component: LoginComponent},
     ]
   },
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'}

@@ -18,10 +18,11 @@ $on-click-color: #00c7b4;
     }
 
     .wrap-name {
+      padding-left:10px;
+      padding-right: 20px;
+      justify-content: center;
       .name {
-        font-size: 20px;
-        padding-left: 10px;
-        padding-top: 30px;
+        font-size: 18px;
       }
 
       .verify-account {

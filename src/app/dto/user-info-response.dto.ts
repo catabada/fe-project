@@ -6,7 +6,7 @@ export class UserInfoResponse {
   username: string
   email: string
   phone: string
-  appRoles: AppRole
+  appRole: AppRole
   lastName: string
   firstName: string
   dateOfBirth: Date
@@ -18,7 +18,7 @@ export class UserInfoResponse {
     dest.username = src.username
     dest.email = src.email
     dest.phone = src.phone
-    dest.appRoles = src.appRole
+    dest.appRole = src.appRole
     dest.lastName = src.userInfo.lastName
     dest.firstName = src.userInfo.firstName
     dest.dateOfBirth = src.userInfo.dateOfBirth

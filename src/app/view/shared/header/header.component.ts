@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthenticationService} from "../../../service/authentication.service";
 import {CartService} from "../../../service/cart.service";
 import {Router} from "@angular/router";
 
@@ -10,20 +12,21 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   quantityInCart: number
 
-  constructor(private cartService: CartService, private router: Router) { }
-
-  ngOnInit(): void {
-    if(this.cartService.getCartFromLocalStorage() == null) {
-      this.quantityInCart = 0
-    } else {
-      this.quantityInCart = this.cartService.getCartFromLocalStorage().length;
-    }
-  }
-
+  constructor(private router: Router, public authenticationService: AuthenticationService, private cartService: CartService) { }
+ 
   submitSearch($event: KeyboardEvent) {
     if($event.keyCode == 13) {
       this.router.navigate(['/product/search', jQuery('#search').val()!.toString().trim()])
     }
+
+  ngOnInit(): void {
+    let cart = this.cartService.getCartFromLocalStorage()
+    this.quantityInCart = cart ? cart.length : 0;
+  }
+
+  logout() {
+    this.authenticationService.logout()
+    this.router.navigate(['/home']).then(() => {})
   }
 
 }

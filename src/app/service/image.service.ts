@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {Brand} from "../model/brand.model";
 import {Observable} from "rxjs";
 
@@ -25,11 +25,15 @@ export class ImageService {
     return brands;
   }
 
-  getUserImage(image: string): any {
+  getUserImage(image: string): Observable<string> {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
-
+  
   getProductImageUrl(id: number): any {
     return this.storage.ref('/image/product/' + id + '.png').getDownloadURL()
+
+  saveUserImage(fileName: string, image: File): AngularFireUploadTask {
+    return this.storage.upload('/image/user/' + fileName, image)
+
   }
 }
