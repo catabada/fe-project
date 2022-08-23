@@ -1,11 +1,11 @@
 export class Ward {
   code: Number;
-  name: String;
-  division_type: String;
-  code_name: String;
-  district_code: String;
+  name: string;
+  division_type: string;
+  code_name: string;
+  district_code: string;
 
-  constructor(code: Number, name: String, divisionType: String, code_name: String, district_code: String) {
+  constructor(code: Number, name: string, divisionType: string, code_name: string, district_code: string) {
     this.code = code;
     this.name = name;
     this.division_type = divisionType;

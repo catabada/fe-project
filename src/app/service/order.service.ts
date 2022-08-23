@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AppBaseResult, AppServiceResult} from "../domain/app-result";
 import {Order, orders, orderStatuses} from "../model/order.model";
 import * as uuid from 'uuid';
@@ -8,6 +8,10 @@ import {AppError} from "../constant/app-error";
 import {OrderDto} from "../dto/order.dto";
 import {AddressService} from "./address.service";
 import {AuthenticationService} from "./authentication.service";
+import {AddressDto} from "../dto/address.dto";
+import {District} from "../model/district.model";
+import {Ward} from "../model/ward.model";
+import {Province} from "../model/province..model";
 
 
 @Injectable({
@@ -15,9 +19,10 @@ import {AuthenticationService} from "./authentication.service";
 })
 export class OrderService {
 
-  constructor(private addressService: AddressService, private authenticationService: AuthenticationService) { }
+  constructor(private addressService: AddressService, private authenticationService: AuthenticationService) {
+  }
 
-  createOrder(orderCreate: OrderCreate) : Observable<AppBaseResult> {
+  createOrder(orderCreate: OrderCreate): Observable<AppBaseResult> {
     return new Observable<AppBaseResult>(observer => {
       let order: Order = {
         id: orders.length + 1,
@@ -48,9 +53,29 @@ export class OrderService {
       }
 
       let userInfoResponse = this.authenticationService.getUserInfoFromLocalStorage();
-      let addressDto = this.addressService.getAddress(order.address);
+      let ward: Ward, district: District, province: Province;
+      this.addressService.getWardDepth1(order.address.wardCode).subscribe(wardRes => {
+        ward = wardRes;
+        this.addressService.getDistrictDepth1(order.address.districtCode).subscribe(districtRes => {
+          district = districtRes;
+          this.addressService.getProvinceDepth1(district!.province_code).subscribe(provinceRes => {
+            province = provinceRes;
 
-      observer.next(new AppServiceResult<OrderDto | null>(true, 0, 'Success', OrderDto.createFromEntity(order, userInfoResponse, addressDto)));
+            let addressDto: AddressDto = {
+              id: order.address.id,
+              province: province!.name,
+              district: district!.name,
+              ward: ward!.name,
+              street: order.address.street,
+              apartment: order.address.apartment,
+            };
+
+            let orderDto = OrderDto.createFromEntity(order, userInfoResponse, addressDto);
+
+            observer.next(new AppServiceResult<OrderDto | null>(true, 0, 'Success', orderDto));
+          })
+        })
+      })
     })
   }
 
