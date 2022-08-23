@@ -19,16 +19,16 @@
       <tbody>
       <tr *ngFor="let cartItem of cart">
         <th class="detail">
-          <img src="/assets/image/cart-item-1.jpg" alt="" class="image">
+<!--          <img src="{{}}" alt="" class="image">-->
           <p class="name">{{cartItem!.productDetailDto!.name}} </p>
         </th>
-        <th class="price">{{cartItem!.productDetailDto!.unitPrice}}đ</th>
+        <th class="price">{{formatVND(cartItem!.productDetailDto!.unitPrice)}}</th>
         <th class="quantity">
           <input
             (change) = "onChangeQuantity($event, cartItem.productDetailDto.id)"
             type="number" name="quantity" value="{{cartItem!.quantity}}"  min="1">
         </th>
-        <th class="total">{{cartItem!.productDetailDto!.unitPrice * cartItem!.quantity}}đ</th>
+        <th class="total">{{formatVND(cartItem!.productDetailDto!.unitPrice * cartItem!.quantity)}}</th>
         <th class="remove"
             (click) = "removeCartItem($event, cartItem.productDetailDto.id)"
         ><i class="fas fa-times"></i></th>
@@ -39,25 +39,14 @@
     <div class="total-cart">
       <div class="row">
         <div class="col-md-4 offset-md-8 total-cart--wrapper">
-          <div class="row sub-total">
-            <p class="col-md-6">Tổng tiền:</p>
-            <p class="col-md-6">1.000.000đ</p>
-          </div>
-          <div class="row delivery">
-            <p class="col-md-6">Phí vận chuyển:</p>
-            <p class="col-md-6">0đ</p>
-          </div>
-          <div class="row discount">
-            <p class="col-md-6">Giảm giá:</p>
-            <p class="col-md-6">0đ</p>
-          </div>
-          <hr>
           <div class="row total">
             <p class="col-md-6">Tổng tiền tất cả:</p>
-            <p class="col-md-6">1.000.000đ</p>
+            <p id="totalPrice" class="col-md-6">{{formatVND(totalPriceInCart())}}</p>
           </div>
           <div class="row btn-checkout mt-2">
-            <button class="btn btn-primary">Thanh toán</button>
+            <button
+              (click) = "onCheckout()"
+              class="btn btn-primary">Thanh toán</button>
           </div>
         </div>
       </div>

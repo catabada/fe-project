@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../../../service/product.service";
+import {ImageService} from "../../../service/image.service";
+import {AppUtil} from "../../../util/app-util";
 
 @Component({
   selector: 'product-card',
@@ -9,14 +11,18 @@ import {ProductService} from "../../../service/product.service";
 export class ProductCardComponent implements OnInit {
   @Input() gender: string;
   @Input() product: any;
-  lowestPrice: number
+  lowestPrice: string
+  imageUrl: string
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private imageService: ImageService) {
   }
 
   ngOnInit(): void {
     this.productService.getLowestPrice(this.product.id).subscribe(price => {
-      this.lowestPrice = price
+      this.lowestPrice = AppUtil.formatVND(price)
+    })
+    this.imageService.getProductImageUrl(this.product.id).subscribe((url: string) => {
+      this.imageUrl = url
     })
   }
 

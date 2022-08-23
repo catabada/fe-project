@@ -66,19 +66,33 @@ export class CartService {
       let cartItem = cart.find(x => x.productDetailDto.id == productDetailId)
       if (cartItem == null) {
         observer.next(new AppBaseResult(false, 1, 'Sản phẩm không tồn tại'))
-
         return
       }
 
       cart = cart.filter(x => x.productDetailDto.id != productDetailId)
       this.appUtilService.addToLocalStorage('cart', cart)
-      console.log(cart)
       observer.next(new AppBaseResult(true, 0, 'Xóa thành công'));
     });
   }
 
   getCartFromLocalStorage(): CartItem[] {
     return this.appUtilService.getFromLocalStorage('cart')
+  }
+
+  removeCartFromLocalStorage(): void {
+    this.appUtilService.removeFromLocalStorage('cart')
+  }
+
+  totalPrice(): number {
+    let cart: CartItem[] = this.getCartFromLocalStorage()
+    if (cart == null) {
+      return 0
+    }
+    let total = 0
+    cart.forEach(x => {
+      total += x.quantity * x.productDetailDto.unitPrice
+    } )
+    return total
   }
 
 }

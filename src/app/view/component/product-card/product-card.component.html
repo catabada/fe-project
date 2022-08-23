@@ -1,8 +1,8 @@
-<a href="/product/{{gender}}/{{product.id}}" class="product-card border">
-  <div class="product-image" [style.background-image]="'url(/assets/image/' + product.image + ')'">
+<a href="/product/{{product.gender.toLowerCase()}}/{{product.id}}" class="product-card border">
+  <div class="product-image" [style.background-image]="'url(' + imageUrl + ')'">
   </div>
   <div class="product-info text-center">
-    <div class="name">{{product.name}} ({{product.color}})</div>
-    <div class="price">{{lowestPrice | currency: "VND"}} </div>
+    <div class="name">{{product.name}} ({{product.color.name}})</div>
+    <div class="price">{{lowestPrice}} </div>
   </div>
 </a>

@@ -32,13 +32,13 @@ input[type=number] {
     overflow: hidden;
 
     .slides {
-      width: 400%;
+      width: 500%;
       display: flex;
       justify-content: center;
       align-items: center;
 
       .slide {
-        width: 25%;
+        width: 20%;
         transition: 1s;
 
         img {
@@ -60,15 +60,18 @@ input[type=number] {
       }
 
       #radio2:checked ~ .first {
-        margin-left: -50%;
+        margin-left: -40%;
       }
 
       #radio3:checked ~ .first {
-        margin-left: -100%;
+        margin-left: -80%;
       }
 
       #radio4:checked ~ .first {
-        margin-left: -150%;
+        margin-left: -120%;
+      }
+      #radio5:checked ~ .first {
+        margin-left: -160%;
       }
     }
   }

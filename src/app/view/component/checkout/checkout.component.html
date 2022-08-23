@@ -1,4 +1,5 @@
-<breadcrumb></breadcrumb>
+<breadcrumb
+></breadcrumb>
 <div class="check-out">
   <div class="container">
     <process
@@ -8,7 +9,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-md-4 order-md-2 mb-4 order-list">
+        <div class="col-md-5 order-md-2 mb-4 order-list">
           <div class="order-list--wrapper">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-muted">Giỏ hàng của bạn</span>
@@ -19,7 +20,7 @@
                   class="list-group-item  lh-condensed">
                 <div class="info-product">
                   <h6 class="my-0">{{checkoutItem?.productDetailDto?.name}}</h6>
-                  <span class="text-muted d-block">{{checkoutItem?.productDetailDto!.unitPrice  | currency: "VND"}}</span>
+                  <span class="text-muted d-block">{{formatVND(checkoutItem?.productDetailDto!.unitPrice)}}</span>
                 </div>
                 <div class="quantity">
                   <h6 class="my-0">Số lượng</h6>
@@ -28,21 +29,29 @@
               </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Tổng cộng (VND)</span>
-                <strong>{{totalPrice()}}</strong>
+                <strong>{{formatVND(totalPrice())}}</strong>
               </li>
             </ul>
           </div>
 
         </div>
-        <div class="col-md-8 order-md-1 form-check-out">
+        <div class="col-md-7 order-md-1 form-check-out">
           <div class="form-check-out--wrapper">
             <h4 class="mb-3">Đơn đặt hàng</h4>
-            <form #checkoutForm="ngForm" [formGroup]="checkoutFormGroup" class="needs-validation" novalidate="">
+            <form #checkoutForm="ngForm"
+                  [formGroup]="checkoutFormGroup"
+                  (ngSubmit)="onSubmit(checkoutForm.value)"
+                  class="needs-validation" >
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="firstName">Tên của bạn</label>
                   <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder=""
-                         value="" required="">
+                         required>
+                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="help-block mt-1">
+                    <div *ngIf="firstName.errors?.required" class="text-danger">
+                      Vui lòng nhập tên của bạn
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Valid first name is required.
                   </div>
@@ -50,7 +59,12 @@
                 <div class="col-md-6 mb-3">
                   <label for="lastName">Họ của bạn</label>
                   <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder=""
-                         value="" required="">
+                         value="" required>
+                  <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="help-block mt-1">
+                    <div *ngIf="lastName.errors?.required" class="text-danger">
+                      Vui lòng nhập họ của bạn
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Valid last name is required.
                   </div>
@@ -59,8 +73,16 @@
 
               <div class="mb-3">
                 <label for="phone">Số điện thoại của bạn</label>
-                <input formControlName="phoneNumber" type="text" class="form-control" id="phone"
+                <input formControlName="phone" type="text" class="form-control" id="phone"
                        placeholder="0908xxxix">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="help-block mt-1">
+                  <div *ngIf="phone.errors?.required" class="text-danger">
+                    Vui lòng nhập số điện thoại
+                  </div>
+                  <div *ngIf="phone.errors?.pattern" class="text-danger">
+                    Số điện thoại không hợp lệ
+                  </div>
+                </div>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -68,7 +90,18 @@
               <div class="mb-3">
                 <label for="email">Email</label>
                 <input type="email" formControlName="email" class="form-control" id="email"
-                       placeholder="you@example.com">
+                       placeholder="you@example.com"
+                       email
+                       ngModel
+                >
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="help-block mt-1">
+                  <div *ngIf="email.errors?.required" class="text-danger">
+                    Vui lòng nhập email
+                  </div>
+                  <div *ngIf="phone.errors?.email || phone.errors?.pattern" class="text-danger">
+                    Email không hợp lệ
+                  </div>
+                </div>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -85,6 +118,11 @@
                   >
                     <option *ngFor="let province of provinces" [value]="province.code">{{province.name}}</option>
                   </select>
+                  <div *ngIf="province.invalid && (province.dirty || province.touched)" class="help-block mt-1">
+                    <div *ngIf="province.errors?.required" class="text-danger">
+                      Vui lòng chọn tỉnh/thành phố
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
@@ -99,6 +137,11 @@
                     class="custom-select d-block w-100" id="district" required>
                     <option *ngFor="let district of districts" [value]="district.code">{{district.name}}</option>
                   </select>
+                  <div *ngIf="district.invalid && (district.dirty || district.touched)" class="help-block mt-1">
+                    <div *ngIf="district.errors?.required" class="text-danger">
+                      Vui lòng chọn quận/huyện
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Please provide a valid state.
                   </div>
@@ -111,6 +154,11 @@
                     class="custom-select d-block w-100" id="ward" required>
                     <option *ngFor="let ward of wards" [value]="ward.code">{{ward.name}}</option>
                   </select>
+                  <div *ngIf="ward.invalid && (ward.dirty || ward.touched)" class="help-block mt-1">
+                    <div *ngIf="ward.errors?.required" class="text-danger">
+                      Vui lòng nhập chọn phường/xã
+                    </div>
+                  </div>
                   <div class="invalid-feedback">
                     Please provide a valid state.
                   </div>
@@ -120,17 +168,25 @@
                   <input
                     formControlName="street"
                     type="text" class="form-control" id="street" placeholder="" required>
+                  <div *ngIf="street.invalid && (street.dirty || street.touched)" class="help-block mt-1">
+                    <div *ngIf="street.errors?.required" class="text-danger">
+                      Vui lòng nhập tên đường
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                  <label for="apartment-number">Số nhà</label>
+                  <label for="apartment">Số nhà</label>
                   <input
-                    formControlName="apartmentNumber"
-                    type="text" class="form-control" id="apartment-number" placeholder="" required>
+                    formControlName="apartment"
+                    type="text" class="form-control" id="apartment" placeholder="" required>
+                  <div *ngIf="apartment.invalid && (apartment.dirty || apartment.touched)" class="help-block mt-1">
+                    <div *ngIf="apartment.errors?.required" class="text-danger">
+                      Vui lòng nhập nhập số nhà
+                    </div>
+                  </div>
                 </div>
               </div>
               <hr class="mb-4">
-
-
               <button class="btn btn-primary btn-lg btn-block" type="submit">Tiếp tục thanh toán</button>
             </form>
           </div>

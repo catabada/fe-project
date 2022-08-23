@@ -4,31 +4,8 @@
     <div class="row">
       <div class="col col-xl-12">
         <div class="image" style="background-image: url('../../../../assets/image/bc-women.jpg')">
-          <h2 class="">Women's</h2>
+          <h2 class="">{{gender == 'female' ? 'Sản phẩm nữ' : 'Sản phẩm nam'}}</h2>
         </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<div class="menu">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="list">
-          <li class="item">
-            <a href="" class="link">Sản phẩm mới</a>
-          </li>
-          <li class="item">
-            <a href="" class="link">Được mua nhiều nhất</a>
-          </li>
-          <li class="item">
-            <a href="" class="link">Đa dạng lựa chọn</a>
-          </li>
-          <li class="item">
-            <a href="" class="link">Giảm giá</a>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
@@ -38,11 +15,22 @@
     <h2 class="title text-center">Tất cả sản phẩm</h2>
     <div class="row">
       <div class="col col-xl-3">
-        <filter></filter>
+        <filter
+          (currentTypes)= "changeType($event)"
+          (currentBrands)= "changeBrand($event)"
+          (currentColors)= "changeColor($event)"
+          (currentSort)= "sort($event)"
+        ></filter>
       </div>
       <div class="col col-xl-9">
         <div class="products">
-          <product-list></product-list>
+          <product-list
+            [gender] ="gender"
+            [currentTypes]="currentTypes"
+            [currentBrands]="currentBrands"
+            [currentColors]="currentColors"
+            [currentSort]="currentSort"
+          ></product-list>
         </div>
       </div>
     </div>

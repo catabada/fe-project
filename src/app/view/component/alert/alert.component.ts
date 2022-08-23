@@ -11,4 +11,5 @@ export class AlertComponent {
   message: string | null = null;
 
   constructor(public notificationRef: MdbNotificationRef<AlertComponent>) {}
+
 }
