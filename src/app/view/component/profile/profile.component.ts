@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MdbNotificationRef, MdbNotificationService} from "mdb-angular-ui-kit/notification";
 import {AlertComponent} from "../alert/alert.component";
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   notificationRef: MdbNotificationRef<AlertComponent> | null = null;
 
   user: UserInfoResponse
+  @Output() imageUrl: string
   dateOfBirthFormat: string
 
   private subscriptions: Subscription[] = [];
@@ -38,6 +39,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     // get user info from local storage
     this.user = this.authenticationService.getUserInfoFromLocalStorage()
+    this.imageService.getUserImage(this.authenticationService.getLoggedInAvatar()).subscribe(url => this.imageUrl = url)
     this.dateOfBirthFormat = new DatePipe('en-US').transform(this.user.dateOfBirth, 'yyyy-MM-dd')!
 
     this.saveProfileFormGroup = this.formBuilder.group({
@@ -93,21 +95,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
     if (this.uploadImageFormGroup.valid) {
       this.imageLoading = true;
       // this.btnUpload.nativeElement.textContent = 'Đang tải lên...'
-      let user = this.authenticationService.getUserInfoFromLocalStorage()
-      this.subscriptions.push(this.appUserService.uploadImage(id, user.image, event.target.files[0])
-        .subscribe((response: any) => {
-          if (response.success) {
-            this.authenticationService.addUserInfoToLocalStorage(response.data)
-            this.openAlert(response.success, response.message)
-            this.imageService.getUserImage(response.data.image)
-              .pipe(finalize(() => { this.imageLoading = false }))
-              .subscribe((url: any) => {
-                this.authenticationService.setLoggedInAvatar(url)
-                // this.btnUpload.nativeElement.textContent = 'Chọn ảnh'
+      this.subscriptions.push(this.appUserService.uploadImage(id, this.user.image, event.target.files[0]).subscribe(response => {
+        if (response.success) {
+          this.imageService.getUserImage(this.authenticationService.getLoggedInAvatar())
+            .pipe(finalize(() => {
+              this.imageLoading = false
+              this.openAlert(response.success, response.message)
+              this.router.navigate(['/']).then(() => {
+                this.router.navigate(['/account/profile']).then(() => {})
               })
-          } else this.openAlert(response.success, response.message)
-        })
-      );
+            }))
+            .subscribe(url => this.imageUrl = url)
+        } else this.openAlert(response.success, response.message)
+      }));
     }
   }
 

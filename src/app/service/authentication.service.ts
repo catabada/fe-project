@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import {Injectable} from '@angular/core'
 import {AppUser, appUsers} from "../model/user.model"
 import {Observable} from "rxjs"
 import {AppServiceResult} from "../domain/app-result"
@@ -16,7 +16,8 @@ export class AuthenticationService {
   private loggedInUsername: string
   private loggedInAvatar: string
 
-  constructor(private appUtilService: AppUtilService, private imageService: ImageService) { }
+  constructor(private appUtilService: AppUtilService, private imageService: ImageService) {
+  }
 
   login(user: AppUser): Observable<AppServiceResult<any>> {
     return new Observable<AppServiceResult<any>>(observer => {
@@ -35,19 +36,22 @@ export class AuthenticationService {
     })
   }
 
-  isLoggedIn(): boolean {
+  isLoggedIn(): any {
     let userInfo = this.getUserInfoFromLocalStorage()
     if (userInfo) {
       this.loggedInUsername = userInfo.username
-      this.imageService.getUserImage(userInfo.image).subscribe((url: any) => { this.loggedInAvatar = url })
+      this.loggedInAvatar = userInfo.image
       return true
     }
+
     this.logout()
     return false
   }
 
   logout(): void {
     this.appUtilService.removeFromLocalStorage('user')
+    this.loggedInUsername = ''
+    this.loggedInAvatar = ''
   }
 
   addUserInfoToLocalStorage(user: UserInfoResponse) {
@@ -61,20 +65,18 @@ export class AuthenticationService {
   roleMatch(role: AppRole): boolean {
     let isMatch = false
     const userInfo = this.getUserInfoFromLocalStorage()
-    if (userInfo.appRole.name === role.name) { isMatch = true }
+    if (userInfo.appRole.name === role.name) {
+      isMatch = true
+    }
     return isMatch
   }
 
-  public getLoggedInUsername(): string {
-    return this.loggedInUsername
-  }
-
-  public getLoggedInAvatar(): string {
+  public getLoggedInAvatar(): any {
     return this.loggedInAvatar
   }
 
-  public setLoggedInAvatar(url: string) {
-    this.loggedInAvatar = url
+  public setLoggedInAvatar(image: string) {
+    this.loggedInAvatar = image
   }
 
   hashPassword(password: string): string {

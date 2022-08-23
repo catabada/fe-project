@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFireStorage, AngularFireUploadTask} from "@angular/fire/compat/storage";
 import {Brand} from "../model/brand.model";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class ImageService {
     return brands;
   }
 
-  getUserImage(image: string): any {
+  getUserImage(image: string): Observable<string> {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
 

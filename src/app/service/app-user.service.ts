@@ -81,12 +81,16 @@ export class AppUserService {
     })
   }
 
-  public uploadImage(id: number, fileName: string, file: File): Observable<AppServiceResult<UserInfoResponse>> {
-    return new Observable<AppServiceResult<UserInfoResponse>>(observer => {
+  public uploadImage(id: number, fileName: string, file: File): Observable<AppBaseResult> {
+    return new Observable<AppBaseResult>(observer => {
       this.imageService.saveUserImage(fileName, file).snapshotChanges()
         .pipe(finalize(() => {
           let user = appUsers.find(appUser => appUser.id === id)!
-          observer.next(new AppServiceResult<UserInfoResponse>(true, 0, "Cập nhật thành công", UserInfoResponse.createFromEntity(user)))
+          userInfos.find(userInfo => userInfo.id === user.userInfo.id)!.image = fileName
+          this.authenticationService.addUserInfoToLocalStorage(UserInfoResponse.createFromEntity(user))
+          this.authenticationService.setLoggedInAvatar(fileName)
+
+          observer.next(new AppBaseResult(true, 0, "Cập nhật thành công"))
         }))
         .subscribe(() => {
         })
