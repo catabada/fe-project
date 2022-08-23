@@ -5,6 +5,7 @@ $status: #e3e3e3;
 $sub-text-color: #bbb;
 $primary-color: #00c7b4;
 $black: #000000;
+$background-detail: #30a2c4;
 .order-list-tab {
   width: 1000px;
   background: $white;
@@ -19,22 +20,42 @@ $black: #000000;
     color: black;
   }
 }
+.wrap-order-component{
+  max-height: 500px;
+  overflow-y: auto;
 
+}
 .order-component {
   background: $white;
   margin-top: 10px;
-
   .status {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     padding-top: 10px;
+    padding-bottom: 10px;
     padding-right: 10px;
     border-bottom: 1px solid $border;
 
+    .wrap-item-detail {
+      padding: 4px 12px;
+      color: $primary-color;
+      font-size: 15px;
+
+      .status-item-detail {
+        background-color: $background-detail;
+        color: $white;
+        padding: 4px 12px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+
     .status-detail {
+      margin-left: 10px;
       background-color: $status;
       padding: 4px 12px;
       border-radius: 100px;
+      color: black;
     }
   }
 

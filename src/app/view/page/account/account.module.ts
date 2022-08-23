@@ -11,6 +11,7 @@ import {MdbDatepickerModule} from "mdb-angular-ui-kit/datepicker";
 import {MdbRadioModule} from "mdb-angular-ui-kit/radio";
 import {OrderHistoryComponent} from "../../component/order-history/order-history.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {OrderDetailHistoryComponent} from "../../component/orderDetail-history/orderDetail-history.component";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ChangePasswordComponent,
     ProfileComponent,
     OrderHistoryComponent,
+    OrderDetailHistoryComponent
   ],
   imports: [
     CommonModule,

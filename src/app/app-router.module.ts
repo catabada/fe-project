@@ -18,6 +18,7 @@ import {NotFoundComponent} from "./view/page/error/not-found/not-found.component
 import {ForbiddenComponent} from "./view/page/error/forbidden/forbidden.component";
 import {CheckoutComponent} from "./view/component/checkout/checkout.component";
 import {AuthenticationGuard} from "./guard/authentication.guard";
+import {OrderDetailHistoryComponent} from "./view/component/orderDetail-history/orderDetail-history.component";
 
 const routes: Routes = [
   {
@@ -41,7 +42,8 @@ const routes: Routes = [
           {path: '', redirectTo: 'profile', pathMatch: 'full'},
           {path: 'change-password', component: ChangePasswordComponent},
           {path: 'profile', component: ProfileComponent},
-          {path: 'order-history', component: OrderHistoryComponent}
+          {path: 'order-history', component: OrderHistoryComponent},
+          {path: 'orderdetail-history', component: OrderDetailHistoryComponent},
         ]
       },
     ]
