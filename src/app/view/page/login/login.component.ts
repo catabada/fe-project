@@ -145,6 +145,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
       this.router.navigate([uri]));
   }
+
 //Login form
   get username(): AbstractControl {
     return this.loginFormGroup.get('username') as AbstractControl;

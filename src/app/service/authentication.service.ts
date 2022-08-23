@@ -70,6 +70,9 @@ export class AuthenticationService {
     }
     return isMatch
   }
+  getLoggedInUsername(): string {
+    return this.loggedInUsername
+  }
 
   public getLoggedInAvatar(): any {
     return this.loggedInAvatar

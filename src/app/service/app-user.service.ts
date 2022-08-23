@@ -16,7 +16,7 @@ import {AuthenticationService} from "./authentication.service";
 })
 export class AppUserService {
 
-  constructor(private imageService: ImageService , private authenticationService: AuthenticationService) {
+  constructor(private imageService: ImageService, private authenticationService: AuthenticationService) {
 
   }
 
@@ -99,20 +99,21 @@ export class AppUserService {
 
   public changePassword(data: ChangePassword): Observable<AppBaseResult> {
     return new Observable<AppBaseResult>(observer => {
-      let appUser = appUsers.find(appUser => appUser.username === data.username);
-      if (!appUser) {
-        observer.error('Tài khoản không tồn tại')
-        return
-      }
+        let appUser = appUsers.find(appUser => appUser.username === this.authenticationService.getLoggedInUsername());
+        if (appUser == null) {
+          observer.next(new AppBaseResult(false, 0, "Tài khoản không tồn tại"))
+          return
+        }
 
-      if (appUser.password !== data.oldPassword) {
-        observer.error('Mật khẩu không chính xác')
-        return
-      }
+        if ((appUser.password) !== this.authenticationService.hashPassword(data.oldPassword)) {
+          observer.next(new AppBaseResult(false, 0, "Mật khẩu cũ không đúng"))
+        }
 
-      appUser.password = data.newPassword
-      observer.next(AppBaseResult.generateIsSuccess())
-    })
+        appUsers.find(appUser => appUser.username === this.authenticationService.getLoggedInUsername())!.password = this.authenticationService.hashPassword(data.newPassword)
+
+        observer.next(new AppBaseResult(true, 0, "Đổi mật khẩu thành công"))
+      }
+    )
   }
 
   public createUserFormData(userId: number, loggedInUsername: string, user: UserInfo): FormData {
