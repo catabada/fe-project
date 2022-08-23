@@ -37,7 +37,7 @@
       <mdb-tab title="Đăng ký">
         <form #registerForm="ngForm" [formGroup]="registerFormGroup" (ngSubmit)="onRegister(registerForm.value)">
           <div class="wrap-input">
-            <div class="row mb-4">
+            <div class="row mb-2">
               <div class="col">
                 <div class="form-outline me-2 ms-4">
                   <input formControlName="firstName" type="text" id="firstName" class="form-input mt-4"
@@ -50,7 +50,7 @@
                 </div>
               </div>
               <div class="col">
-                <div class="form-outline me-4 ms-2 ">
+                <div class="form-outline me-4 ">
                   <input formControlName="lastName" type="text" id="lastName" class="form-input mt-4" placeholder="Họ"/>
                   <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="help-block mt-1">
                     <div *ngIf="lastName.errors?.required" class="text-danger">
@@ -73,7 +73,7 @@
             </div>
             <!-- Password input -->
             <div class="form-outline ms-4 me-4 ">
-              <input formControlName="emailRegister" type="email" id="emailRegister" class="form-input mt-4"
+              <input formControlName="emailRegister" type="email" id="emailRegister" class="form-input mt-2"
                      placeholder="Email"/>
               <div *ngIf="emailRegister.invalid && (emailRegister.dirty || emailRegister.touched)"
                    class="help-block mt-1">
@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="form-outline ms-4 me-4 ">
-              <input formControlName="phone" type="text" class="form-input mt-4"
+              <input formControlName="phone" type="text" class="form-input mt-2"
                      placeholder="Số điện thoại"/>
               <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
                    class="help-block mt-1">
@@ -93,7 +93,7 @@
               </div>
             </div>
             <div class="form-outline ms-4 me-4">
-              <input formControlName="passwordRegister" type="password" class="form-input mt-4"
+              <input formControlName="passwordRegister" type="password" class="form-input mt-2"
                      placeholder="Nhập mật khẩu"/>
               <div *ngIf="passwordRegister.invalid && (passwordRegister.dirty || passwordRegister.touched)" class="help-block mt-1">
                 <div *ngIf="passwordRegister.errors?.required" class="text-danger">
@@ -102,7 +102,7 @@
               </div>
             </div>
             <div class="form-outline ms-4 me-4 mb-4">
-              <input formControlName="confirmPasswordRegister" type="password" class="form-input mt-4"
+              <input formControlName="confirmPasswordRegister" type="password" class="form-input mt-2"
                      placeholder=" Nhập lại Mật khẩu"/>
               <div
                 *ngIf="confirmPasswordRegister.invalid && (confirmPasswordRegister.dirty || confirmPasswordRegister.touched)"
@@ -114,7 +114,7 @@
             </div>
             <!-- Checkbox -->
             <div class="wrap-button">
-              <button type="submit" class="btn btn-primary btn-block mb-4">
+              <button type="submit" class="btn btn-primary btn-block">
                 <span *ngIf="loading"><i *ngIf="loading" class="fa fa-spinner"></i> Loading...</span>
                 <span class="m-r-n-lg" *ngIf="!loading">Đăng ký</span>
               </button>
