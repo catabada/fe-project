@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
   cart: CartItem[];
 
   popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
-  productImages: string[] = []
+  productImages: Map<number, string> = new Map<number, string>();
 
   constructor(private cartService: CartService,
               private router: Router, private route: ActivatedRoute,
@@ -83,13 +83,12 @@ export class CartComponent implements OnInit {
   }
 
   getProductImage() {
-   for(let i = 0; i < this.cart.length; i++) {
-     this.imageService.getProductImageUrl(this.cart[i].productDetailDto.productId).subscribe(
-       url => {
-         this.productImages.push(url);
-       }
-     )
-   }
+    for (let cartItem of this.cart) {
+      this.imageService.getProductImageUrlImage(cartItem.productDetailDto.image[0].imageUrl)
+        .subscribe(url => {
+        this.productImages.set(cartItem.productDetailDto.id, url)
+      })
+    }
   }
 
 }

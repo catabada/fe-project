@@ -20,4 +20,8 @@ export class ProductDetailService {
       observer.next(new AppServiceResult<ProductDetail>(false, 101, 'Không tìm thấy sản phẩm', productDetail));
     })
   }
+
+  decreaseQuantity(id: number, quantity: number) {
+    productDetails.find(productDetail => productDetail.id === id)!.unitInStock -= quantity;
+  }
 }

@@ -16,21 +16,19 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let cartItem of cart, let i = index">
+      <tr *ngFor="let cartItem of cart">
         <th class="detail">
-          <img src="{{productImages[i]}}" alt="" class="image">
-          <p class="name">{{cartItem!.productDetailDto!.name}} </p>
+          <img src="{{productImages.get(cartItem.productDetailDto.id)}}" alt="" class="image">
+          <p class="name">{{cartItem.productDetailDto.name}} </p>
         </th>
-        <th class="price">{{formatVND(cartItem!.productDetailDto!.unitPrice)}}</th>
+        <th class="price">{{formatVND(cartItem.productDetailDto.unitPrice)}}</th>
         <th class="quantity">
           <input
             (change) = "onChangeQuantity($event, cartItem.productDetailDto.id)"
-            type="number" name="quantity" value="{{cartItem!.quantity}}"  min="1">
+            type="number" name="quantity" value="{{cartItem.quantity}}"  min="1">
         </th>
-        <th class="total">{{formatVND(cartItem!.productDetailDto!.unitPrice * cartItem!.quantity)}}</th>
-        <th class="remove"
-
-            (click) = "openPopConfirm($event, cartItem.productDetailDto.id)"
+        <th class="total">{{formatVND(cartItem.productDetailDto.unitPrice * cartItem.quantity)}}</th>
+        <th class="remove" (click) = "openPopConfirm($event, cartItem.productDetailDto.id)"
         ><i class="fas fa-times"></i></th>
       </tr>
       </tbody>

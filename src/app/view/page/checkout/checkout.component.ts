@@ -60,6 +60,7 @@ export class CheckoutComponent implements OnInit {
     this.checkout = CheckoutComponent.getCheckoutFromSessionStorage()
 
     this.userInfoResponse = this.authenticationService.getUserInfoFromLocalStorage();
+    console.log(this.userInfoResponse)
 
     this.checkoutFormGroup = this.formBuilder.group({
       firstName: new FormControl(this.userInfoResponse.firstName, [
@@ -74,8 +75,7 @@ export class CheckoutComponent implements OnInit {
       ]),
       email: new FormControl(this.userInfoResponse.email, [
         Validators.required,
-        Validators.email,
-        Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+        Validators.email
       ]),
       province: new FormControl('Chọn tỉnh/thành phố', [
         Validators.required

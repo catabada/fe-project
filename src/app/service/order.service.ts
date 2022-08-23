@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AppBaseResult, AppServiceResult} from "../domain/app-result";
 import {Order, orders, orderStatuses} from "../model/order.model";
 import * as uuid from 'uuid';
-import {finalize, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {OrderCreate} from "../dto/order-create.dto";
 import {AppError} from "../constant/app-error";
 import {OrderDto} from "../dto/order.dto";
@@ -12,6 +12,7 @@ import {AddressDto} from "../dto/address.dto";
 import {District} from "../model/district.model";
 import {Ward} from "../model/ward.model";
 import {Province} from "../model/province..model";
+import {ProductDetailService} from "./product-detail.service";
 
 
 @Injectable({
@@ -19,7 +20,7 @@ import {Province} from "../model/province..model";
 })
 export class OrderService {
 
-  constructor(private addressService: AddressService, private authenticationService: AuthenticationService) {
+  constructor(private addressService: AddressService, private authenticationService: AuthenticationService, private productDetailService: ProductDetailService) {
   }
 
   getOrders(): Observable<Order[]> {
@@ -46,6 +47,11 @@ export class OrderService {
         status: orderStatuses[0]
       };
       orders.push(order);
+
+      for (let orderItem of order.orderItems) {
+        this.productDetailService.decreaseQuantity(orderItem.productDetail.id, orderItem.quantity);
+      }
+
       observer.next(new AppBaseResult(true, 0, 'Tạo đơn hàng thành công'));
     });
 

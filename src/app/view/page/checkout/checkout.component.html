@@ -87,11 +87,7 @@
               </div>
               <div class="mb-3">
                 <label for="email">Email</label>
-                <input type="email" formControlName="email" class="form-control" id="email"
-                       placeholder="you@example.com"
-                       email
-                       ngModel
-                >
+                <input type="email" formControlName="email" class="form-control" id="email" placeholder="you@example.com" email>
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="help-block mt-1">
                   <div *ngIf="email.errors?.required" class="text-danger">
                     Vui lòng nhập email

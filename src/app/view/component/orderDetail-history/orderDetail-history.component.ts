@@ -5,7 +5,6 @@ import {OrderDto} from "../../../dto/order.dto";
 import {AppUtil} from "../../../util/app-util";
 import {AddressDto} from "../../../dto/address.dto";
 import {ImageService} from "../../../service/image.service";
-import {finalize} from "rxjs";
 import {DatePipe} from "@angular/common";
 import {PopConfirmComponent} from "../pop-confirm/pop-confirm.component";
 import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
@@ -17,7 +16,7 @@ import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconf
 })
 export class OrderDetailHistoryComponent implements OnInit {
   order: OrderDto
-  images: string[]
+  images: Map<number, string> = new Map<number, string>()
 
   popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
 
@@ -31,16 +30,9 @@ export class OrderDetailHistoryComponent implements OnInit {
     this.orderService.getOrder(orderTrackingNumber as string).subscribe(response => {
       if (response.success) {
         this.order = response.data!
-        let images: string[] = []
         for (let orderItem of this.order.orderItems) {
-          this.imageService.getProductImageUrl(orderItem.productDetail.productId)
-            .pipe(finalize(() => {
-              if (images.length == this.order.orderItems.length) {
-                this.images = images
-              }
-            }))
-            .subscribe(url => {
-              images.push(url)
+          this.imageService.getProductImageUrlImage(orderItem.productDetail.image[0].imageUrl).subscribe(url => {
+              this.images.set(orderItem.productDetail.id, url)
             })
         }
       }
