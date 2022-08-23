@@ -1,29 +1,10 @@
-<div class="container-fluid my-3 py-3" id="hero">
-  <div class="flexslider">
-    <img src="/assets/image/img_bg_1.jpg" class="d-block w-100" alt="..."/>
-    <div class="container-fluid overlay">
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3 text-center slider-text">
-          <div class="slider-text-inner">
-            <div class="desc">
-              <h1 class="head-1"> Bộ sưu tập Nam </h1>
-              <p class="description"> </p>
-              <p><a [routerLink]="['/product/male']" class="btn btn-primary"> Xem sản phẩm</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
 <div class="container my-5 py-5">
   <section class="">
     <div class="row">
       <div class="col-lg-6 col-md-12 mb-6">
         <div class="bg-image hover-zoom ripple shadow-1-strong rounded-5" data-ripple-color="light">
           <img src="/assets/image/men.jpg" class="w-100" alt=""/>
-          <a href="#">
+          <a [routerLink]="['/product/male']" >
             <div class="mask" style="background-color: rgba(0, 0, 0, 0.3)">
               <div class="d-flex justify-content-start align-items-end h-100">
                 <h5 class="text-white m-4">Bộ Sưu Tập Sản Phẩm của Quý Ông</h5>
@@ -38,7 +19,7 @@
       <div class="col-lg-6 col-md-6 mb-6">
         <div class="bg-image hover-zoom ripple shadow-1-strong rounded-5" data-ripple-color="light">
           <img src="/assets/image/women.jpg" class="w-100" alt=""/>
-          <a href="#">
+          <a [routerLink]="['/product/female']">
             <div class="mask" style="background-color: rgba(0, 0, 0, 0.3)">
               <div class="d-flex justify-content-start align-items-end h-100">
                 <h5 class="text-white m-4">Bộ Sưu Tập Sản Phẩm của Phái Nữ</h5>

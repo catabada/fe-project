@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   submitSearch($event: KeyboardEvent) {
     if ($event.keyCode == 13) {
-      this.router.navigate(['/product/search', jQuery('#search').val()!.toString().trim()]).then()
+      let query = jQuery('#search').val()!.toString().trim();
+      this.router.navigate(['/product/search'], {queryParams: {query: query}}, ).then()
     }
   }
 

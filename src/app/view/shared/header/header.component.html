@@ -5,14 +5,17 @@
     </div>
     <div class="col col-xl-4" style="">
       <div class="wrap-search d-flex">
-        <input type="text" class="search-input" id="search" (keydown)="submitSearch($event)" placeholder="Tìm kiếm">
+        <form action="/product/search" method="get">
+          <input type="text" class="search-input" id="search" name="query" (keydown)="submitSearch($event)" placeholder="Tìm kiếm">
+        </form>
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
         <button [routerLink]="['/account']" class="user-button" style="position: relative">
           <i class="fa-solid fa-user"></i>
-            <ul *ngIf="authenticationService.isLoggedIn()" class="dropdown-menu ">
-              <li><a class="dropdown-item" [routerLink]="['/account']">Người dùng</a></li>
-              <li><button class="dropdown-item" (click)="logout()">Đăng xuất</button>
-            </ul>
+          <ul *ngIf="authenticationService.isLoggedIn()" class="dropdown-menu ">
+            <li><a class="dropdown-item" [routerLink]="['/account']">Người dùng</a></li>
+            <li>
+              <button class="dropdown-item" (click)="logout()">Đăng xuất</button>
+          </ul>
         </button>
       </div>
     </div>

@@ -11,13 +11,13 @@
         <div class="item-pic col-md-2"><img
           src="{{images.get(order.id)}}" alt=""
           class="image-product"></div>
-        <div class="item-info col-md-4">
+        <div class="item-info col-md-6">
           <div class="info-product">{{orderItem.productDetail.name}}</div>
           <div class="sub-info-product">
             <span class="filter">Phân loại hàng: <span class="filter-detail">{{orderItem.productDetail.size}}</span></span>
           </div>
         </div>
-        <div class="item-price col-md-3">{{formatVND(orderItem.unitPrice)}}</div>
+        <div class="item-price col-md-2">{{formatVND(orderItem.unitPrice)}}</div>
         <div class="item-quantity col-md-2"><span class="label-quantity">Số lượng: <span class="quantity">{{orderItem.quantity}}</span> </span>
         </div>
       </div>

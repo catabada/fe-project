@@ -83,18 +83,13 @@ export class CartComponent implements OnInit {
   }
 
   getProductImage() {
-    let productImages:string[] = []
-    for (let i = 0; i < this.cart.length; i++) {
-      this.imageService.getProductImageUrl(this.cart[i].productDetailDto.id)
-        .pipe(finalize(() => {
-          this.productImages[i] = productImages[i]
-        }))
-        .subscribe(
-        url => {
-          productImages.push(url)
-        }
-      )
-    }
+   for(let i = 0; i < this.cart.length; i++) {
+     this.imageService.getProductImageUrl(this.cart[i].productDetailDto.productId).subscribe(
+       url => {
+         this.productImages.push(url);
+       }
+     )
+   }
   }
 
 }

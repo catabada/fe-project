@@ -29,8 +29,8 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts(pageNum: number, types: number[], brands: number[], colors: number[], sort: number): Product[] {
-    if (this.gender === undefined) {
-      let query = this.route.snapshot.params['query']
+    if (this.gender === 'search') {
+      let query = this.route.snapshot.queryParams['query'];
       this.productService.getProductsByQueryAndFilter(query,types, brands, colors).subscribe((products: Product[]) => {
           this.products = products;
           this.products = this.sortProducts(this.products, sort);

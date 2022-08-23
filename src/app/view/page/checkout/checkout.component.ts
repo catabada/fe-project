@@ -160,6 +160,7 @@ export class CheckoutComponent implements OnInit {
           if (response.success) {
             sessionStorage.removeItem('checkout');
             this.cartService.removeCartFromLocalStorage()
+            jQuery('#quantityInCart').text('[0]')
             this.router.navigate(['/order-complete']).then()
           }
         }
