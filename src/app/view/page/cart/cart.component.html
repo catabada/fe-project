@@ -25,7 +25,9 @@
         <th class="quantity">
           <input
             (change) = "onChangeQuantity($event, cartItem.productDetailDto.id)"
-            type="number" name="quantity" value="{{cartItem.quantity}}"  min="1">
+            type="number" name="quantity" value="{{cartItem.quantity}}"
+            max="{{cartItem.productDetailDto.unitInStock}}"
+            min="1">
         </th>
         <th class="total">{{formatVND(cartItem.productDetailDto.unitPrice * cartItem.quantity)}}</th>
         <th class="remove" (click) = "openPopConfirm($event, cartItem.productDetailDto.id)"

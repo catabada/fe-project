@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
   }
 
   onChangeQuantity($event: any, productDetailId: number) {
-    let quantity = Number.parseInt(<string>jQuery('.quantity').find('input').val());
+    let quantity = Number.parseInt(<string>jQuery($event.target).val());
     this.cartService.updateQuantity(productDetailId, quantity).subscribe(
       response => {
         let cart = this.cartService.getCartFromLocalStorage();
@@ -55,6 +55,7 @@ export class CartComponent implements OnInit {
         let price = cartItem!.productDetailDto.unitPrice;
         let total = price * quantity;
         jQuery($event.target).parents('.quantity').siblings('.total').text(this.formatVND(total));
+        jQuery('#totalPrice').text(this.formatVND(this.totalPriceInCart()));
       })
   }
 
