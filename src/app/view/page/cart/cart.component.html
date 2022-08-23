@@ -18,7 +18,7 @@
       <tbody>
       <tr *ngFor="let cartItem of cart">
         <th class="detail">
-<!--          <img src="{{}}" alt="" class="image">-->
+          <img src="{{}}" alt="" class="image">
           <p class="name">{{cartItem!.productDetailDto!.name}} </p>
         </th>
         <th class="price">{{formatVND(cartItem!.productDetailDto!.unitPrice)}}</th>
@@ -29,7 +29,8 @@
         </th>
         <th class="total">{{formatVND(cartItem!.productDetailDto!.unitPrice * cartItem!.quantity)}}</th>
         <th class="remove"
-            (click) = "removeCartItem($event, cartItem.productDetailDto.id)"
+
+            (click) = "openPopConfirm($event, cartItem.productDetailDto.id)"
         ><i class="fas fa-times"></i></th>
       </tr>
       </tbody>

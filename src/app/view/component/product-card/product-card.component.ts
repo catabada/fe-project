@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from "../../../service/product.service";
 import {ImageService} from "../../../service/image.service";
 import {AppUtil} from "../../../util/app-util";
+import {Product} from "../../../model/product.model";
 
 @Component({
   selector: 'product-card',
@@ -10,7 +11,7 @@ import {AppUtil} from "../../../util/app-util";
 })
 export class ProductCardComponent implements OnInit {
   @Input() gender: string;
-  @Input() product: any;
+  @Input() product: Product;
   lowestPrice: string
   imageUrl: string
 

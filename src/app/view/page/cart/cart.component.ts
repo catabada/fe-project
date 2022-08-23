@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CartItem} from "../../../model/cart-item.model";
 import {CartService} from "../../../service/cart.service";
 import {CheckoutItem} from "../../../model/checkout-item.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ImageService} from "../../../service/image.service";
+import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
+import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
 
 @Component({
   selector: 'cart',
@@ -11,8 +12,14 @@ import {ImageService} from "../../../service/image.service";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cart: CartItem[] ;
-  constructor(private cartService: CartService, private router: Router, private route:ActivatedRoute) { }
+  cart: CartItem[];
+
+  popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
+
+  constructor(private cartService: CartService,
+              private router: Router, private route: ActivatedRoute,
+              private popconfirmService: MdbPopconfirmService) {
+  }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCartFromLocalStorage();
@@ -49,7 +56,7 @@ export class CartComponent implements OnInit {
       return new CheckoutItem(cartItem.productDetailDto, cartItem.quantity)
     })
     sessionStorage.setItem('checkout', JSON.stringify(checkout))
-      this.router.navigate(['/checkout'])
+    this.router.navigate(['/checkout']).then()
   }
 
   formatVND(price: number): string {
@@ -59,4 +66,13 @@ export class CartComponent implements OnInit {
   totalPriceInCart(): number {
     return this.cartService.totalPrice();
   }
+
+  openPopConfirm(event: Event, id: number) {
+    const target = event.target as HTMLElement;
+    this.popconfirmRef = this.popconfirmService.open(PopConfirmComponent, target, {popconfirmMode: 'modal', data: id});
+    this.popconfirmRef.onConfirm.subscribe(() => {
+      this.removeCartItem(event, id);
+    })
+  }
+
 }

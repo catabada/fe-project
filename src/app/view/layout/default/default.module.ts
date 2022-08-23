@@ -26,6 +26,7 @@ import {AccountModule} from "../../page/account/account.module";
 import {CartComponent} from "../../page/cart/cart.component";
 import {CheckoutComponent} from "../../page/checkout/checkout.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ProcessComponent,
     OrderCompleteComponent,
     AlertComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PopConfirmComponent
   ],
   imports: [
     SharedModule,

@@ -12,9 +12,11 @@ import {UserInfoResponse} from "../../../dto/user-info-response.dto";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {OrderService} from "../../../service/order.service";
 import {OrderCreate} from "../../../dto/order-create.dto";
-import {OrderItem, orders} from "../../../model/order.model";
+import {OrderItem} from "../../../model/order.model";
 import {Router} from "@angular/router";
 import {CartService} from "../../../service/cart.service";
+import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
+import {PopConfirmComponent} from "../../component/pop-confirm/pop-confirm.component";
 
 @Component({
   selector: 'checkout',
@@ -51,9 +53,12 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProvinces()
-    if (sessionStorage?.getItem('checkout')) {
-      this.checkout = CheckoutComponent.getCheckoutFromSessionStorage()
+    if (!sessionStorage.getItem('checkout')) {
+      this.router.navigate(['/home']).then()
     }
+
+    this.checkout = CheckoutComponent.getCheckoutFromSessionStorage()
+
     this.userInfoResponse = this.authenticationService.getUserInfoFromLocalStorage();
 
     this.checkoutFormGroup = this.formBuilder.group({
@@ -154,7 +159,7 @@ export class CheckoutComponent implements OnInit {
           if (response.success) {
             sessionStorage.removeItem('checkout');
             this.cartService.removeCartFromLocalStorage()
-            this.router.navigate(['/order-complete'])
+            this.router.navigate(['/order-complete']).then()
           }
         }
       )
