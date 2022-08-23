@@ -1,0 +1,8 @@
+{
+  "projectName": "fe-project",
+  "meta": {
+    "type": "frontend"
+  },
+  "packageManager": "npm",
+  "hash": "9b8a5851"
+}
