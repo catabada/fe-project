@@ -28,9 +28,10 @@ export class ImageService {
   getUserImage(image: string): Observable<string> {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
-  
+
   getProductImageUrl(id: number): any {
     return this.storage.ref('/image/product/' + id + '.png').getDownloadURL()
+  }
 
   saveUserImage(fileName: string, image: File): AngularFireUploadTask {
     return this.storage.upload('/image/user/' + fileName, image)

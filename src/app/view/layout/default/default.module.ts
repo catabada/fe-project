@@ -24,7 +24,7 @@ import {OrderCompleteComponent} from "../../page/order-complete/order-complete.c
 import {AlertComponent} from "../../component/alert/alert.component";
 import {AccountModule} from "../../page/account/account.module";
 import {CartComponent} from "../../page/cart/cart.component";
-import {CheckoutComponent} from "../../component/checkout/checkout.component";
+import {CheckoutComponent} from "../../page/checkout/checkout.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({

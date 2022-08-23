@@ -16,7 +16,7 @@ import {ProfileComponent} from "./view/component/profile/profile.component";
 import {OrderHistoryComponent} from "./view/component/order-history/order-history.component";
 import {NotFoundComponent} from "./view/page/error/not-found/not-found.component";
 import {ForbiddenComponent} from "./view/page/error/forbidden/forbidden.component";
-import {CheckoutComponent} from "./view/component/checkout/checkout.component";
+import {CheckoutComponent} from "./view/page/checkout/checkout.component";
 import {AuthenticationGuard} from "./guard/authentication.guard";
 import {OrderDetailHistoryComponent} from "./view/component/orderDetail-history/orderDetail-history.component";
 

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {CartService} from "../../../service/cart.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -13,11 +12,12 @@ export class HeaderComponent implements OnInit {
   quantityInCart: number
 
   constructor(private router: Router, public authenticationService: AuthenticationService, private cartService: CartService) { }
- 
+
   submitSearch($event: KeyboardEvent) {
-    if($event.keyCode == 13) {
+    if ($event.keyCode == 13) {
       this.router.navigate(['/product/search', jQuery('#search').val()!.toString().trim()])
     }
+  }
 
   ngOnInit(): void {
     let cart = this.cartService.getCartFromLocalStorage()
