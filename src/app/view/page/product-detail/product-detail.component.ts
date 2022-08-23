@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   product: Product
   productId: number;
   productDetail: ProductDetail
+  productImageUrls: string[] = []
 
   notificationRef: MdbNotificationRef<AlertComponent> | null;
 

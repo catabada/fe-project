@@ -28,4 +28,8 @@ export class ImageService {
   getUserImage(image: string): any {
     return this.storage.ref('/image/user/' + image).getDownloadURL()
   }
+
+  getProductImageUrl(id: number): any {
+    return this.storage.ref('/image/product/' + id + '.png').getDownloadURL()
+  }
 }
