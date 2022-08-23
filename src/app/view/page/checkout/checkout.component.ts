@@ -135,6 +135,7 @@ export class CheckoutComponent implements OnInit {
       orderItems = this.checkout.map(item => {
         return {
           productDetail: item.productDetailDto,
+          unitPrice: item.productDetailDto.unitPrice,
           quantity: item.quantity
         }
       })

@@ -8,6 +8,8 @@ $border-color: #e8e8e8;
 $sub-address-color: #0000008a;
 $border: #dadada;
 $sub-text-color: #bbb;
+$white: #ffffff;
+$background-detail: #30a2c4;
 .background {
   background-color: $white;
   width: 1000px;
@@ -20,6 +22,17 @@ $sub-text-color: #bbb;
 
     }
 
+    .status-item-detail {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $background-detail;
+      color: $white;
+      margin: 12px 4px;
+      padding: 0 12px;
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 
   .wrap-order-detail-history {

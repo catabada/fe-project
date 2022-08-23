@@ -43,7 +43,7 @@ const routes: Routes = [
           {path: 'change-password', component: ChangePasswordComponent},
           {path: 'profile', component: ProfileComponent},
           {path: 'order-history', component: OrderHistoryComponent},
-          {path: 'orderdetail-history', component: OrderDetailHistoryComponent},
+          {path: 'orderdetail-history/:orderTrackingNumber', component: OrderDetailHistoryComponent},
         ]
       },
     ]

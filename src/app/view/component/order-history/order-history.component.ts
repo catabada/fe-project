@@ -1,4 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from "../../../service/order.service";
+import {OrderDto} from "../../../dto/order.dto";
+import {finalize} from "rxjs";
+import {ImageService} from "../../../service/image.service";
+import {AddressService} from "../../../service/address.service";
+import {AddressDto} from "../../../dto/address.dto";
+import {AuthenticationService} from "../../../service/authentication.service";
+import {PopConfirmComponent} from "../pop-confirm/pop-confirm.component";
+import {MdbPopconfirmRef, MdbPopconfirmService} from "mdb-angular-ui-kit/popconfirm";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-history',
@@ -6,10 +16,85 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-history.component.scss']
 })
 export class OrderHistoryComponent implements OnInit {
+  orders: OrderDto[] = []
+  images: Map<number, string[]> = new Map<number, string[]>()
 
-  constructor() { }
+  popconfirmRef: MdbPopconfirmRef<PopConfirmComponent> | null = null;
 
-  ngOnInit(): void {
+  constructor(private orderService: OrderService, private imageService: ImageService,
+              private addressService: AddressService,
+              private authenticationService: AuthenticationService,
+              private popconfirmService: MdbPopconfirmService,
+              private router: Router) {
   }
 
+  ngOnInit(): void {
+    this.orderService.getOrders()
+      .subscribe((orders) => {
+        orders.forEach(order => {
+          this.addressService.getWardDepth1(order.address.wardCode)
+            .pipe(finalize(() => {}))
+            .subscribe(wardRes => {
+            this.addressService.getDistrictDepth1(order.address.districtCode).subscribe(districtRes => {
+              this.addressService.getProvinceDepth1(districtRes.province_code).subscribe(provinceRes => {
+                let addressDto: AddressDto = {
+                  id: order.address.id,
+                  province: provinceRes.name,
+                  district: districtRes.name,
+                  ward: wardRes.name,
+                  street: order.address.street,
+                  apartment: order.address.apartment,
+                };
+
+                for (let orderItem of order.orderItems) {
+                  this.imageService.getProductImageUrl(orderItem.productDetail.productId)
+                    .pipe(finalize(() => {
+                      console.log(this.images)
+                    }))
+                    .subscribe(url => {
+                      if (this.images.has(order.id)) {
+                        this.images.get(order.id)!.push(url)
+                      } else {
+                        this.images.set(order.id, [url])
+                      }
+                    })
+                }
+
+                this.orders.push(OrderDto.createFromEntity(order, this.authenticationService.getUserInfoFromLocalStorage(), addressDto));
+              })
+            })
+          })
+        });
+    })
+  }
+
+  formatVND(price: number): string {
+    return price.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'});
+  }
+
+  cancelOrder(orderTrackingNumber: string) {
+    this.orderService.cancelOrder(orderTrackingNumber)
+      .subscribe(response => {
+        if (response.success) {
+          this.router.navigate(['/']).then(() => {
+              this.router.navigate(['/account/order-history']).then();
+            }
+          )
+        }
+      })
+  }
+
+  openPopConfirm(event: Event, orderTrackingNumber: string) {
+    const target = event.target as HTMLElement;
+    this.popconfirmRef = this.popconfirmService.open(PopConfirmComponent, target, {popconfirmMode: 'modal', data: {
+      title: 'Xác nhận hủy đơn hàng',
+      message: 'Bạn có chắc chắn muốn hủy đơn hàng này không?',
+      confirmText: 'Xác nhận',
+      cancelText: 'Hủy',
+      orderTrackingNumber: orderTrackingNumber
+    }});
+    this.popconfirmRef.onConfirm.subscribe(() => {
+      this.cancelOrder(orderTrackingNumber);
+    })
+  }
 }

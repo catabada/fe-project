@@ -75,6 +75,7 @@ any
         .subscribe((response: any) => {
             if (response.success) {
               this.openAlert(response.success, response.message);
+              this.authenticationService.logout()
               this.redirectTo('/');
             } else this.openAlert(false, response.message);
           }

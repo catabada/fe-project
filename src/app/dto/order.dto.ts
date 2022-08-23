@@ -30,7 +30,7 @@ export class OrderDto {
     dest.createdAt = src.createdAt;
     dest.shippingDate = src.shippingDate;
     dest.completedAt = src.completedAt;
-    dest.canceledAt = src.canceledAt;
+    dest.canceledAt = src.cancelledAt;
     dest.status = src.status;
     return dest;
   }

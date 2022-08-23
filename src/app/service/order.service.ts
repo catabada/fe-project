@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AppBaseResult, AppServiceResult} from "../domain/app-result";
 import {Order, orders, orderStatuses} from "../model/order.model";
 import * as uuid from 'uuid';
-import {Observable} from "rxjs";
+import {finalize, Observable} from "rxjs";
 import {OrderCreate} from "../dto/order-create.dto";
 import {AppError} from "../constant/app-error";
 import {OrderDto} from "../dto/order.dto";
@@ -22,6 +22,12 @@ export class OrderService {
   constructor(private addressService: AddressService, private authenticationService: AuthenticationService) {
   }
 
+  getOrders(): Observable<Order[]> {
+    return new Observable<Order[]>(observer => {
+      observer.next(orders);
+    })
+  }
+
   createOrder(orderCreate: OrderCreate): Observable<AppBaseResult> {
     return new Observable<AppBaseResult>(observer => {
       let order: Order = {
@@ -36,7 +42,7 @@ export class OrderService {
         createdAt: new Date(),
         shippingDate: null,
         completedAt: null,
-        canceledAt: null,
+        cancelledAt: null,
         status: orderStatuses[0]
       };
       orders.push(order);
@@ -87,7 +93,7 @@ export class OrderService {
       }
 
       orders.find(o => o.orderTrackingNumber === orderTrackingNumber)!.status = orderStatuses[3];
-      orders.find(o => o.orderTrackingNumber === orderTrackingNumber)!.canceledAt = new Date();
+      orders.find(o => o.orderTrackingNumber === orderTrackingNumber)!.cancelledAt = new Date();
       observer.next(new AppBaseResult(true, 0, 'Hủy đơn hàng thành công'));
     }).pipe();
   }
