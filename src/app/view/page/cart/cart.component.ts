@@ -52,7 +52,7 @@ export class CartComponent implements OnInit {
         let cartItem = cart.find(cartItem => cartItem.productDetailDto.id === productDetailId);
         let price = cartItem!.productDetailDto.unitPrice;
         let total = price * quantity;
-        jQuery($event.target).parents('.quantity').siblings('.total').text(total + 'đ');
+        jQuery($event.target).parents('.quantity').siblings('.total').text(this.formatVND(total));
       })
   }
 
