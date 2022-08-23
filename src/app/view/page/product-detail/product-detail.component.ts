@@ -40,6 +40,12 @@ export class ProductDetailComponent implements OnInit {
       (product: Product) => {
         this.product = product;
         this.productDetail = this.product.productDetails[0];
+
+        for (let productDetail of product.productDetails) {
+          this.imageService.getProductImageUrl(product.id).subscribe((url: string) => {
+            this.productImageUrls.push(url)
+          })
+        }
       }
     );
   }

@@ -2,15 +2,21 @@
   <div class="container">
     <div class="row">
       <div class="col col-xl-12">
-        <p class="bread">
+        <div class="bread d-flex">
   <span>
-    <a href="" class="">Trang chủ</a>
+    <a href="" class="">Trang chủ /</a>
+  </span>
+  <div *ngIf="gender === 'search'">
+    <a class="me-1 text-dark">{{title}}</a>
+  </div>
+  <span *ngIf="gender !== 'search'">
+    <a [routerLink]= "['/product', gender]"  class="d-block">{{title}}</a>
   </span>
   /
   <span>
-    Sản phẩm nữ
+    {{last}}
   </span>
-        </p>
+        </div>
       </div>
     </div>
   </div>

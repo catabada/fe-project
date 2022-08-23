@@ -3,7 +3,7 @@ export class Pagination {
   pageSize: number;
 
   totalPages(): number {
-    return Math.ceil(Number.parseFloat(String(this.length)) / Number.parseFloat(String(this.pageSize)));
+      return Math.ceil(Number.parseFloat(String(this.length)) / Number.parseFloat(String(this.pageSize)));
   }
 
   constructor(length: number, pageSize: number) {

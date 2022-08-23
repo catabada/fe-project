@@ -5,7 +5,7 @@
     </div>
     <div class="col col-xl-4" style="">
       <div class="wrap-search d-flex">
-        <input type="text" class="search-input" placeholder="Tìm kiếm">
+        <input type="text" class="search-input" id="search" (keydown)="submitSearch($event)" placeholder="Tìm kiếm">
         <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
         <button [routerLink]="['/login']" class="user-button"><i class="fa-solid fa-user"></i></button>
       </div>

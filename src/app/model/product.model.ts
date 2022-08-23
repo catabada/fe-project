@@ -2,12 +2,13 @@ import {ProductImage, productImages} from "./product-image.model";
 import {ProductDetail, productDetails} from "./product-detail.model";
 import {ProductType, productTypes} from "./product-type.model";
 import {Brand, brands} from "./brand.model";
+import {Color, colorProducts} from "./color.model";
 
 
 export class Product {
   id: number
   name: string
-  color: string
+  color: Color
   gender: string
   type: ProductType
   brand: Brand
@@ -16,7 +17,7 @@ export class Product {
   productDetails: ProductDetail[]
   active: boolean
 
-  constructor(id: number, name: string, color: string, gender: string, type: ProductType, brand: Brand, description: string, image: ProductImage, productDetails: ProductDetail[], active: boolean) {
+  constructor(id: number, name: string, color: Color, gender: string, type: ProductType, brand: Brand, description: string, image: ProductImage, productDetails: ProductDetail[], active: boolean) {
     this.id = id
     this.name = name
     this.color = color
@@ -34,11 +35,11 @@ export let products: Product[] =
     {
       "id": 1,
       "name": "Giày Thể Thao Nam Biti's Hunter",
-      "color": "Xám",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
-      "image": productImages.find(image => image.productDetailId === 1),
+      "image": productImages.find(image => image.productDetailId ===1),
       "productDetails": productDetails.filter(detail => detail.productId ===1),
       "description": "Đôi giày là phụ kiện thể hiện niềm đam mê và cá tính của người mang, với thiết kế thời trang, năng động, trẻ trung phù hợp với mọi lứa tuổi sẽ làm nổi bật lên cá tính, phong cách của bạn. Nhiều màu sắc, mẫu để lựa chọn làm mới phong cách hàng ngày. \nDo màn hình và điều kiện ánh sáng khác nhau, màu sắc thực tế của sản phẩm có thể chênh lệch khoảng 3-5%. \nFootwear luôn mong muốn mang lại trải nghiệm tốt nhất cho người dùng.",
       "active": true
@@ -46,7 +47,7 @@ export let products: Product[] =
     {
       "id": 2,
       "name": "Giày Thể Thao Nam Biti's Hunter",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -58,7 +59,7 @@ export let products: Product[] =
     {
       "id": 3,
       "name": "Giày Thể Thao Nam Biti's Hunter",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -70,7 +71,7 @@ export let products: Product[] =
     {
       "id": 4,
       "name": "Giày Thể Thao Nam Biti's Hunter Core",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -82,7 +83,7 @@ export let products: Product[] =
     {
       "id": 5,
       "name": "Giày Thể Thao Nam Biti's Hunter Core",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -94,7 +95,7 @@ export let products: Product[] =
     {
       "id": 6,
       "name": "Giày Thể Thao Nam Biti's Hunter Core",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -106,7 +107,7 @@ export let products: Product[] =
     {
       "id": 7,
       "name": "Giày Thể Thao Nam Biti's Hunter X LITEPLEX",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -118,7 +119,7 @@ export let products: Product[] =
     {
       "id": 8,
       "name": "Giày Thể Thao Nam Biti's Hunter X LITEPLEX",
-      "color": "Rêu",
+      "color": colorProducts[4],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -130,7 +131,7 @@ export let products: Product[] =
     {
       "id": 9,
       "name": "Giày Thể Thao Nam Biti's Hunter X LITEPLEX",
-      "color": "Kem",
+      "color": colorProducts[5],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -142,7 +143,7 @@ export let products: Product[] =
     {
       "id": 10,
       "name": "Giày Thể Thao Nam Hunter Street",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -154,7 +155,7 @@ export let products: Product[] =
     {
       "id": 11,
       "name": "Giày Thể Thao Nam Hunter Street",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -166,7 +167,7 @@ export let products: Product[] =
     {
       "id": 12,
       "name": "Giày Thể Thao Nam Hunter Street",
-      "color": "Cam",
+      "color": colorProducts[6],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -178,7 +179,7 @@ export let products: Product[] =
     {
       "id": 13,
       "name": "Giày Thể Thao Nam Biti's Hunter Core 3D-Airmesh",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -190,7 +191,7 @@ export let products: Product[] =
     {
       "id": 14,
       "name": "Giày Thể Thao Nam Biti's Hunter Core 3D-Airmesh",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -202,7 +203,7 @@ export let products: Product[] =
     {
       "id": 15,
       "name": "Giày Thể Thao Nam Biti's Hunter X Midnight EZ-STRAP",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -214,7 +215,7 @@ export let products: Product[] =
     {
       "id": 16,
       "name": "Giày Thể Thao Nam Biti's Hunter Core Refreshing Collection",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -226,7 +227,7 @@ export let products: Product[] =
     {
       "id": 17,
       "name": "Giày Thể Thao Nam Biti's Hunter Core Refreshing Collection",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -238,7 +239,7 @@ export let products: Product[] =
     {
       "id": 18,
       "name": "Giày Thể Thao Nam Biti's Hunter Street Ver 2",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -250,7 +251,7 @@ export let products: Product[] =
     {
       "id": 19,
       "name": "Giày Thể Thao Nam Biti's Hunter Street Ver 2",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -262,7 +263,7 @@ export let products: Product[] =
     {
       "id": 20,
       "name": "Giày Thể Thao Nam Biti's Hunter Midnight 2",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[0],
@@ -274,7 +275,7 @@ export let products: Product[] =
     {
       "id": 21,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football",
-      "color": "Đỏ",
+      "color": colorProducts[7],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -286,7 +287,7 @@ export let products: Product[] =
     {
       "id": 22,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -298,7 +299,7 @@ export let products: Product[] =
     {
       "id": 23,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football",
-      "color": "Cam",
+      "color": colorProducts[6],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -310,7 +311,7 @@ export let products: Product[] =
     {
       "id": 24,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football Futsal",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -322,7 +323,7 @@ export let products: Product[] =
     {
       "id": 25,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football Futsal",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -334,7 +335,7 @@ export let products: Product[] =
     {
       "id": 26,
       "name": "Giày Bóng Đá Nam Biti's Hunter Football Futsal",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[1],
       "gender": "Male",
       "brand": brands[0],
@@ -346,7 +347,7 @@ export let products: Product[] =
     {
       "id": 27,
       "name": "Giày Sandal Nam",
-      "color": "Nâu",
+      "color": colorProducts[8],
       "type": productTypes[2],
       "gender": "Male",
       "brand": brands[0],
@@ -358,7 +359,7 @@ export let products: Product[] =
     {
       "id": 28,
       "name": "Giày Sandal Nam",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[2],
       "gender": "Male",
       "brand": brands[0],
@@ -370,7 +371,7 @@ export let products: Product[] =
     {
       "id": 29,
       "name": "Giày Sandal Nam Eva Phun Biti's Hunter",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[2],
       "gender": "Male",
       "brand": brands[0],
@@ -382,7 +383,7 @@ export let products: Product[] =
     {
       "id": 30,
       "name": "Giày Sandal Nam Eva Phun Biti's Hunter",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[2],
       "gender": "Male",
       "brand": brands[0],
@@ -394,7 +395,7 @@ export let products: Product[] =
     {
       "id": 31,
       "name": "Giày Sandal Nam Eva Phun Biti's Hunter",
-      "color": "Rêu",
+      "color": colorProducts[4],
       "type": productTypes[2],
       "gender": "Male",
       "brand": brands[0],
@@ -406,7 +407,7 @@ export let products: Product[] =
     {
       "id": 32,
       "name": "Giày Da Nam Biti's X",
-      "color": "Vàng",
+      "color": colorProducts[9],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -418,7 +419,7 @@ export let products: Product[] =
     {
       "id": 33,
       "name": "Giày Da Nam Biti's X",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -430,7 +431,7 @@ export let products: Product[] =
     {
       "id": 34,
       "name": "Giày Da Nam Biti's X",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -442,7 +443,7 @@ export let products: Product[] =
     {
       "id": 35,
       "name": "Giày Da Nam Biti's X",
-      "color": "Vàng",
+      "color": colorProducts[9],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -454,7 +455,7 @@ export let products: Product[] =
     {
       "id": 36,
       "name": "Giày Da Nam Biti's X",
-      "color": "Nâu",
+      "color": colorProducts[8],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -466,7 +467,7 @@ export let products: Product[] =
     {
       "id": 37,
       "name": "Giày Da Nam Biti's X",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[3],
       "gender": "Male",
       "brand": brands[0],
@@ -478,7 +479,7 @@ export let products: Product[] =
     {
       "id": 38,
       "name": "Giày Thể Thao Nam Paris Low Top Trainers",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -490,7 +491,7 @@ export let products: Product[] =
     {
       "id": 39,
       "name": "Giày Thể Thao Nam Runner Trainers",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -502,7 +503,7 @@ export let products: Product[] =
     {
       "id": 40,
       "name": "Giày Thể Thao Nam Runner Trainers",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -514,7 +515,7 @@ export let products: Product[] =
     {
       "id": 41,
       "name": "Giày Thể Thao Nam Runner Trainers",
-      "color": "Đỏ",
+      "color": colorProducts[7],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -526,7 +527,7 @@ export let products: Product[] =
     {
       "id": 42,
       "name": "Giày Thể Thao Nam Runner Trainers",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -538,7 +539,7 @@ export let products: Product[] =
     {
       "id": 43,
       "name": "Giày Thể Thao Nam Triple S Trainers",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[2],
@@ -550,7 +551,7 @@ export let products: Product[] =
     {
       "id": 44,
       "name": "Giày Thể Thao Nam Nike Air Force",
-      "color": "Trắng ",
+      "color": colorProducts[2] ,
       "type": productTypes[0],
       "gender": "Male",
       "brand": brands[1],
@@ -562,7 +563,7 @@ export let products: Product[] =
     {
       "id": 45,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -574,7 +575,7 @@ export let products: Product[] =
     {
       "id": 46,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -586,7 +587,7 @@ export let products: Product[] =
     {
       "id": 47,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Trắng ",
+      "color": colorProducts[2] ,
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -598,7 +599,7 @@ export let products: Product[] =
     {
       "id": 48,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Đỏ",
+      "color": colorProducts[7],
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -610,7 +611,7 @@ export let products: Product[] =
     {
       "id": 49,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -622,7 +623,7 @@ export let products: Product[] =
     {
       "id": 50,
       "name": "Giày Cơ Bản Nam Nike Air Force",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[4],
       "gender": "Male",
       "brand": brands[1],
@@ -634,7 +635,7 @@ export let products: Product[] =
     {
       "id": 51,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Xanh lá",
+      "color": colorProducts[10],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -646,7 +647,7 @@ export let products: Product[] =
     {
       "id": 52,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -658,7 +659,7 @@ export let products: Product[] =
     {
       "id": 53,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Đỏ",
+      "color": colorProducts[7],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -670,7 +671,7 @@ export let products: Product[] =
     {
       "id": 54,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -682,7 +683,7 @@ export let products: Product[] =
     {
       "id": 55,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Xanh dương",
+      "color": colorProducts[3],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -694,7 +695,7 @@ export let products: Product[] =
     {
       "id": 56,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -706,7 +707,7 @@ export let products: Product[] =
     {
       "id": 57,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -718,7 +719,7 @@ export let products: Product[] =
     {
       "id": 58,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -730,7 +731,7 @@ export let products: Product[] =
     {
       "id": 59,
       "name": "Giày Cơ Bản Nữ Nike Air Max 270",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -742,7 +743,7 @@ export let products: Product[] =
     {
       "id": 60,
       "name": "Giày Thể Thao Nữ Embrace",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -754,7 +755,7 @@ export let products: Product[] =
     {
       "id": 61,
       "name": "Giày Thể Thao Nữ Embrace",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -766,7 +767,7 @@ export let products: Product[] =
     {
       "id": 62,
       "name": "Giày Thể Thao Nữ Embrace",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -778,7 +779,7 @@ export let products: Product[] =
     {
       "id": 63,
       "name": "Giày Thể Thao Nữ Embrace Ver 2",
-      "color": "Xanh dương",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -790,7 +791,7 @@ export let products: Product[] =
     {
       "id": 64,
       "name": "Giày Thể Thao Nữ Embrace Ver 2",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -802,7 +803,7 @@ export let products: Product[] =
     {
       "id": 65,
       "name": "Giày Thể Thao Nữ Embrace Ver 2",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -814,7 +815,7 @@ export let products: Product[] =
     {
       "id": 66,
       "name": "Giày Thể Thao Nữ Embrace Ver 2",
-      "color": "Xanh lá cây",
+      "color": colorProducts[10],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[0],
@@ -826,8 +827,8 @@ export let products: Product[] =
     {
       "id": 67,
       "name": "Giày Búp Bê Nữ Biti’s Embrace",
-      "color": "Hồng",
-      "type": productTypes[6],
+      "color": colorProducts[11],
+      "type": productTypes[5],
       "gender": "Female",
       "brand": brands[0],
       "image": productImages.find(image => image.productDetailId ===331),
@@ -838,7 +839,7 @@ export let products: Product[] =
     {
       "id": 68,
       "name": "Giày Búp Bê Nữ Biti’s Embrace",
-      "color": "Kem",
+      "color": colorProducts[5],
       "type": productTypes[5],
       "gender": "Female",
       "brand": brands[0],
@@ -850,7 +851,7 @@ export let products: Product[] =
     {
       "id": 69,
       "name": "Giày Thời Trang Nữ Biti's",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -862,7 +863,7 @@ export let products: Product[] =
     {
       "id": 70,
       "name": "Giày Thời Trang Nữ Biti's",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -874,7 +875,7 @@ export let products: Product[] =
     {
       "id": 71,
       "name": "Giày Thời Trang Nữ Gosto Sunweave",
-      "color": "Nâu",
+      "color": colorProducts[8],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -886,7 +887,7 @@ export let products: Product[] =
     {
       "id": 72,
       "name": "Giày Thời Trang Nữ Gosto Sunweave",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -898,7 +899,7 @@ export let products: Product[] =
     {
       "id": 73,
       "name": "Giày Thời Trang Nữ Biti's",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -910,7 +911,7 @@ export let products: Product[] =
     {
       "id": 74,
       "name": "Giày Thời Trang Nữ Biti's",
-      "color": "Vàng",
+      "color": colorProducts[9],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -922,7 +923,7 @@ export let products: Product[] =
     {
       "id": 75,
       "name": "Giày Thời Trang Nữ Biti's",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[6],
       "gender": "Female",
       "brand": brands[0],
@@ -934,7 +935,7 @@ export let products: Product[] =
     {
       "id": 76,
       "name": "Giày Boots Nữ Cagole 90 mm",
-      "color": "Xanh lá",
+      "color": colorProducts[10],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -946,7 +947,7 @@ export let products: Product[] =
     {
       "id": 77,
       "name": "Giày Boots Nữ Cagole 90 mm",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -958,7 +959,7 @@ export let products: Product[] =
     {
       "id": 78,
       "name": "Giày Boots Nữ Cagole 90 mm",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -970,7 +971,7 @@ export let products: Product[] =
     {
       "id": 79,
       "name": "Giày Boots Nữ Fetish 80 mm",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -982,7 +983,7 @@ export let products: Product[] =
     {
       "id": 80,
       "name": "Giày Boots Nữ Crocs",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -994,7 +995,7 @@ export let products: Product[] =
     {
       "id": 81,
       "name": "Giày Boots Nữ Crocs",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1006,7 +1007,7 @@ export let products: Product[] =
     {
       "id": 82,
       "name": "Giày Boots Nữ Crocs",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1018,7 +1019,7 @@ export let products: Product[] =
     {
       "id": 83,
       "name": "Giày Boots Nữ Crocs",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1030,7 +1031,7 @@ export let products: Product[] =
     {
       "id": 84,
       "name": "Giày Boots Nữ Trooper Rupper",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1042,7 +1043,7 @@ export let products: Product[] =
     {
       "id": 85,
       "name": "Giày Boots Nữ Trooper Rupper",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1054,7 +1055,7 @@ export let products: Product[] =
     {
       "id": 86,
       "name": "Giày Boots Nữ Trooper Rupper",
-      "color": "Nâu",
+      "color": colorProducts[8],
       "type": productTypes[7],
       "gender": "Female",
       "brand": brands[2],
@@ -1066,7 +1067,7 @@ export let products: Product[] =
     {
       "id": 87,
       "name": "Giày Cơ Bản Nữ Nike Air Force 1 Fontanka",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -1078,7 +1079,7 @@ export let products: Product[] =
     {
       "id": 88,
       "name": "Giày Cơ Bản Nike Air Force 1 Fontanka",
-      "color": "Cam ",
+      "color": colorProducts[6] ,
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -1090,7 +1091,7 @@ export let products: Product[] =
     {
       "id": 89,
       "name": "Giày Cơ Bản Nữ Nike Air Force 1 Fontanka",
-      "color": "Trắng",
+      "color": colorProducts[2],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -1102,7 +1103,7 @@ export let products: Product[] =
     {
       "id": 90,
       "name": "Giày Cơ Bản Nữ Nike Air Force 1 Fontanka",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[4],
       "gender": "Female",
       "brand": brands[1],
@@ -1114,7 +1115,7 @@ export let products: Product[] =
     {
       "id": 91,
       "name": "Giày Thể Thao Nữ Nike Air Zoom Pegasus",
-      "color": "Xanh lá",
+      "color": colorProducts[10],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1126,7 +1127,7 @@ export let products: Product[] =
     {
       "id": 92,
       "name": "Giày Thể Thao Nữ Nike Air Zoom Pegasus",
-      "color": "Đỏ",
+      "color": colorProducts[7],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1138,7 +1139,7 @@ export let products: Product[] =
     {
       "id": 93,
       "name": "Giày Thể Thao Nữ Nike Air Zoom Pegasus",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1150,7 +1151,7 @@ export let products: Product[] =
     {
       "id": 94,
       "name": "Giày Thể Thao Nữ Nike Air Zoom Victory More Uptempo",
-      "color": "Xám",
+      "color": colorProducts[1],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1162,7 +1163,7 @@ export let products: Product[] =
     {
       "id": 95,
       "name": "Giày Thể Thao Nữ Nike Air Zoom LJ Elite",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1174,7 +1175,7 @@ export let products: Product[] =
     {
       "id": 96,
       "name": "Giày Thể Thao Nữ Nike Air Zoom LJ Elite",
-      "color": "Vàng",
+      "color": colorProducts[9],
       "type": productTypes[0],
       "gender": "Female",
       "brand": brands[1],
@@ -1186,7 +1187,7 @@ export let products: Product[] =
     {
       "id": 97,
       "name": "Giày Sandal Nữ Nike EcoHaven Next Nature",
-      "color": "Xanh",
+      "color": colorProducts[3],
       "type": productTypes[2],
       "gender": "Female",
       "brand": brands[1],
@@ -1198,7 +1199,7 @@ export let products: Product[] =
     {
       "id": 98,
       "name": "Giày Sandal Nữ Nike EcoHaven Next Nature",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[2],
       "gender": "Female",
       "brand": brands[1],
@@ -1210,7 +1211,7 @@ export let products: Product[] =
     {
       "id": 99,
       "name": "Giày Sandal Nữ Nike Icon Classic",
-      "color": "Hồng",
+      "color": colorProducts[11],
       "type": productTypes[2],
       "gender": "Female",
       "brand": brands[1],
@@ -1222,7 +1223,7 @@ export let products: Product[] =
     {
       "id": 100,
       "name": "Giày Sandal Nữ Nike Icon Classic",
-      "color": "Đen",
+      "color": colorProducts[0],
       "type": productTypes[2],
       "gender": "Female",
       "brand": brands[1],
@@ -1232,4 +1233,3 @@ export let products: Product[] =
       "active": true
     }
   ]
-

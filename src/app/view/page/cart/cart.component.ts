@@ -3,6 +3,7 @@ import {CartItem} from "../../../model/cart-item.model";
 import {CartService} from "../../../service/cart.service";
 import {CheckoutItem} from "../../../model/checkout-item.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ImageService} from "../../../service/image.service";
 
 @Component({
   selector: 'cart',
@@ -11,12 +12,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class CartComponent implements OnInit {
   cart: CartItem[] ;
-
   constructor(private cartService: CartService, private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCartFromLocalStorage();
   }
+
 
   removeCartItem($event: any, id: number) {
     jQuery($event.target).parents('tr').remove();

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Pagination} from "../../../dto/pagination.dto";
 import {Brand} from "../../../model/brand.model";
 import {Feature} from "../../../dto/feature.dto";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'products',
@@ -17,9 +17,13 @@ export class ProductsComponent implements OnInit {
 
   currentTypes: number[] = [];
   currentBrands: number[] = [];
+  currentColors: number[] = [];
+  currentSort: number;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
+
 
   ngOnInit(): void {
     this.gender = this.route.snapshot.params['gender']
@@ -43,5 +47,13 @@ export class ProductsComponent implements OnInit {
 
   changeBrand($event: number[]) {
     this.currentBrands = $event;
+  }
+
+  changeColor($event: number[]) {
+    this.currentColors = $event;
+  }
+
+  sort($event: number) {
+    this.currentSort = $event;
   }
 }

@@ -16,7 +16,7 @@ export class ProductDetailDto {
     dest.id = entity.id
     dest.productId = entity.productId
     productService.getProduct(entity.productId).subscribe(product => {
-      dest.name = product.name + ' (' + product.color + ') Kích thước ' + entity.size
+      dest.name = product.name + ' (' + product.color.name + ') Kích thước ' + entity.size
     })
     dest.size = entity.size
     dest.image = entity.image

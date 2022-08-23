@@ -15,6 +15,24 @@ export class ProductService {
       observer.next(products)
     })
   }
+  public getProductsByQuery(query: string): Observable<Product[]> {
+    return new Observable<Product[]>(observer => {
+      if(query === "") {
+        this.getProducts().subscribe(products => {
+          observer.next(products)
+        })
+        return
+      }
+      let productQuery: Product[] = []
+      products.map((product) => {
+        let nameProduct = product.name + ' '  + product.color.name
+        if(nameProduct.toLowerCase().includes(query.toLowerCase())) {
+          productQuery.push(product)
+        }
+      })
+      observer.next(productQuery)
+    })
+  }
 
   public getProductsByGender(gender: string): Observable<Product[]> {
     return new Observable<Product[]>(observer => {
@@ -46,15 +64,26 @@ export class ProductService {
     observer.next(products.filter(product => brands.includes(product.brand.id)))
     })
   }
-
-  public getProductsByFilter(gender: string, types: number[], brands: number[]): Observable<Product[]> {
+  public getProductsByColors(colors: number[]): Observable<Product[]> {
     return new Observable<Product[]>(observer => {
-      let productsByGender: Product[] = [], productsByTypes: Product[] = [], productsByBrands: Product[] = []
+      if (colors.length == 0) {
+        this.getProducts().subscribe(products => {
+          observer.next(products)
+        })
+        return
+      }
+    observer.next(products.filter(product => colors.includes(product.color.id)))
+    })
+  }
+
+  public getProductsByFilter(gender: string, types: number[], brands: number[], colors: number[]): Observable<Product[]> {
+    return new Observable<Product[]>(observer => {
+      let productsByGender: Product[] = [], productsByTypes: Product[] = [], productsByBrands: Product[] = [], productsByColors: Product[] = [];
       this.getProductsByGender(gender).subscribe(products => {
         productsByGender = products
       })
 
-      if (types.length == 0 && brands.length == 0) {
+      if (types.length == 0 && brands.length == 0 && colors.length == 0) {
         observer.next(productsByGender);
         return
       }
@@ -67,9 +96,47 @@ export class ProductService {
         productsByBrands = products
       })
 
+      this.getProductsByColors(colors).subscribe(products => {
+        productsByColors = products
+      })
+
       let productFilters = []
       for (let product of productsByGender) {
-        if (productsByTypes.includes(product) && productsByBrands.includes(product)) {
+        if (productsByTypes.includes(product) && productsByBrands.includes(product) && productsByColors.includes(product)) {
+          productFilters.push(product)
+        }
+      }
+
+      observer.next(productFilters)
+    })
+  }
+  public getProductsByQueryAndFilter(query: string, types: number[], brands: number[], colors: number[]): Observable<Product[]> {
+    return new Observable<Product[]>(observer => {
+      let productsByQuery: Product[] = [], productsByTypes: Product[] = [], productsByBrands: Product[] = [], productsByColors: Product[] = [];
+      this.getProductsByQuery(query).subscribe(products => {
+        productsByQuery = products
+      })
+
+      if (types.length == 0 && brands.length == 0 && colors.length == 0) {
+        observer.next(productsByQuery);
+        return
+      }
+
+      this.getProductsByTypes(types).subscribe(products => {
+        productsByTypes = products
+      })
+
+      this.getProductsByBrands(brands).subscribe(products => {
+        productsByBrands = products
+      })
+
+      this.getProductsByColors(colors).subscribe(products => {
+        productsByColors = products
+      })
+
+      let productFilters = []
+      for (let product of productsByQuery) {
+        if (productsByTypes.includes(product) && productsByBrands.includes(product) && productsByColors.includes(product)) {
           productFilters.push(product)
         }
       }
@@ -98,6 +165,5 @@ export class ProductService {
             prev.unitPrice < curr.unitPrice ? prev : curr).unitPrice
       )
     })
-
   }
 }

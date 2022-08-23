@@ -3,6 +3,31 @@
   <ul class="filter-list col col-xl-12 p-3">
       <li class="filter-item">
         <h3 class="filter-title">
+          Sắp xếp theo giá
+        </h3>
+        <ul class="sub-list">
+          <li
+            class="sub-item">
+            <input
+              (change) = "sort(0)"
+              class="me-3"
+              type="radio" name="sort"
+            >
+            <p class="sub-link">Tăng dần</p>
+          </li>
+          <li
+            class="sub-item">
+            <input
+              (change) = "sort(1)"
+              class="me-3"
+              type="radio" name="sort"
+            >
+            <p class="sub-link">Giảm dần</p>
+          </li>
+        </ul>
+      </li>
+      <li class="filter-item">
+        <h3 class="filter-title">
           Các loại sản phẩm
         </h3>
         <ul class="sub-list">
@@ -37,49 +62,14 @@
           Colors
         </h3>
         <ul class="sub-list">
-          <li class="sub-item">
-            <a href="" class="sub-link">Black</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Blue</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">White</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Red</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Green</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Grey</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Orange</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Cream</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Brown</a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="filter-item">
-        <h3 class="filter-title">
-          Technologies
-        </h3>
-        <ul class="sub-list">
-          <li class="sub-item">
-            <a href="" class="sub-link">BioBevel</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">Groove</a>
-          </li>
-          <li class="sub-item">
-            <a href="" class="sub-link">FlexBevel</a>
+          <li
+            *ngFor="let item of colors"
+            class="sub-item">
+            <input
+              (change) = "changeColor()"
+              class="me-3"
+              type="checkbox" name="colors" value="{{item.id}}">
+            <p class="sub-link">{{item!.name}}</p>
           </li>
         </ul>
       </li>
